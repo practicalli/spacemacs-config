@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+#name : klipse-html
+#key : klipse-html
+#contributor : jr0cket
+# --
+<!-- Using expression evaluation fix to make string appear as a value in klipse -->
+<pre><code class="language-klipse" data-eval-context="expr">
+$0
+</code></pre>

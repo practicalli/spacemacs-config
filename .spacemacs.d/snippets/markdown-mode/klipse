@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+#name : klipse
+#key : klipse
+#contributor : jr0cket
+# --
+~~~klipse
+$0
+~~~

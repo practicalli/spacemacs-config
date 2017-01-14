@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : cc-license-url
+#key : cc-license-url
+#contributor : jr0cket
+# --
+"https://creativecommons.org"

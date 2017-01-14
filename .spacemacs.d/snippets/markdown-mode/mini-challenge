@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : mini-challenge
+#key : mini-challenge
+#contributor : jr0cket
+# --
+<img src="{{ site.baseurl }}/img/clojurebridgelondon-mini-challenge.png" class="mini-challenge" />

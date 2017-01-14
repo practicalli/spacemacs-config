@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+#name : spacemacs-keybindings
+#key : spacemacs-keybindings
+#contributor : jr0cket
+# --
+| Spacemacs | Major mode | Emacs | Evil |
+|-----------|------------|-------|------|
+| $1        | $2         | $3    | $4   |
