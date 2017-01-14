@@ -394,7 +394,17 @@ you should place your code here."
         "(do (user/run)
            (user/browser-repl))")
 
-  ;; Display neotree on the right rather than left (default)
+  ;; REPL history keyboard shortcut example
+  ;; Uses add-hook to define keyboard mappings once a mode is activated
+  ;; (define-key 'cider-repl-mode-map (kbd "<up>") 'cider-repl-previous-input)
+  ;; (define-key 'cider-repl-mode-map (kbd "<down>") 'cider-repl-next-input))
+
+  ;; (add-hook 'cider-repl-mode-hook
+  ;;           '(lambda ()
+  ;;              (define-key cider-repl-mode-map (kbd "<up>") 'cider-repl-previous-input)
+  ;;              (define-key cider-repl-mode-map (kbd "<down>") 'cider-repl-next-input)))
+
+  ;; Display neotree on the right (default is left side of Spacemacs frame)
   ;; (setq neo-window-position 'right)
   )
 
