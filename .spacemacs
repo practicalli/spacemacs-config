@@ -385,6 +385,9 @@ you should place your code here."
   ;; Changing auto indent / tab in Web / html major-mode to 2 (defaults to 4)
   (setq web-mode-markup-indent-offset 2)
 
+  ;; Pretty print in Clojure to use the Fast Idiomatic Pretty-Printer. This is approximately 5-10x faster than clojure.core/pprint
+  (setq cider-pprint-fn “fipp”)
+
   ;; Configure clojurescript-jack-in to use web browser (otherwise defaults to JVM Rhino repl)
   (setq cider-cljs-lein-repl
         "(do (user/run)
