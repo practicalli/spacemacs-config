@@ -389,6 +389,7 @@ you should place your code here."
   (setq cider-pprint-fn “fipp”)
 
   ;; Configure clojurescript-jack-in to use web browser (otherwise defaults to JVM Rhino repl)
+  ;; Supports running figwheel-based projects from Spacemacs
   (setq cider-cljs-lein-repl
         "(do (user/run)
            (user/browser-repl))")
