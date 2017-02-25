@@ -359,6 +359,10 @@ you should place your code here."
     :after magit
     :config (magithub-feature-autoinject t))
 
+  ;; Use Spacemacs as the $EDITOR (or $GIT_EDITOR) for git commits messages
+  ;; when using git commit on the command line
+  (global-git-commit-mode t)
+
 
   ;;; Should write a toggle function to show descriptive or literate links in Org-mode
   ;;(setq org-descriptive-links nil)
