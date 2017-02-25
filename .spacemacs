@@ -69,7 +69,7 @@ values."
      spell-checking
      syntax-checking
      (version-control :variables
-                      version-control-diff-tool 'git-gutter
+                      version-control-diff-tool 'diff-hl
                       version-control-global-margin t)
      yaml
      )
@@ -350,6 +350,9 @@ you should place your code here."
   (setq multi-term-program "/usr/bin/zsh")
 
   ;; jr0cket: Org-mode
+  ;; diff-hl - diff hightlights in right gutter as you type
+  (diff-hl-flydiff-mode)
+
 
   ;;; Should write a toggle function to show descriptive or literate links in Org-mode
   ;;(setq org-descriptive-links nil)
