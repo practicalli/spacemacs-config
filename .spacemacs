@@ -78,7 +78,8 @@ values."
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(bongo
-                                      camcorder)
+                                      camcorder
+                                      magithub)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -352,6 +353,11 @@ you should place your code here."
   ;; jr0cket: Org-mode
   ;; diff-hl - diff hightlights in right gutter as you type
   (diff-hl-flydiff-mode)
+
+  ;; Load in magithub features after magit package has loaded
+  (use-package magithub
+    :after magit
+    :config (magithub-feature-autoinject t))
 
 
   ;;; Should write a toggle function to show descriptive or literate links in Org-mode
