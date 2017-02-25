@@ -411,6 +411,22 @@ you should place your code here."
 
   ;; Changing auto indent / tab in Web / html major-mode to 2 (defaults to 4)
   (setq web-mode-markup-indent-offset 2)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Web-mode configuration
+
+  ;; Changing auto indent size for languages in html layer (web mode) to 2 (defaults to 4)
+  (defun jr0cket-web-mode-indent-hook ()
+    "Indent settings for languages in Web mode, markup=html, css=css, code=javascript/php/etc."
+    (setq web-mode-markup-indent-offset 2)
+    (setq web-mode-css-indent-offset  2)
+    (setq web-mode-code-indent-offset 2))
+
+  (add-hook 'web-mode-hook  'jr0cket-web-mode-indent-hook)
+
+  ;; End of Web-mode configuration
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
 
   ;; Pretty print in Clojure to use the Fast Idiomatic Pretty-Printer. This is approximately 5-10x faster than clojure.core/pprint
   (setq cider-pprint-fn “fipp”)
