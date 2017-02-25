@@ -42,7 +42,8 @@ values."
                       auto-completion-enable-sort-by-usage t)
      clojure
      better-defaults
-     colors
+     (colors :variables
+             colors-enable-nyan-cat-progress-bar t)
      emacs-lisp
      (git :variables
           git-magit-status-fullscreen t
