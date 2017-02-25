@@ -364,34 +364,47 @@ you should place your code here."
   (global-git-commit-mode t)
 
 
-  ;;; Should write a toggle function to show descriptive or literate links in Org-mode
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Org-mode configuration
+
+  ;; I should write a toggle function to show descriptive or literate links in Org-mode
   ;;(setq org-descriptive-links nil)
 
+
   ;; Define the location of the file to hold tasks
-  (setq org-default-notes-file "~/Dropbox/todo-list.org")
+  (with-eval-after-load 'org
+    (setq org-default-notes-file "~/Dropbox/todo-list.org"))
 
   ;; Define a kanban style set of stages for todo tasks
-  (setq org-todo-keywords
-        '((sequence "TODO" "DOING" "BLOCKED" "REVIEW" "|" "DONE" "ARCHIVED")))
+  (with-eval-after-load 'org
+    (setq org-todo-keywords
+         '((sequence "TODO" "DOING" "BLOCKED" "REVIEW" "|" "DONE" "ARCHIVED"))))
 
   ;; Setting Colours (faces) for todo states to give clearer view of work
-  (setq org-todo-keyword-faces
-        '(("TODO" . org-warning)
-          ("DOING" . "yellow")
-          ("BLOCKED" . "red")
-          ("REVIEW" . "orange")
-          ("DONE" . "green")
-          ("ARCHIVED" .  "blue")))
+  (with-eval-after-load 'org
+    (setq org-todo-keyword-faces
+         '(("TODO" . org-warning)
+           ("DOING" . "yellow")
+           ("BLOCKED" . "red")
+           ("REVIEW" . "orange")
+           ("DONE" . "green")
+           ("ARCHIVED" .  "blue"))))
 
   ;; Progress Logging
   ;; When a TODO item enters DONE, add a CLOSED: property with current date-time stamp
-  (setq org-log-done 'time)
+  (with-eval-after-load 'org
+    (setq org-log-done 'time))
 
   ;; Markdown mode hook for orgtbl-mode minor mode
   (add-hook 'markdown-mode-hook 'turn-on-orgtbl)
 
   ;; Turn on visual-line-mode for Org-mode only
   (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
+
+  ;; End of Org-mode Configuration
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
   ;; Literal search, rather than regex, in spacemacs search - helm-ag
   (setq-default helm-grep-ag-command-option "-Q")
