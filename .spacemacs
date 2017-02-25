@@ -326,6 +326,9 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Old-school Emacs style keybindings that I am trying to forget
+
   ;; jr0cket: text scaling keybindings
   (define-key global-map (kbd "C-+") 'text-scale-increase)
   (define-key global-map (kbd "C--") 'text-scale-decrease)
@@ -342,15 +345,23 @@ you should place your code here."
   ;; jr0cket: Remap multiple cursors to a pattern that is easier to remember
   (define-key global-map (kbd "C-c m c") 'mc/edit-lines)
 
-  ;; Remap undo to overwrite the Emacs GUI window hide key
-  ;; as the backslash character is used to escape in Emacs, we need to escape it with another backslash
-  ;; (define-key global-map (kbd "C-\z") 'undo-tree-undo)
-  ;; (define-key global-map (kbd "M-\z") 'undo-tree-redo)
+  ;; End of Old-school bindings
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Shell configuration
 
   ;; Use zsh for default multi-term shell
   (setq multi-term-program "/usr/bin/zsh")
 
-  ;; jr0cket: Org-mode
+  ;; End of Shell configuration
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Version Control configuration - Git, etc
+
   ;; diff-hl - diff hightlights in right gutter as you type
   (diff-hl-flydiff-mode)
 
@@ -363,6 +374,8 @@ you should place your code here."
   ;; when using git commit on the command line
   (global-git-commit-mode t)
 
+  ;; End of Version Control configuration
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -406,11 +419,16 @@ you should place your code here."
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Searching Configuration
+
   ;; Literal search, rather than regex, in spacemacs search - helm-ag
   (setq-default helm-grep-ag-command-option "-Q")
 
-  ;; Changing auto indent / tab in Web / html major-mode to 2 (defaults to 4)
-  (setq web-mode-markup-indent-offset 2)
+  ;; End of Searching Configuration
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Web-mode configuration
 
@@ -427,28 +445,35 @@ you should place your code here."
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Clojure configurations
 
   ;; Pretty print in Clojure to use the Fast Idiomatic Pretty-Printer. This is approximately 5-10x faster than clojure.core/pprint
   (setq cider-pprint-fn “fipp”)
 
-  ;; Configure clojurescript-jack-in to use web browser (otherwise defaults to JVM Rhino repl)
-  ;; Supports running figwheel-based projects from Spacemacs
+  ;; Configure clojurescript-jack-in to use web browser REPL (otherwise defaults to JVM Rhino repl)
   (setq cider-cljs-lein-repl
         "(do (user/run)
            (user/browser-repl))")
 
-  ;; REPL history keyboard shortcut example
-  ;; Uses add-hook to define keyboard mappings once a mode is activated
-  ;; (define-key 'cider-repl-mode-map (kbd "<up>") 'cider-repl-previous-input)
-  ;; (define-key 'cider-repl-mode-map (kbd "<down>") 'cider-repl-next-input))
-
+  ;; REPL history keybindings - not used - Use S-<up> and S-<down> which are the defaults
   ;; (add-hook 'cider-repl-mode-hook
   ;;           '(lambda ()
   ;;              (define-key cider-repl-mode-map (kbd "<up>") 'cider-repl-previous-input)
   ;;              (define-key cider-repl-mode-map (kbd "<down>") 'cider-repl-next-input)))
 
-  ;; Display neotree on the right (default is left side of Spacemacs frame)
+  ;; End of Clojure configuration
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Neotree configuration
+
+  ;; Display neotree on the right rather than left (default)
   ;; (setq neo-window-position 'right)
+
+  ;; End of Neotree configuration
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
