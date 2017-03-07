@@ -55,7 +55,8 @@ values."
      javascript
      markdown
      (org :variables
-          org-enable-github-support t)
+          org-enable-github-support t
+          org-enable-reveal-js-support t)
      (ranger :variables
              ranger-show-preview t
              ranger-cleanup-eagerly t
@@ -384,6 +385,9 @@ you should place your code here."
   ;; I should write a toggle function to show descriptive or literate links in Org-mode
   ;;(setq org-descriptive-links nil)
 
+  ;; Org-reveal - define were reveal.js files can be found
+  ;; (I place reveal.js files in same directory as I write the org files)
+  (setq org-reveal-root "")
 
   ;; Define the location of the file to hold tasks
   (with-eval-after-load 'org
