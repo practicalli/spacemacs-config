@@ -473,7 +473,7 @@ you should place your code here."
   ;; Clojure configurations
 
   ;; Pretty print in Clojure to use the Fast Idiomatic Pretty-Printer. This is approximately 5-10x faster than clojure.core/pprint
-  (setq cider-pprint-fn “fipp”)
+  (setq cider-pprint-fn 'fipp)
 
   ;; Configure clojurescript-jack-in to use web browser REPL (otherwise defaults to JVM Rhino repl)
   (setq cider-cljs-lein-repl
