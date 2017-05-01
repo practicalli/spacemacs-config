@@ -169,6 +169,11 @@ values."
                                :powerline-scale 1.2)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
+   ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
+   ;; (default "SPC")
+   dotspacemacs-emacs-command-key "SPC"
+   ;; The key used for Vim Ex commands (default ":")
+   dotspacemacs-ex-command-key ":"
    ;; The leader key accessible in `emacs state' and `insert state'
    ;; (default "M-m")
    dotspacemacs-emacs-leader-key "M-m"
@@ -176,11 +181,8 @@ values."
    ;; pressing `<leader> m`. Set it to `nil` to disable it. (default ",")
    dotspacemacs-major-mode-leader-key ","
    ;; Major mode leader key accessible in `emacs state' and `insert state'.
-   ;; (default "C-M-m)
+   ;; (default "C-M-m")
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
-   ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
-   ;; (default "SPC")
-   dotspacemacs-emacs-command-key "SPC"
    ;; These variables control whether separate commands are bound in the GUI to
    ;; the key pairs C-i, TAB and C-m, RET.
    ;; Setting it to a non-nil value, allows for separate commands under <C-i>
@@ -332,14 +334,14 @@ you should place your code here."
   ;; Old-school Emacs style keybindings that I am trying to forget
 
   ;; jr0cket: text scaling keybindings
-  (define-key global-map (kbd "C-+") 'text-scale-increase)
-  (define-key global-map (kbd "C--") 'text-scale-decrease)
+  ;; (define-key global-map (kbd "C-+") 'text-scale-increase)
+  ;; (define-key global-map (kbd "C--") 'text-scale-decrease)
 
-  ;; jr0cket: smartparens keybindings
-  (define-key global-map (kbd "C-)") 'sp-forward-slurp-sexp)
-  (define-key global-map (kbd "C-(") 'sp-backward-slurp-sexp)
-  (define-key global-map (kbd "M-)") 'sp-forward-barf-sexp)
-  (define-key global-map (kbd "M-(") 'sp-backward-barf-sexp)
+  ;; smartparens keybindings - use lisp-state, SPC K, menu instead
+  ;; (define-key global-map (kbd "C-)") 'sp-forward-slurp-sexp)
+  ;; (define-key global-map (kbd "C-(") 'sp-backward-slurp-sexp)
+  ;; (define-key global-map (kbd "M-)") 'sp-forward-barf-sexp)
+  ;; (define-key global-map (kbd "M-(") 'sp-backward-barf-sexp)
 
   ;; jr0cket: keybindings for cycling buffers
   (global-set-key [C-prior] 'previous-buffer)
