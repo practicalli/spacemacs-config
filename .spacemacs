@@ -476,9 +476,10 @@ you should place your code here."
   (setq cider-pprint-fn 'fipp)
 
   ;; Configure clojurescript-jack-in to use web browser REPL (otherwise defaults to JVM Rhino repl)
-  (setq cider-cljs-lein-repl
-        "(do (user/run)
-           (user/browser-repl))")
+  ;; Edit: now set up via M-x customize-variable cider-cljs-lein-repl
+  ;; (setq cider-cljs-lein-repl
+  ;;      "(do (user/run)
+  ;;         (user/browser-repl))")
 
   ;; REPL history keybindings - not used - Use S-<up> and S-<down> which are the defaults
   ;; (add-hook 'cider-repl-mode-hook
@@ -533,6 +534,8 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#d2ceda" "#f2241f" "#67b11d" "#b1951d" "#3a81c3" "#a31db1" "#21b8c7" "#655370"])
+ '(cider-cljs-lein-repl
+   "(do (require 'figwheel-sidecar.repl-api) (figwheel-sidecar.repl-api/start-figwheel!) (figwheel-sidecar.repl-api/cljs-repl))")
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
