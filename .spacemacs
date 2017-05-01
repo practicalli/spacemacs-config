@@ -80,6 +80,7 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(bongo
                                       camcorder
+                                      command-log-mode
                                       magithub)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -466,7 +467,16 @@ you should place your code here."
   ;;              (define-key cider-repl-mode-map (kbd "<up>") 'cider-repl-previous-input)
   ;;              (define-key cider-repl-mode-map (kbd "<down>") 'cider-repl-next-input)))
 
-  ;; End of Clojure configuration
+
+  ;; Hook for command-log-mode - shows keybindings & commands in separate buffer
+  ;; Load command-log-mode when opening a clojure file
+  ;; (add-hook 'clojure-mode-hook 'command-log-mode)
+
+  ;; Turn on command-log-mode when opening a source code or text file
+  (add-hook 'prog-mode-hook 'command-log-mode)
+  (add-hook 'text-mode-hook 'command-log-mode)
+
+;; End of Clojure configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
