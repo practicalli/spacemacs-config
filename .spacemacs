@@ -481,6 +481,21 @@ you should place your code here."
 
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Systemd user service
+
+  ;; Use the exec-path-from-shell package to get PATH, MANPATH
+  ;; and the environment variables from your zsh or bash rc-files.
+
+  ;; (setq exec-path-from-shell-variables
+  ;;       (append exec-path-from-shell-variables
+  ;;               (list "TERM"
+  ;;                     "RUST_SRC_PATH"
+  ;;                     "…"
+  ;;                     )))
+  ;; (exec-path-from-shell-initialize)
+
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Neotree configuration
 
   ;; Display neotree on the right rather than left (default)
