@@ -60,7 +60,7 @@ This function should only modify configuration layer settings."
      html
      javascript
      markdown
-     ;; neotree
+     neotree
      (org :variables
           org-enable-github-support t
           org-enable-reveal-js-support t)
