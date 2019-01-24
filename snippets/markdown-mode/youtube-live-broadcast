@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+#name : youtube-live-broadcast
+#key : youtube-live-broadcast
+#contributor : jr0cket
+# --
+[![youtube live broadcast](/images/youtube-live-broadcast.png)]($1)
+$0
