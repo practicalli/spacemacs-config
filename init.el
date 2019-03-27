@@ -60,16 +60,28 @@ This function should only modify configuration layer settings."
      ;; Requires local install of Joker tool
      clojure-lint
 
+     ;; Show commands as you type in a separate buffer
      command-log
+
+     ;; Nyan cat tells you where you are in your file
      (colors :variables
              colors-enable-nyan-cat-progress-bar t)
+
+     ;; For Spacemacs configuration files and packages
      emacs-lisp
+
+     ;; Include emojis into everything
      emoji
-     ;; evil-cleverparens
+
+     ;; Open Magit git client full screen (quit restores previous layout)
+     ;; Add github support (using magithub)
+     ;; Highlight working copy changes
      (git :variables
           git-magit-status-fullscreen t
           git-enable-github-support t
           git-gutter-use-fringe t)
+
+     ;; use magithub to talk to your github account and Github Gists
      github
      (helm :variables
            helm-use-frame-when-more-than-two-windows nil)
