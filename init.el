@@ -91,6 +91,7 @@ This function should only modify configuration layer settings."
      html
      javascript
      markdown
+     multiple-cursors
      treemacs
      (org :variables
           org-enable-github-support t
