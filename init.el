@@ -39,10 +39,16 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+
+     ;; Add tool tips to show doc string of functions
+     ;; Show snippets in the autocompletion popup
+     ;; Show suggestions by most commonly used
      (auto-completion :variables
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-sort-by-usage t)
+     ;; To have auto-completion on as soon as you start typing
+     ;; (auto-completion :variables auto-completion-idle-delay nil)
 
      ;; Enable clj-refactor tools
      (clojure :variables
