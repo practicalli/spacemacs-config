@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+#name : journal-entry
+#key : journal-entry
+#contributor : jr0cket
+# --
+* 201903$1 $2
+** Thoughts for today
+$0
+** Code commits
+*** .
+** Activities in detail
+*** .
