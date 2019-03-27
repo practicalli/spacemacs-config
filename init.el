@@ -579,15 +579,20 @@ before packages are loaded."
     (setq org-todo-keywords
          '((sequence "todo" "doing" "blocked" "review" "|" "done" "archived"))))
 
-  ;; setting colours (faces) for todo states to give clearer view of work
+  ;; The default keywords all use the same colour.
+  ;; Make the states easier to distinguish by using different colours
+  ;; Using X11 colour names from: https://en.wikipedia.org/wiki/Web_colors
+  ;; Setting colours (faces) using the `org-todo-keyword-faces' defcustom function
+  ;; https://github.com/tkf/org-mode/blob/master/lisp/org-faces.el#L376
+  ;; Using `with-eval-after-load' as a hook to call this setting when org-mode is run
   (with-eval-after-load 'org
     (setq org-todo-keyword-faces
-         '(("todo" . org-warning)
-           ("doing" . "yellow")
-           ("blocked" . "red")
-           ("review" . "orange")
-           ("done" . "green")
-           ("archived" .  "blue"))))
+         '(("todo" . "SlateGray")
+           ("doing" . "DarkOrchid")
+           ("blocked" . "Firebrick")
+           ("review" . "Teal")
+           ("done" . "ForestGreen")
+           ("archived" .  "SlateBlue"))))
 
   ;; progress logging
   ;; when a todo item enters done, add a closed: property with current date-time stamp
@@ -600,35 +605,17 @@ before packages are loaded."
   ;; turn on visual-line-mode for org-mode only
   (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
 
+  ;; org-mode 9.2 in develop breaks easy templates
+  ;; but the below breaks spacemacs
+  ;; https://github.com/syl20bnr/spacemacs/issues/11798
+  ;; (when (version<= "9.2" (org-version))
+  ;;   (require 'org-tempo))
+
+  ;; use org-re-reveal instead of org-reveal (which hasnt been updated in ages and breaks org-mode 9.2)
+  (use-package org-re-reveal :after org)
+
+
   ;; end of org-mode configuration
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; searching configuration
-
-  ;; literal search, rather than regex, in spacemacs search - helm-ag
-  (setq-default helm-grep-ag-command-option "-q")
-
-  ;; end of searching configuration
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; web-mode configuration
-
-  ;; update: variables in the html layer can be used rather than a hook
-
-  ;; changing auto indent size for languages in html layer (web mode) to 2 (defaults to 4)
-  ;; (defun jr0cket-web-mode-indent-hook ()
-  ;;   "indent settings for languages in web mode, markup=html, css=css, code=javascript/php/etc."
-  ;;   (setq web-mode-markup-indent-offset 2)
-  ;;   (setq web-mode-css-indent-offset  2)
-  ;;   (setq web-mode-code-indent-offset 2))
-
-  ;; (add-hook 'web-mode-hook  'jr0cket-web-mode-indent-hook)
-
-  ;; end of web-mode configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
