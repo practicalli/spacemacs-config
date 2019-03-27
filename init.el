@@ -55,6 +55,11 @@ This function should only modify configuration layer settings."
               clojure-enable-clj-refactor t)
      ;; To add the sayid debugger, include the following as a variable above
      ;; clojure-enable-sayid t
+
+     ;; Add the Joker linter for real-time linting in Clojure
+     ;; Requires local install of Joker tool
+     clojure-lint
+
      command-log
      (colors :variables
              colors-enable-nyan-cat-progress-bar t)
