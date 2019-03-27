@@ -91,7 +91,7 @@ This function should only modify configuration layer settings."
      html
      javascript
      markdown
-     ;; neotree
+     treemacs
      (org :variables
           org-enable-github-support t
           org-enable-reveal-js-support t)
