@@ -43,7 +43,12 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-sort-by-usage t)
-     clojure
+
+     ;; Enable clj-refactor tools
+     (clojure :variables
+              clojure-enable-clj-refactor t)
+     ;; To add the sayid debugger, include the following as a variable above
+     ;; clojure-enable-sayid t
      command-log
      (colors :variables
              colors-enable-nyan-cat-progress-bar t)
