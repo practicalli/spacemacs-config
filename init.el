@@ -83,8 +83,11 @@ This function should only modify configuration layer settings."
 
      ;; use magithub to talk to your github account and Github Gists
      github
-     (helm :variables
-           helm-use-frame-when-more-than-two-windows nil)
+     helm
+     ;; (helm :variables
+     ;;       helm-enable-auto-resize t
+     ;;       helm-position 'top  ; top, bottom, left, right
+     ;;       helm-use-frame-when-more-than-two-windows nil)
      html
      javascript
      markdown
