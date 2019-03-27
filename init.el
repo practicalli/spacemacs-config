@@ -528,113 +528,34 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; old-school emacs style keybindings that i am replacing with nicer spacemacs alternatives
-
-  ;; jr0cket: text scaling keybindings - use spc z x =/-
-  ;; (define-key global-map (kbd "c-+") 'text-scale-increase)
-  ;; (define-key global-map (kbd "c--") 'text-scale-decrease)
-
-  ;; smartparens keybindings - use lisp-state, spc k menu instead
-  ;; (define-key global-map (kbd "c-)") 'sp-forward-slurp-sexp)
-  ;; (define-key global-map (kbd "c-(") 'sp-backward-slurp-sexp)
-  ;; (define-key global-map (kbd "m-)") 'sp-forward-barf-sexp)
-  ;; (define-key global-map (kbd "m-(") 'sp-backward-barf-sexp)
-
-  ;; jr0cket: keybindings for cycling buffers
-  ;; use spc b n and spc b n instead
-  ;; (global-set-key [c-prior] 'previous-buffer)
-  ;; (global-set-key [c-next] 'next-buffer)
-
-  ;; jr0cket: remap multiple cursors to a pattern that is easier to remember
-  ;; learn iedit mode instead (its fantastic)
-  ;; (define-key global-map (kbd "c-c m c") 'mc/edit-lines)
-
-  ;; end of old-school bindings
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; evil-smartparens
-
-  ;; https://github.com/expez/evil-smartparens
-  ;; https://hindol.github.io/blog/fixing-smartparens-in-spacemacs-evil-mode/
-
-  ;; add evil-smartparens-mode to smartparens
-  ;; (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
-
-  ;; end of evil-smartparens
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; evil-cleverparens - now part of the clojure layer (develop branch)
-
-  ;; use the evil-cleverparens layer
-  ;; https://github.com/luxbock/evil-cleverparens
-  ;; https://github.com/luxbock/evil-cleverparens
-
-  ;; add evil-cleverparens to clojure-mode
-  ;; (spacemacs/toggle-evil-cleverparens-on)
-  ;; (add-hook 'clojure-mode-hook #'evil-cleverparens-mode)
-  ;; end of evil-smartparens
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; exclude sayid as it currently does not support nrepl 0.4
-  ;;
-  ;; Temporary fix
-  ;; (setq sayid-inject-dependencies-at-jack-in nil)
-  ;; issue raised: https://github.com/syl20bnr/spacemacs/issues/11146
-  ;;
-  ;; pull request merged into develop to switch sayid off by default
-  ;; https://github.com/bpiel/sayid/pull/40
-  ;; enable sayid by adding this code to the .spacemacs dotspacemacs/layers configuration
-  ;;   dotspacemacs-configuration-layers
-  ;;    '(
-  ;;       (clojure :variables clojure-enable-sayid t)
-  ;;     )
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; cider-refactor to be off by default
-  ;;
-  ;; @plexus to create a pull Request to disable clj-refactor by default
-  ;; - it seems not many people use it and there are version conflicts occasionally
-  ;;
-  ;; Add this code to the .spacemacs configuration file
-  ;;   dotspacemacs-configuration-layers
-  ;;    '(
-  ;;       (clojure :variables clojure-enable-clj-refactor t)
-  ;;     )
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; shell configuration
-
+  ;;
   ;; use zsh for default multi-term shell
   (setq multi-term-program "/usr/bin/zsh")
-
+  ;;
   ;; end of shell configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; version control configuration - git, etc
-
+  ;;
+  ;; Use Spacemacs the =$EDITOR= (or =$GIT_EDITOR=) for git commits messages.
+  ;; See git layer documentation
+  (global-git-commit-mode t)
+  ;;
   ;; diff-hl - diff hightlights in right gutter as you type
   (diff-hl-flydiff-mode)
-
+  ;;
+  ;; Magithub has been replaced as of March 2019
   ;; load in magithub features after magit package has loaded
-  (use-package magithub
-    :after magit
-    :config (magithub-feature-autoinject t))
-
-  ;; use spacemacs as the $editor (or $git_editor) for git commits messages
-  ;; when using git commit on the command line
-  (global-git-commit-mode t)
-
+  ;; ? is this still required ?
+  ;; (use-package magithub
+  ;;   :after magit
+  ;;   :config (magithub-feature-autoinject t))
+  ;;
   ;; end of version control configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -713,14 +634,30 @@ before packages are loaded."
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; clojure configurations
-
-
+  ;;
+  ;; In clojure-mode, treat hyphenated words as a single word.
+  (add-hook 'clojure-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
+  ;;
   ;; enable safe structural editing in evil (clojure layer - evil-cleverparens)
   (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-clojure-mode)
-
+  ;;
   ;; pretty print in clojure to use the fast idiomatic pretty-printer. this is approximately 5-10x faster than clojure.core/pprint
   (setq cider-pprint-fn 'fipp)
-
+  ;;
+  ;;
+  ;; Indentation of function forms
+  ;; https://github.com/clojure-emacs/clojure-mode#indentation-of-function-forms
+  (setq clojure-indent-style 'align-arguments)
+  ;;
+  ;; Vertically align s-expressions
+  ;; https://github.com/clojure-emacs/clojure-mode#vertical-alignment
+  (setq clojure-align-forms-automatically t)
+  ;;
+  ;; Auto-indent code automatically
+  ;; https://emacsredux.com/blog/2016/02/07/auto-indent-your-code-with-aggressive-indent-mode/
+  (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
+  ;;
+  ;;
   ;; configure clojurescript-jack-in to use the helper functions provided by lein-figwheel template
   ;; https://github.com/bhauman/lein-figwheel
   ;; fig-start will start figwheel and compile the clojurescript application
@@ -729,34 +666,49 @@ before packages are loaded."
   ;; without this configuration, emacs command clojurescript-jack-in defaults to jvm rhino repl
   ;; if using a different clojurescript template you may require different function calls in the do expression
   ;; alternatively: set via m-x customize-variable cider-cljs-lein-repl
-  (setq cider-cljs-lein-repl
-       "(do
-          (user/fig-start)
-          (user/cljs-repl))")
-
+  ;; TODO: Is cider-cljs-lein-repl still required to be set?
+  ;; Or is this just specific to those projects that have a user/fig-start and user/cljs-repl functions
+  ;; (setq cider-cljs-lein-repl
+  ;;      "(do
+  ;;         (user/fig-start)
+  ;;         (user/cljs-repl))")
+  ;;
   ;; if you are not using figwheel template to configure funcitons in dev/core.clj
   ;; then use the full function calls
   ;; (setq cider-cljs-lein-repl
   ;;       "(do (require 'figwheel-sidecar.repl-api)
   ;;          (figwheel-sidecar.repl-api/start-figwheel!)
   ;;          (figwheel-sidecar.repl-api/cljs-repl))")
-
-
+  ;;
+  ;; Multi-line editing in the REPL buffer
+  ;; `RTN` creates a new line, `C-RTN` evaluates the code
+  ;; Multi-line editing in the REPL buffer
+  (add-hook 'cider-repl-mode-hook
+            '(lambda ()
+               (define-key cider-repl-mode-map (kbd "RET") #'cider-repl-newline-and-indent)
+               (define-key cider-repl-mode-map (kbd "C-<return>") #'cider-repl-return)))
+  ;;
+  ;; TODO: Spacemacs pull request with these keybindings, updating REPL intro text with details
+  ;; You can remove this message with the <M-x cider-repl-clear-help-banner> command.
+  ;; You can disable it from appearing on start by setting
+  ;; ‘cider-repl-display-help-banner’ to nil.
+  ;;
+  ;; TODO: review this binding
   ;; repl history keybindings - not used - use s-<up> and s-<down> which are the defaults
   ;; (add-hook 'cider-repl-mode-hook
   ;;           '(lambda ()
   ;;              (define-key cider-repl-mode-map (kbd "<up>") 'cider-repl-previous-input)
   ;;              (define-key cider-repl-mode-map (kbd "<down>") 'cider-repl-next-input)))
-
-
+  ;;
+  ;;
   ;; hook for command-line-mode - shows keybindings & commands in separate buffer
   ;; load command-line-mode when opening a clojure file
   ;; (add-hook 'clojure-mode-hook 'command-log-mode)
-
+  ;;
   ;; turn on command-log-mode when opening a source code or text file
   ;; (add-hook 'prog-mode-hook 'command-log-mode)
   ;; (add-hook 'text-mode-hook 'command-log-mode)
-
+  ;;
   ;; toggle reader macro sexp comment
   ;; toggles the #_ characters at the start of an expression
   (defun clojure-toggle-reader-comment-sexp ()
@@ -771,10 +723,40 @@ before packages are loaded."
             (delete-char cmtstr-len)
           (insert cmtstr))
         (goto-char point-pos1))))
-
-
+  ;;
+  ;; Assign keybinding to the toggle-reader-comment-sexp function
   (define-key global-map (kbd "C-#") 'clojure-toggle-reader-comment-sexp)
-
+  ;;
+  ;; Evaluate code when it is contained in a (comment (,,,))
+  ;; 24th sept - didnt work, even after updating spacemacs and packages
+  ;; (setq cider-eval-toplevel-inside-comment-form t)
+  ;;
+  ;; (add-hook 'clojure-mode-hook
+  ;;           '(setq cider-eval-toplevel-inside-comment-form t))
+  ;;
+  ;;
+  ;;
+  ;; Experiment: Start Clojure REPL with a specific profile
+  ;; https://stackoverflow.com/questions/18304271/how-do-i-choose-switch-leiningen-profiles-with-emacs-nrepl
+  ;;
+  ;; (defun start-cider-repl-with-profile ()
+  ;;   (interactive)
+  ;;   (letrec ((profile (read-string "Enter profile name: "))
+  ;;            (lein-params (concat "with-profile +" profile " repl :headless")))
+  ;;     (message "lein-params set to: %s" lein-params)
+  ;;     (set-variable 'cider-lein-parameters lein-params)
+  ;;     (cider-jack-in)))
+  ;;
+  ;; My altered more idiomatic version, hopefully
+  ;; - seems to be a bug...
+  ;; (defun start-cider-repl-with-profile (profile)
+  ;;   (interactive "sEnter profile name: ")
+  ;;   (letrec ((lein-params (concat "with-profile +" profile " repl :headless")))
+  ;;     (message "lein-params set to: %s" lein-params)
+  ;;     (set-variable 'cider-lein-parameters lein-params)
+  ;;     (cider-jack-in)))
+  ;;
+  ;;
   ;; end of clojure configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
