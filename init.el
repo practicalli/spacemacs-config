@@ -749,47 +749,49 @@ before packages are loaded."
 
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; systemd user service
-
-  ;; use the exec-path-from-shell package to get path, manpath
-  ;; and the environment variables from your zsh or bash rc-files.
-
-  ;; (setq exec-path-from-shell-variables
-  ;;       (append exec-path-from-shell-variables
-  ;;               (list "term"
-  ;;                     "rust_src_path"
-  ;;                     "…"
-  ;;                     )))
-  ;; (exec-path-from-shell-initialize)
-
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; neotree configuration
-
-  ;; display neotree on the right rather than left (default)
-  ;; (setq neo-window-position 'right)
-
-  ;; end of neotree configuration
+  ;; evil-cleverparens - now part of the clojure layer (develop branch)
+  ;;
+  ;; use the evil-cleverparens layer
+  ;; https://github.com/luxbock/evil-cleverparens
+  ;;
+  ;; add evil-cleverparens to clojure-mode
+  ;; (spacemacs/toggle-evil-cleverparens-on)
+  ;; (add-hook 'clojure-mode-hook #'evil-cleverparens-mode)
+  ;; end of evil-smartparens
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; golden ratio adjustment
-  ;; (setq golden-ratio-adjust-factor 1.0
-  ;;       golden-ratio-wide-adjust-factor 1.2)
-
-  ;; end of golden ratio adjustment
+  ;; exclude sayid as it currently does not support nrepl 0.4
+  ;;
+  ;; Temporary fix
+  ;; (setq sayid-inject-dependencies-at-jack-in nil)
+  ;; issue raised: https://github.com/syl20bnr/spacemacs/issues/11146
+  ;;
+  ;; pull request merged into develop to switch sayid off by default
+  ;; https://github.com/bpiel/sayid/pull/40
+  ;; enable sayid by adding this code to the .spacemacs dotspacemacs/layers configuration
+  ;;   dotspacemacs-configuration-layers
+  ;;    '(
+  ;;       (clojure :variables clojure-enable-sayid t)
+  ;;     )
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; unwanted features / bug workarounds
-
+  ;;
   ;; opening recent files on spacemacs home page with mouse click
   ;; pastes contents of kill ring once file is open
-
+  ;;
   (define-key spacemacs-buffer-mode-map [down-mouse-1] nil)
-
-
+  ;;
+  ;;
+  ;; (define-key global-map (kbd "C-#") 'clojure-toggle-reader-comment-sexp)
+  ;;
+  ;; (define-key global-map (kbd "SPC S s") 'flyspell-correct-at-point)
+  ;;
+  ;; (define-key markdown-mode-map (kbd "SPC S s") #'flyspell-correct-at-point)
+  ;;
   ;; helm opens a new frame when cursor in a buffer positioned underneath another
   ;; see my gist for details to add...
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -797,34 +799,62 @@ before packages are loaded."
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; elpa stable repository
-  ;; if you want to disable the elpa stable repository put this in your dotfile in the user-init function:                                                           │
+  ;; if you want to disable the elpa stable repository put this in your dotfile in the user-init function:
   ;; (setq configuration-layer-elpa-archives '(("melpa" . "melpa.org/packages/")
   ;;   ("org" . "orgmode.org/elpa/") ("gnu" . "elpa.gnu.org/packages/")))
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; searching configuration
+  ;; literal search, rather than regex, in spacemacs search - helm-ag
+  ;; (setq-default helm-grep-ag-command-option "-q")
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; web-mode configuration
+  ;;
+  ;; update: variables in the html layer can be used rather than a hook
+  ;;
+  ;; changing auto indent size for languages in html layer (web mode) to 2 (defaults to 4)
+  ;; (defun jr0cket-web-mode-indent-hook ()
+  ;;   "indent settings for languages in web mode, markup=html, css=css, code=javascript/php/etc."
+  ;;   (setq web-mode-markup-indent-offset 2)
+  ;;   (setq web-mode-css-indent-offset  2)
+  ;;   (setq web-mode-code-indent-offset 2))
+  ;;
+  ;; (add-hook 'web-mode-hook  'jr0cket-web-mode-indent-hook)
+  ;;
+  ;; end of web-mode configuration
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; old-school emacs style keybindings that i am replacing with nicer spacemacs alternatives
+  ;;
+  ;; jr0cket: text scaling keybindings - use spc z x =/-
+  ;; (define-key global-map (kbd "c-+") 'text-scale-increase)
+  ;; (define-key global-map (kbd "c--") 'text-scale-decrease)
+  ;;
+  ;; smartparens keybindings - use lisp-state, spc k menu instead
+  ;; (define-key global-map (kbd "c-)") 'sp-forward-slurp-sexp)
+  ;; (define-key global-map (kbd "c-(") 'sp-backward-slurp-sexp)
+  ;; (define-key global-map (kbd "m-)") 'sp-forward-barf-sexp)
+  ;; (define-key global-map (kbd "m-(") 'sp-backward-barf-sexp)
+  ;;
+  ;; jr0cket: keybindings for cycling buffers
+  ;; use spc b n and spc b n instead
+  ;; (global-set-key [c-prior] 'previous-buffer)
+  ;; (global-set-key [c-next] 'next-buffer)
+  ;;
+  ;; jr0cket: remap multiple cursors to a pattern that is easier to remember
+  ;; learn iedit mode instead (its fantastic)
+  ;; (define-key global-map (kbd "c-c m c") 'mc/edit-lines)
+  ;;
+  ;; end of old-school bindings
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
   )   ;; End of dot-spacemacs/user-config
-
-
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(evil-want-Y-yank-to-eol nil)
- '(package-selected-packages
-   (quote
-    (helm-git-grep string-inflection org-download impatient-mode helm-company evil-ediff editorconfig cider sesman clojure-mode iedit helm markdown-mode alert magit org-plus-contrib yasnippet-snippets yaml-mode xterm-color ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit symon spaceline-all-the-icons smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs ranger rainbow-mode rainbow-identifiers rainbow-delimiters queue pug-mode prettier-js popwin persp-mode pcre2el password-generator paradox ox-reveal ox-gfm overseer orgit org-projectile org-present org-pomodoro org-mime org-bullets org-brain open-junk-file neotree nameless multi-term move-text mmm-mode markdown-toc magithub magit-svn magit-gitflow magit-gh-pulls macrostep lorem-ipsum log4e livid-mode linum-relative link-hint less-css-mode json-navigator json-mode js2-refactor js-doc indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gntp gitignore-templates github-search github-clone gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md fuzzy font-lock+ flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emojify emoji-cheat-sheet-plus emmet-mode elisp-slime-nav dumb-jump dotenv-mode diminish diff-hl define-word counsel-projectile company-web company-tern company-statistics company-quickhelp company-emoji command-log-mode column-enforce-mode color-identifiers-mode clojure-snippets clojure-cheatsheet clj-refactor clean-aindent-mode cider-eval-sexp-fu centered-cursor-mode browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-)
