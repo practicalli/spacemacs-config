@@ -119,13 +119,13 @@ This function should only modify configuration layer settings."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(bongo
-                                      camcorder
-                                      command-log-mode
-                                      magithub)
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
+   dotspacemacs-additional-packages '(org-re-reveal
+                                      ubuntu-theme
+                                      kaolin-themes)
+
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
