@@ -539,6 +539,18 @@ before packages are loaded."
   ;; End of Shell configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Flycheck customisation
+  ;;
+  ;; If the original flycheck fringe bitmaps are more to your liking,
+  ;; you can set the variable syntax-checking-use-original-bitmaps to t:
+  ;;
+  (setq-default dotspacemacs-configuration-layers
+                '((syntax-checking :variables syntax-checking-use-original-bitmaps t)))
+  ;;
+  ;; End of flycheck customisation
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Version Control configuration - Git, etc
