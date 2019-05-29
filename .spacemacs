@@ -576,8 +576,15 @@ before packages are loaded."
   ;; Use Spacemacs as the $EDITOR (or $GIT_EDITOR) for git commits messages
   ;; when using git commit on the command line
   (global-git-commit-mode t)
-
-  ;; End of Version Control configuration
+  ;;
+  ;; Set locations of all your Git repositories
+  ;; with a number to define how many sub-directories to search
+  ;; `SPC g L' - list all Git repositories in the defined paths,
+  (setq magit-repository-directories
+        '(("~/.emacs.d"  . 0)
+          ("~/projects/" . 2)))
+  ;;
+  ;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
