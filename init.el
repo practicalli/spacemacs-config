@@ -40,6 +40,10 @@ This function should only modify configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
 
+     ;; Enable asciidoc layer for editing asciidoc content
+     ;; Useful for docs.cider.mx editing
+     asciidoc
+
      ;; Add tool tips to show doc string of functions
      ;; Show snippets in the autocompletion popup
      ;; Show suggestions by most commonly used
@@ -231,8 +235,9 @@ It should only modify the values of Spacemacs settings."
    ;; `recents' `bookmarks' `projects' `agenda' `todos'.
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
-   dotspacemacs-startup-lists '((recents . 15)
-                                (projects . 9)
+   dotspacemacs-startup-lists '((recents . 9)
+                                (todos . 9)
+                                (projects . 7)
                                 (bookmarks . 24))
 
    ;; True if the home buffer should respond to resize events. (default t)
@@ -358,7 +363,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
    ;; nil to boost the loading time. (default t)
-   dotspacemacs-loading-progress-bar t
+   dotspacemacs-loading-progress-bar nil
 
    ;; If non-nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
@@ -376,7 +381,7 @@ It should only modify the values of Spacemacs settings."
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-active-transparency 90
+   dotspacemacs-active-transparency 100
 
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
@@ -420,6 +425,7 @@ It should only modify the values of Spacemacs settings."
                                                    pdf-view-mode
                                                    text-mode
                                :size-limit-kb 1000)
+
 
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
@@ -530,24 +536,59 @@ before packages are loaded."
 
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; shell configuration
+  ;; Shell configuration
   ;;
-  ;; use zsh for default multi-term shell
+  ;; Use zsh for default multi-term shell
   (setq multi-term-program "/usr/bin/zsh")
   ;;
-  ;; end of shell configuration
+  ;; End of Shell configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; version control configuration - git, etc
+  ;; Flycheck customisation
   ;;
-  ;; Use Spacemacs the =$EDITOR= (or =$GIT_EDITOR=) for git commits messages.
-  ;; See git layer documentation
-  (global-git-commit-mode t)
+  ;; If the original flycheck fringe bitmaps are more to your liking,
+  ;; you can set the variable syntax-checking-use-original-bitmaps to t:
+  ;;
+  (setq-default dotspacemacs-configuration-layers
+                '((syntax-checking :variables syntax-checking-use-original-bitmaps t)))
+  ;;
+  ;; End of flycheck customisation
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Spell checking
+  ;;
+  ;; Add keybinding to correct current word under the cursor
+  ;;
+  (define-key global-map (kbd "SPC S s") 'flyspell-correct-at-point)
+  ;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Version Control configuration - Git, etc
   ;;
   ;; diff-hl - diff hightlights in right gutter as you type
   (diff-hl-flydiff-mode)
+  ;;
+  ;; Load in magithub features after magit package has loaded
+  (use-package magithub
+    :after magit
+    :config (magithub-feature-autoinject t))
+  ;;
+  ;; Use Spacemacs as the $EDITOR (or $GIT_EDITOR) for git commits messages
+  ;; when using git commit on the command line
+  (global-git-commit-mode t)
+  ;;
+  ;; Set locations of all your Git repositories
+  ;; with a number to define how many sub-directories to search
+  ;; `SPC g L' - list all Git repositories in the defined paths,
+  (setq magit-repository-directories
+        '(("~/.emacs.d"  . 0)
+          ("~/projects/" . 2)))
+  ;;
   ;;
   ;; Magithub has been replaced as of March 2019
   ;; load in magithub features after magit package has loaded
@@ -561,24 +602,24 @@ before packages are loaded."
 
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; org-mode configuration
-
-  ;; i should write a toggle function to show descriptive or literate links in org-mode
+  ;; Org-mode configuration
+  ;;
+  ;; I should write a toggle function to show descriptive or literate links in Org-mode
   ;;(setq org-descriptive-links nil)
-
-  ;; org-reveal - define were reveal.js files can be found
-  ;; (i place reveal.js files in same directory as i write the org files)
+  ;;
+  ;; Org-reveal - define were reveal.js files can be found
+  ;; (I place reveal.js files in same directory as I write the org files)
   (setq org-reveal-root "")
-
-  ;; define the location of the file to hold tasks
+  ;;
+  ;; Define the location of the file to hold tasks
   (with-eval-after-load 'org
     (setq org-default-notes-file "~/Dropbox/todo-list.org"))
-
-  ;; define a kanban style set of stages for todo tasks
+  ;;
+  ;; Define a kanban style set of stages for todo tasks
   (with-eval-after-load 'org
     (setq org-todo-keywords
-         '((sequence "todo" "doing" "blocked" "review" "|" "done" "archived"))))
-
+         '((sequence "TODO" "DOING" "BLOCKED" "REVIEW" "|" "DONE" "ARCHIVED"))))
+  ;;
   ;; The default keywords all use the same colour.
   ;; Make the states easier to distinguish by using different colours
   ;; Using X11 colour names from: https://en.wikipedia.org/wiki/Web_colors
@@ -593,34 +634,27 @@ before packages are loaded."
            ("review" . "Teal")
            ("done" . "ForestGreen")
            ("archived" .  "SlateBlue"))))
-
-  ;; progress logging
-  ;; when a todo item enters done, add a closed: property with current date-time stamp
+  ;;
+  ;; Progress Logging
+  ;; When a TODO item enters DONE, add a CLOSED: property with current date-time stamp
   (with-eval-after-load 'org
     (setq org-log-done 'time))
-
-  ;; markdown mode hook for orgtbl-mode minor mode
+  ;;
+  ;; Markdown mode hook for orgtbl-mode minor mode
   (add-hook 'markdown-mode-hook 'turn-on-orgtbl)
-
-  ;; turn on visual-line-mode for org-mode only
+  ;;
+  ;; Turn on visual-line-mode for Org-mode only
   (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
-
-  ;; org-mode 9.2 in develop breaks easy templates
-  ;; but the below breaks spacemacs
-  ;; https://github.com/syl20bnr/spacemacs/issues/11798
-  ;; (when (version<= "9.2" (org-version))
-  ;;   (require 'org-tempo))
-
+  ;;
   ;; use org-re-reveal instead of org-reveal (which hasnt been updated in ages and breaks org-mode 9.2)
   (use-package org-re-reveal :after org)
-
-
-  ;; end of org-mode configuration
+  ;;
+  ;; End of Org-mode Configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; clojure configurations
+  ;; Clojure configurations
   ;;
   ;; In clojure-mode, treat hyphenated words as a single word.
   (add-hook 'clojure-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
@@ -628,7 +662,7 @@ before packages are loaded."
   ;; enable safe structural editing in evil (clojure layer - evil-cleverparens)
   (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-clojure-mode)
   ;;
-  ;; pretty print in clojure to use the fast idiomatic pretty-printer. this is approximately 5-10x faster than clojure.core/pprint
+  ;; Pretty print in Clojure to use the Fast Idiomatic Pretty-Printer. This is approximately 5-10x faster than clojure.core/pprint
   (setq cider-pprint-fn 'fipp)
   ;;
   ;;
@@ -644,12 +678,20 @@ before packages are loaded."
   ;; https://emacsredux.com/blog/2016/02/07/auto-indent-your-code-with-aggressive-indent-mode/
   (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
   ;;
+  ;; Add with-let to align binding forms, so it works the same as let
+  (add-to-list 'clojure-align-binding-forms "with-let")
+  ;;
+  ;;
+  ;; Experiment: Turn on all font locking options for Clojure
+  ;; (setq cider-font-lock-dynamically t)
   ;;
   ;; configure clojurescript-jack-in to use the helper functions provided by lein-figwheel template
   ;; https://github.com/bhauman/lein-figwheel
   ;; fig-start will start figwheel and compile the clojurescript application
   ;; cljs-repl will connect emacs buffer to clojurescript repl created by figwheel
   ;;
+  ;;
+  ;; TODO: review this binding - CIDER takes care of this now
   ;; without this configuration, emacs command clojurescript-jack-in defaults to jvm rhino repl
   ;; if using a different clojurescript template you may require different function calls in the do expression
   ;; alternatively: set via m-x customize-variable cider-cljs-lein-repl
@@ -667,13 +709,14 @@ before packages are loaded."
   ;;          (figwheel-sidecar.repl-api/start-figwheel!)
   ;;          (figwheel-sidecar.repl-api/cljs-repl))")
   ;;
+  ;; TODO: review this binding - gives poor user experience
   ;; Multi-line editing in the REPL buffer
   ;; `RTN` creates a new line, `C-RTN` evaluates the code
   ;; Multi-line editing in the REPL buffer
-  (add-hook 'cider-repl-mode-hook
-            '(lambda ()
-               (define-key cider-repl-mode-map (kbd "RET") #'cider-repl-newline-and-indent)
-               (define-key cider-repl-mode-map (kbd "C-<return>") #'cider-repl-return)))
+  ;; (add-hook 'cider-repl-mode-hook
+  ;;           '(lambda ()
+  ;;              (define-key cider-repl-mode-map (kbd "RET") #'cider-repl-newline-and-indent)
+  ;;              (define-key cider-repl-mode-map (kbd "C-<return>") #'cider-repl-return)))
   ;;
   ;; TODO: Spacemacs pull request with these keybindings, updating REPL intro text with details
   ;; You can remove this message with the <M-x cider-repl-clear-help-banner> command.
@@ -744,7 +787,79 @@ before packages are loaded."
   ;;     (cider-jack-in)))
   ;;
   ;;
+  ;;
+  ;; Hook for command-log-mode
+  ;; shows keybindings & commands in separate buffer
+  ;; Load command-log-mode when opening a clojure file
+  ;; (add-hook 'clojure-mode-hook 'command-log-mode)
+  ;;
+  ;; Turn on command-log-mode when opening a source code or text file
+  ;; (add-hook 'prog-mode-hook 'command-log-mode)
+  ;; (add-hook 'text-mode-hook 'command-log-mode)
+  ;;
+  ;;
   ;; end of clojure configuration
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Web-mode configuration
+  ;;
+  ;; Changing auto indent size for languages in html layer (web mode) to 2 (defaults to 4)
+  (defun web-mode-indent-2-hook ()
+    "Indent settings for languages in Web mode, markup=html, css=css, code=javascript/php/etc."
+    (setq web-mode-markup-indent-offset 2)
+    (setq web-mode-css-indent-offset  2)
+    (setq web-mode-code-indent-offset 2))
+  ;;
+  (add-hook 'web-mode-hook  'web-mode-indent-2-hook)
+  ;;
+  ;; End of Web-mode configuration
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Configuration no longer used
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; unwanted features / bug workarounds
+  ;;
+  ;; opening recent files on spacemacs home page with mouse click
+  ;; pastes contents of kill ring once file is open
+  ;;
+  ;; (define-key spacemacs-buffer-mode-map [down-mouse-1] nil)
+  ;;
+  ;;
+  ;; (define-key global-map (kbd "C-#") 'clojure-toggle-reader-comment-sexp)
+  ;;
+  ;; (define-key global-map (kbd "SPC S s") 'flyspell-correct-at-point)
+  ;;
+  ;; (define-key markdown-mode-map (kbd "SPC S s") #'flyspell-correct-at-point)
+  ;;
+  ;; helm opens a new frame when cursor in a buffer positioned underneath another
+  ;; see my gist for details to add...
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; elpa stable repository
+  ;; if you want to disable the elpa stable repository put this in your dotfile in the user-init function:
+  ;; (setq configuration-layer-elpa-archives '(("melpa" . "melpa.org/packages/")
+  ;;   ("org" . "orgmode.org/elpa/") ("gnu" . "elpa.gnu.org/packages/")))
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Literal Searching Configuration
+  ;;
+  ;; Literal search, rather than regex, in spacemacs search - helm-ag
+  ;; (setq-default helm-grep-ag-command-option "-Q")
+  ;;
+  ;; End of Searching Configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -778,57 +893,29 @@ before packages are loaded."
 
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; unwanted features / bug workarounds
+  ;; Systemd user service
   ;;
-  ;; opening recent files on spacemacs home page with mouse click
-  ;; pastes contents of kill ring once file is open
+  ;; Use the exec-path-from-shell package to get PATH, MANPATH
+  ;; and the environment variables from your zsh or bash rc-files.
   ;;
-  (define-key spacemacs-buffer-mode-map [down-mouse-1] nil)
+  ;; (setq exec-path-from-shell-variables
+  ;;       (append exec-path-from-shell-variables
+  ;;               (list "TERM"
+  ;;                     "RUST_SRC_PATH"
+  ;;                     "…"
+  ;;                     )))
+  ;; (exec-path-from-shell-initialize)
   ;;
-  ;;
-  ;; (define-key global-map (kbd "C-#") 'clojure-toggle-reader-comment-sexp)
-  ;;
-  ;; (define-key global-map (kbd "SPC S s") 'flyspell-correct-at-point)
-  ;;
-  ;; (define-key markdown-mode-map (kbd "SPC S s") #'flyspell-correct-at-point)
-  ;;
-  ;; helm opens a new frame when cursor in a buffer positioned underneath another
-  ;; see my gist for details to add...
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; elpa stable repository
-  ;; if you want to disable the elpa stable repository put this in your dotfile in the user-init function:
-  ;; (setq configuration-layer-elpa-archives '(("melpa" . "melpa.org/packages/")
-  ;;   ("org" . "orgmode.org/elpa/") ("gnu" . "elpa.gnu.org/packages/")))
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; searching configuration
-  ;; literal search, rather than regex, in spacemacs search - helm-ag
-  ;; (setq-default helm-grep-ag-command-option "-q")
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; web-mode configuration
+  ;; Neotree configuration
   ;;
-  ;; update: variables in the html layer can be used rather than a hook
+  ;; Display neotree on the right rather than left (default)
+  ;; (setq neo-window-position 'right)
   ;;
-  ;; changing auto indent size for languages in html layer (web mode) to 2 (defaults to 4)
-  ;; (defun jr0cket-web-mode-indent-hook ()
-  ;;   "indent settings for languages in web mode, markup=html, css=css, code=javascript/php/etc."
-  ;;   (setq web-mode-markup-indent-offset 2)
-  ;;   (setq web-mode-css-indent-offset  2)
-  ;;   (setq web-mode-code-indent-offset 2))
-  ;;
-  ;; (add-hook 'web-mode-hook  'jr0cket-web-mode-indent-hook)
-  ;;
-  ;; end of web-mode configuration
+  ;; End of Neotree configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -858,3 +945,7 @@ before packages are loaded."
 
 
   )   ;; End of dot-spacemacs/user-config
+
+
+;; Do not write anything past this comment. This is where Emacs will
+;; auto-generate custom variable definitions.

@@ -33,12 +33,16 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(asciidoc
+   '(
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+
+     ;; Enable asciidoc layer for editing asciidoc content
+     ;; Useful for docs.cider.mx editing
+     asciidoc
 
      ;; Add tool tips to show doc string of functions
      ;; Show snippets in the autocompletion popup
@@ -123,8 +127,8 @@ This function should only modify configuration layer settings."
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(org-re-reveal
-                                      ubuntu-theme
-                                      kaolin-themes)
+                                      kaolin-themes
+                                      ubuntu-theme)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -252,7 +256,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-themes '(spacemacs-dark
                          spacemacs-light
                          kaolin-valley-dark
-                         kaolin-light)
+                         kaolin-light
+                         ubuntu)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
