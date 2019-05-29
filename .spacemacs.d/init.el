@@ -540,24 +540,20 @@ before packages are loaded."
 
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Workarounds and bug fixes - temporary hopefully
+  ;;
+  ;; disable undo-tree as it seems to be loosing history
+  (global-undo-tree-mode -1)
+  ;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Shell configuration
   ;;
   ;; Use zsh for default multi-term shell
   (setq multi-term-program "/usr/bin/zsh")
   ;;
   ;; End of Shell configuration
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Flycheck customisation
-  ;;
-  ;; If the original flycheck fringe bitmaps are more to your liking,
-  ;; you can set the variable syntax-checking-use-original-bitmaps to t:
-  ;;
-  (setq-default dotspacemacs-configuration-layers
-                '((syntax-checking :variables syntax-checking-use-original-bitmaps t)))
-  ;;
-  ;; End of flycheck customisation
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
