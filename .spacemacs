@@ -679,6 +679,124 @@ before packages are loaded."
   ;; Add with-let to align binding forms, so it works the same as let
   (add-to-list 'clojure-align-binding-forms "with-let")
   ;;
+  ;;
+  ;; Experiment: Turn on all font locking options for Clojure
+  ;; (setq cider-font-lock-dynamically t)
+  ;;
+  ;; configure clojurescript-jack-in to use the helper functions provided by lein-figwheel template
+  ;; https://github.com/bhauman/lein-figwheel
+  ;; fig-start will start figwheel and compile the clojurescript application
+  ;; cljs-repl will connect emacs buffer to clojurescript repl created by figwheel
+  ;;
+  ;;
+  ;; TODO: review this binding - CIDER takes care of this now
+  ;; without this configuration, emacs command clojurescript-jack-in defaults to jvm rhino repl
+  ;; if using a different clojurescript template you may require different function calls in the do expression
+  ;; alternatively: set via m-x customize-variable cider-cljs-lein-repl
+  ;; TODO: Is cider-cljs-lein-repl still required to be set?
+  ;; Or is this just specific to those projects that have a user/fig-start and user/cljs-repl functions
+  ;; (setq cider-cljs-lein-repl
+  ;;      "(do
+  ;;         (user/fig-start)
+  ;;         (user/cljs-repl))")
+  ;;
+  ;; if you are not using figwheel template to configure funcitons in dev/core.clj
+  ;; then use the full function calls
+  ;; (setq cider-cljs-lein-repl
+  ;;       "(do (require 'figwheel-sidecar.repl-api)
+  ;;          (figwheel-sidecar.repl-api/start-figwheel!)
+  ;;          (figwheel-sidecar.repl-api/cljs-repl))")
+  ;;
+  ;; TODO: review this binding - gives poor user experience
+  ;; Multi-line editing in the REPL buffer
+  ;; `RTN` creates a new line, `C-RTN` evaluates the code
+  ;; Multi-line editing in the REPL buffer
+  ;; (add-hook 'cider-repl-mode-hook
+  ;;           '(lambda ()
+  ;;              (define-key cider-repl-mode-map (kbd "RET") #'cider-repl-newline-and-indent)
+  ;;              (define-key cider-repl-mode-map (kbd "C-<return>") #'cider-repl-return)))
+  ;;
+  ;; TODO: Spacemacs pull request with these keybindings, updating REPL intro text with details
+  ;; You can remove this message with the <M-x cider-repl-clear-help-banner> command.
+  ;; You can disable it from appearing on start by setting
+  ;; ‘cider-repl-display-help-banner’ to nil.
+  ;;
+  ;; TODO: review this binding
+  ;; repl history keybindings - not used - use s-<up> and s-<down> which are the defaults
+  ;; (add-hook 'cider-repl-mode-hook
+  ;;           '(lambda ()
+  ;;              (define-key cider-repl-mode-map (kbd "<up>") 'cider-repl-previous-input)
+  ;;              (define-key cider-repl-mode-map (kbd "<down>") 'cider-repl-next-input)))
+  ;;
+  ;;
+  ;; hook for command-line-mode - shows keybindings & commands in separate buffer
+  ;; load command-line-mode when opening a clojure file
+  ;; (add-hook 'clojure-mode-hook 'command-log-mode)
+  ;;
+  ;; turn on command-log-mode when opening a source code or text file
+  ;; (add-hook 'prog-mode-hook 'command-log-mode)
+  ;; (add-hook 'text-mode-hook 'command-log-mode)
+  ;;
+  ;; toggle reader macro sexp comment
+  ;; toggles the #_ characters at the start of an expression
+  (defun clojure-toggle-reader-comment-sexp ()
+    (interactive)
+    (let* ((point-pos1 (point)))
+      (evil-insert-line 0)
+      (let* ((point-pos2 (point))
+             (cmtstr "#_")
+             (cmtstr-len (length cmtstr))
+             (line-start (buffer-substring-no-properties point-pos2 (+ point-pos2 cmtstr-len))))
+        (if (string= cmtstr line-start)
+            (delete-char cmtstr-len)
+          (insert cmtstr))
+        (goto-char point-pos1))))
+  ;;
+  ;; Assign keybinding to the toggle-reader-comment-sexp function
+  (define-key global-map (kbd "C-#") 'clojure-toggle-reader-comment-sexp)
+  ;;
+  ;; Evaluate code when it is contained in a (comment (,,,))
+  ;; 24th sept - didnt work, even after updating spacemacs and packages
+  ;; (setq cider-eval-toplevel-inside-comment-form t)
+  ;;
+  ;; (add-hook 'clojure-mode-hook
+  ;;           '(setq cider-eval-toplevel-inside-comment-form t))
+  ;;
+  ;;
+  ;;
+  ;; Experiment: Start Clojure REPL with a specific profile
+  ;; https://stackoverflow.com/questions/18304271/how-do-i-choose-switch-leiningen-profiles-with-emacs-nrepl
+  ;;
+  ;; (defun start-cider-repl-with-profile ()
+  ;;   (interactive)
+  ;;   (letrec ((profile (read-string "Enter profile name: "))
+  ;;            (lein-params (concat "with-profile +" profile " repl :headless")))
+  ;;     (message "lein-params set to: %s" lein-params)
+  ;;     (set-variable 'cider-lein-parameters lein-params)
+  ;;     (cider-jack-in)))
+  ;;
+  ;; My altered more idiomatic version, hopefully
+  ;; - seems to be a bug...
+  ;; (defun start-cider-repl-with-profile (profile)
+  ;;   (interactive "sEnter profile name: ")
+  ;;   (letrec ((lein-params (concat "with-profile +" profile " repl :headless")))
+  ;;     (message "lein-params set to: %s" lein-params)
+  ;;     (set-variable 'cider-lein-parameters lein-params)
+  ;;     (cider-jack-in)))
+  ;;
+  ;;
+  ;;
+  ;; Hook for command-log-mode
+  ;; shows keybindings & commands in separate buffer
+  ;; Load command-log-mode when opening a clojure file
+  ;; (add-hook 'clojure-mode-hook 'command-log-mode)
+  ;;
+  ;; Turn on command-log-mode when opening a source code or text file
+  ;; (add-hook 'prog-mode-hook 'command-log-mode)
+  ;; (add-hook 'text-mode-hook 'command-log-mode)
+  ;;
+  ;;
+  ;; end of clojure configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
