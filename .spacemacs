@@ -614,17 +614,22 @@ before packages are loaded."
   (with-eval-after-load 'org
     (setq org-todo-keywords
          '((sequence "TODO" "DOING" "BLOCKED" "REVIEW" "|" "DONE" "ARCHIVED"))))
-
-  ;; Setting Colours (faces) for todo states to give clearer view of work
+  ;;
+  ;; The default keywords all use the same colour.
+  ;; Make the states easier to distinguish by using different colours
+  ;; Using X11 colour names from: https://en.wikipedia.org/wiki/Web_colors
+  ;; Setting colours (faces) using the `org-todo-keyword-faces' defcustom function
+  ;; https://github.com/tkf/org-mode/blob/master/lisp/org-faces.el#L376
+  ;; Using `with-eval-after-load' as a hook to call this setting when org-mode is run
   (with-eval-after-load 'org
     (setq org-todo-keyword-faces
-         '(("TODO" . org-warning)
-           ("DOING" . "yellow")
-           ("BLOCKED" . "red")
-           ("REVIEW" . "orange")
-           ("DONE" . "green")
-           ("ARCHIVED" .  "blue"))))
-
+         '(("todo" . "SlateGray")
+           ("doing" . "DarkOrchid")
+           ("blocked" . "Firebrick")
+           ("review" . "Teal")
+           ("done" . "ForestGreen")
+           ("archived" .  "SlateBlue"))))
+  ;;
   ;; Progress Logging
   ;; When a TODO item enters DONE, add a CLOSED: property with current date-time stamp
   (with-eval-after-load 'org
