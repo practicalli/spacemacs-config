@@ -532,10 +532,10 @@ before packages are loaded."
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Shell configuration
-
+  ;;
   ;; Use zsh for default multi-term shell
   (setq multi-term-program "/usr/bin/zsh")
-
+  ;;
   ;; End of Shell configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -567,12 +567,12 @@ before packages are loaded."
   ;;
   ;; diff-hl - diff hightlights in right gutter as you type
   (diff-hl-flydiff-mode)
-
+  ;;
   ;; Load in magithub features after magit package has loaded
   (use-package magithub
     :after magit
     :config (magithub-feature-autoinject t))
-
+  ;;
   ;; Use Spacemacs as the $EDITOR (or $GIT_EDITOR) for git commits messages
   ;; when using git commit on the command line
   (global-git-commit-mode t)
@@ -598,18 +598,18 @@ before packages are loaded."
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Org-mode configuration
-
+  ;;
   ;; I should write a toggle function to show descriptive or literate links in Org-mode
   ;;(setq org-descriptive-links nil)
-
+  ;;
   ;; Org-reveal - define were reveal.js files can be found
   ;; (I place reveal.js files in same directory as I write the org files)
   (setq org-reveal-root "")
-
+  ;;
   ;; Define the location of the file to hold tasks
   (with-eval-after-load 'org
     (setq org-default-notes-file "~/Dropbox/todo-list.org"))
-
+  ;;
   ;; Define a kanban style set of stages for todo tasks
   (with-eval-after-load 'org
     (setq org-todo-keywords
@@ -634,13 +634,12 @@ before packages are loaded."
   ;; When a TODO item enters DONE, add a CLOSED: property with current date-time stamp
   (with-eval-after-load 'org
     (setq org-log-done 'time))
-
+  ;;
   ;; Markdown mode hook for orgtbl-mode minor mode
   (add-hook 'markdown-mode-hook 'turn-on-orgtbl)
-
+  ;;
   ;; Turn on visual-line-mode for Org-mode only
   (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
-
   ;;
   ;; use org-re-reveal instead of org-reveal (which hasnt been updated in ages and breaks org-mode 9.2)
   (use-package org-re-reveal :after org)
@@ -650,12 +649,6 @@ before packages are loaded."
 
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Searching Configuration
-
-  ;; Literal search, rather than regex, in spacemacs search - helm-ag
-  (setq-default helm-grep-ag-command-option "-Q")
-
-  ;; End of Searching Configuration
   ;; Clojure configurations
   ;;
   ;; In clojure-mode, treat hyphenated words as a single word.
@@ -663,6 +656,10 @@ before packages are loaded."
   ;;
   ;; enable safe structural editing in evil (clojure layer - evil-cleverparens)
   (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-clojure-mode)
+  ;;
+  ;; Pretty print in Clojure to use the Fast Idiomatic Pretty-Printer. This is approximately 5-10x faster than clojure.core/pprint
+  (setq cider-pprint-fn 'fipp)
+  ;;
   ;;
   ;; Indentation of function forms
   ;; https://github.com/clojure-emacs/clojure-mode#indentation-of-function-forms
@@ -802,57 +799,100 @@ before packages are loaded."
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Web-mode configuration
-
+  ;;
   ;; Changing auto indent size for languages in html layer (web mode) to 2 (defaults to 4)
-  (defun jr0cket-web-mode-indent-hook ()
+  (defun web-mode-indent-2-hook ()
     "Indent settings for languages in Web mode, markup=html, css=css, code=javascript/php/etc."
     (setq web-mode-markup-indent-offset 2)
     (setq web-mode-css-indent-offset  2)
     (setq web-mode-code-indent-offset 2))
-
-  (add-hook 'web-mode-hook  'jr0cket-web-mode-indent-hook)
-
+  ;;
+  (add-hook 'web-mode-hook  'web-mode-indent-2-hook)
+  ;;
   ;; End of Web-mode configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Clojure configurations
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Configuration no longer used
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-  ;; Pretty print in Clojure to use the Fast Idiomatic Pretty-Printer. This is approximately 5-10x faster than clojure.core/pprint
-  (setq cider-pprint-fn 'fipp)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; unwanted features / bug workarounds
+  ;;
+  ;; opening recent files on spacemacs home page with mouse click
+  ;; pastes contents of kill ring once file is open
+  ;;
+  ;; (define-key spacemacs-buffer-mode-map [down-mouse-1] nil)
+  ;;
+  ;;
+  ;; (define-key global-map (kbd "C-#") 'clojure-toggle-reader-comment-sexp)
+  ;;
+  ;; (define-key global-map (kbd "SPC S s") 'flyspell-correct-at-point)
+  ;;
+  ;; (define-key markdown-mode-map (kbd "SPC S s") #'flyspell-correct-at-point)
+  ;;
+  ;; helm opens a new frame when cursor in a buffer positioned underneath another
+  ;; see my gist for details to add...
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-  ;; Configure clojurescript-jack-in to use web browser REPL (otherwise defaults to JVM Rhino repl)
-  ;; Edit: now set up via M-x customize-variable cider-cljs-lein-repl
-  ;; (setq cider-cljs-lein-repl
-  ;;      "(do (user/run)
-  ;;         (user/browser-repl))")
 
-  ;; REPL history keybindings - not used - Use S-<up> and S-<down> which are the defaults
-  ;; (add-hook 'cider-repl-mode-hook
-  ;;           '(lambda ()
-  ;;              (define-key cider-repl-mode-map (kbd "<up>") 'cider-repl-previous-input)
-  ;;              (define-key cider-repl-mode-map (kbd "<down>") 'cider-repl-next-input)))
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; elpa stable repository
+  ;; if you want to disable the elpa stable repository put this in your dotfile in the user-init function:
+  ;; (setq configuration-layer-elpa-archives '(("melpa" . "melpa.org/packages/")
+  ;;   ("org" . "orgmode.org/elpa/") ("gnu" . "elpa.gnu.org/packages/")))
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-  ;; Hook for command-log-mode - shows keybindings & commands in separate buffer
-  ;; Load command-log-mode when opening a clojure file
-  ;; (add-hook 'clojure-mode-hook 'command-log-mode)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Literal Searching Configuration
+  ;;
+  ;; Literal search, rather than regex, in spacemacs search - helm-ag
+  ;; (setq-default helm-grep-ag-command-option "-Q")
+  ;;
+  ;; End of Searching Configuration
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-  ;; Turn on command-log-mode when opening a source code or text file
-  (add-hook 'prog-mode-hook 'command-log-mode)
-  (add-hook 'text-mode-hook 'command-log-mode)
 
-;; End of Clojure configuration
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; evil-cleverparens - now part of the clojure layer (develop branch)
+  ;;
+  ;; use the evil-cleverparens layer
+  ;; https://github.com/luxbock/evil-cleverparens
+  ;;
+  ;; add evil-cleverparens to clojure-mode
+  ;; (spacemacs/toggle-evil-cleverparens-on)
+  ;; (add-hook 'clojure-mode-hook #'evil-cleverparens-mode)
+  ;; end of evil-smartparens
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; exclude sayid as it currently does not support nrepl 0.4
+  ;;
+  ;; Temporary fix
+  ;; (setq sayid-inject-dependencies-at-jack-in nil)
+  ;; issue raised: https://github.com/syl20bnr/spacemacs/issues/11146
+  ;;
+  ;; pull request merged into develop to switch sayid off by default
+  ;; https://github.com/bpiel/sayid/pull/40
+  ;; enable sayid by adding this code to the .spacemacs dotspacemacs/layers configuration
+  ;;   dotspacemacs-configuration-layers
+  ;;    '(
+  ;;       (clojure :variables clojure-enable-sayid t)
+  ;;     )
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Systemd user service
-
+  ;;
   ;; Use the exec-path-from-shell package to get PATH, MANPATH
   ;; and the environment variables from your zsh or bash rc-files.
-
+  ;;
   ;; (setq exec-path-from-shell-variables
   ;;       (append exec-path-from-shell-variables
   ;;               (list "TERM"
@@ -860,36 +900,47 @@ before packages are loaded."
   ;;                     "…"
   ;;                     )))
   ;; (exec-path-from-shell-initialize)
-
+  ;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Neotree configuration
-
+  ;;
   ;; Display neotree on the right rather than left (default)
   ;; (setq neo-window-position 'right)
-
+  ;;
   ;; End of Neotree configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  )
+
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; old-school emacs style keybindings that i am replacing with nicer spacemacs alternatives
+  ;;
+  ;; jr0cket: text scaling keybindings - use spc z x =/-
+  ;; (define-key global-map (kbd "c-+") 'text-scale-increase)
+  ;; (define-key global-map (kbd "c--") 'text-scale-decrease)
+  ;;
+  ;; smartparens keybindings - use lisp-state, spc k menu instead
+  ;; (define-key global-map (kbd "c-)") 'sp-forward-slurp-sexp)
+  ;; (define-key global-map (kbd "c-(") 'sp-backward-slurp-sexp)
+  ;; (define-key global-map (kbd "m-)") 'sp-forward-barf-sexp)
+  ;; (define-key global-map (kbd "m-(") 'sp-backward-barf-sexp)
+  ;;
+  ;; jr0cket: keybindings for cycling buffers
+  ;; use spc b n and spc b n instead
+  ;; (global-set-key [c-prior] 'previous-buffer)
+  ;; (global-set-key [c-next] 'next-buffer)
+  ;;
+  ;; jr0cket: remap multiple cursors to a pattern that is easier to remember
+  ;; learn iedit mode instead (its fantastic)
+  ;; (define-key global-map (kbd "c-c m c") 'mc/edit-lines)
+  ;;
+  ;; end of old-school bindings
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+  )   ;; End of dot-spacemacs/user-config
+
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   ["#d2ceda" "#f2241f" "#67b11d" "#b1951d" "#3a81c3" "#a31db1" "#21b8c7" "#655370"])
- '(cider-cljs-lein-repl
-   "(do (require 'figwheel-sidecar.repl-api) (figwheel-sidecar.repl-api/start-figwheel!) (figwheel-sidecar.repl-api/cljs-repl))")
- '(evil-want-Y-yank-to-eol nil)
- '(package-selected-packages
-   (quote
-    (camcorder names cyberpunk-theme bongo yaml-mode xterm-color ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit spacemacs-theme spaceline smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs ranger rainbow-mode rainbow-identifiers rainbow-delimiters quelpa pug-mode popwin persp-mode pcre2el paradox ox-gfm orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file neotree mwim multi-term move-text mmm-mode markdown-toc magit-gitflow magit-gh-pulls macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump diff-hl define-word company-web company-tern company-statistics company-quickhelp column-enforce-mode color-identifiers-mode coffee-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
