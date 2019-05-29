@@ -686,7 +686,8 @@ before packages are loaded."
   (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
   ;;
   ;; Add with-let to align binding forms, so it works the same as let
-  (add-to-list 'clojure-align-binding-forms "with-let")
+  ;; Not needed, already part of clojure-align-binding-forms
+  ;; (add-to-list 'clojure-align-binding-forms "with-let")
   ;;
   ;;
   ;; Experiment: Turn on all font locking options for Clojure
