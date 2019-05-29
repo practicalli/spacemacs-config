@@ -112,7 +112,11 @@ This function should only modify configuration layer settings."
             shell-default-position 'bottom)     ;; SPC ' opens eshell in popup at bottome of Spacemacs
 
      spell-checking
-     syntax-checking
+
+     ;; Use original flycheck fringe bitmaps
+     (syntax-checking :variables
+                      syntax-checking-use-original-bitmaps t)
+
      (version-control :variables
                       version-control-diff-tool 'diff-hl
                       version-control-global-margin t)
