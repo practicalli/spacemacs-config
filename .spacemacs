@@ -489,6 +489,7 @@ It should only modify the values of Spacemacs settings."
    ;; `trailing' to delete only the whitespace at end of lines, `changed' to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
+   dotspacemacs-whitespace-cleanup 'all
 
   ;; jr0cket: text scaling keybindings
   ;; (define-key global-map (kbd "C-+") 'text-scale-increase)
