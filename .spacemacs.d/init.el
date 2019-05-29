@@ -561,9 +561,16 @@ before packages are loaded."
   ;; Spell checking
   ;;
   ;; Add keybinding to correct current word under the cursor
+  ;; to the existing spelling menu, `S'
+  (spacemacs/set-leader-keys "Ss" 'flyspell-correct-at-point)
   ;;
-  (define-key global-map (kbd "SPC S s") 'flyspell-correct-at-point)
+  ;; Or in the user-binding menu
+  ;; (spacemacs/set-leader-keys "os" 'flyspell-correct-at-point)
   ;;
+  ;; Documentation:
+  ;; http://develop.spacemacs.org/doc/DOCUMENTATION.html#binding-keys
+  ;;
+  ;; TODO: create a pull request for the relevant Spacemacs layer
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
