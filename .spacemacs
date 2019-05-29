@@ -491,18 +491,14 @@ It should only modify the values of Spacemacs settings."
    ;; (default nil)
    dotspacemacs-whitespace-cleanup 'all
 
-  ;; jr0cket: text scaling keybindings
-  ;; (define-key global-map (kbd "C-+") 'text-scale-increase)
-  ;; (define-key global-map (kbd "C--") 'text-scale-decrease)
+   ;; Either nil or a number of seconds. If non-nil zone out after the specified
+   ;; number of seconds. (default nil)
+   dotspacemacs-zone-out-when-idle nil
 
-  ;; smartparens keybindings - use lisp-state, SPC K, menu instead
-  ;; (define-key global-map (kbd "C-)") 'sp-forward-slurp-sexp)
-  ;; (define-key global-map (kbd "C-(") 'sp-backward-slurp-sexp)
-  ;; (define-key global-map (kbd "M-)") 'sp-forward-barf-sexp)
-  ;; (define-key global-map (kbd "M-(") 'sp-backward-barf-sexp)
    ;; Run `spacemacs/prettify-org-buffer' when
    ;; visiting README.org files of Spacemacs.
    ;; (default nil)
+   dotspacemacs-pretty-docs t))
 
 (defun dotspacemacs/user-env ()
   "Environment variables setup.
@@ -520,14 +516,7 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   )
 
-  ;; jr0cket: keybindings for cycling buffers
-  (global-set-key [C-prior] 'previous-buffer)
-  (global-set-key [C-next] 'next-buffer)
-  ;; jr0cket: Remap multiple cursors to a pattern that is easier to remember
-  (define-key global-map (kbd "C-c m c") 'mc/edit-lines)
 
-  ;; End of Old-school bindings
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
