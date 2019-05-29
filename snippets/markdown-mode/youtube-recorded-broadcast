@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+#name : youtube-recorded-broadcast
+#key : youtube-recorded-broadcast
+#contributor : jr0cket
+# --
+[![youtube live recorded broadcast](/images/youtube-live-recorded-broadcast.png)]($1)
+$0

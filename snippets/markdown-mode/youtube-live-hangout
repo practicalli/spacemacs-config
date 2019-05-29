@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+#name : youtube-live-hangout
+#key : youtube-live-hangout
+#contributor : jr0cket
+# --
+[![youtube live hangout on air](/images/youtube-live-hangout-on-air.png)]($1)
+$0

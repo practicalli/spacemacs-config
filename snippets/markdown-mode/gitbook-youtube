@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+#name : gitbook-youtube
+#key : gitbook-youtube
+#contributor : jr0cket
+# --
+{% youtube %}
+$1?autoplay=1loop=1
+{% endyoutube %}
+$0
