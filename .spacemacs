@@ -585,6 +585,14 @@ before packages are loaded."
           ("~/projects/" . 2)))
   ;;
   ;;
+  ;; Magithub has been replaced as of March 2019
+  ;; load in magithub features after magit package has loaded
+  ;; ? is this still required ?
+  ;; (use-package magithub
+  ;;   :after magit
+  ;;   :config (magithub-feature-autoinject t))
+  ;;
+  ;; end of version control configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
