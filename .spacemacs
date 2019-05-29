@@ -641,6 +641,10 @@ before packages are loaded."
   ;; Turn on visual-line-mode for Org-mode only
   (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
 
+  ;;
+  ;; use org-re-reveal instead of org-reveal (which hasnt been updated in ages and breaks org-mode 9.2)
+  (use-package org-re-reveal :after org)
+  ;;
   ;; End of Org-mode Configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
