@@ -647,6 +647,17 @@ before packages are loaded."
   (with-eval-after-load 'org
     (setq org-log-done 'time))
   ;;
+
+  ;; customize org-mode's checkboxes with unicode symbols
+  (add-hook
+   'org-mode-hook
+   (lambda ()
+     "Beautify Org Checkbox Symbol"
+     (push '("[ ]" .  "☐") prettify-symbols-alist)
+     (push '("[X]" . "☑" ) prettify-symbols-alist)
+     (push '("[-]" . "❍" ) prettify-symbols-alist)
+     (prettify-symbols-mode)))
+
   ;; Markdown mode hook for orgtbl-mode minor mode
   (add-hook 'markdown-mode-hook 'turn-on-orgtbl)
   ;;
