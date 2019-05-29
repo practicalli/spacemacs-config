@@ -664,6 +664,21 @@ before packages are loaded."
   ;; enable safe structural editing in evil (clojure layer - evil-cleverparens)
   (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-clojure-mode)
   ;;
+  ;; Indentation of function forms
+  ;; https://github.com/clojure-emacs/clojure-mode#indentation-of-function-forms
+  (setq clojure-indent-style 'align-arguments)
+  ;;
+  ;; Vertically align s-expressions
+  ;; https://github.com/clojure-emacs/clojure-mode#vertical-alignment
+  (setq clojure-align-forms-automatically t)
+  ;;
+  ;; Auto-indent code automatically
+  ;; https://emacsredux.com/blog/2016/02/07/auto-indent-your-code-with-aggressive-indent-mode/
+  (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
+  ;;
+  ;; Add with-let to align binding forms, so it works the same as let
+  (add-to-list 'clojure-align-binding-forms "with-let")
+  ;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
