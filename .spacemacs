@@ -553,8 +553,18 @@ before packages are loaded."
 
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Version Control configuration - Git, etc
+  ;; Spell checking
+  ;;
+  ;; Add keybinding to correct current word under the cursor
+  ;;
+  (define-key global-map (kbd "SPC S s") 'flyspell-correct-at-point)
+  ;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Version Control configuration - Git, etc
+  ;;
   ;; diff-hl - diff hightlights in right gutter as you type
   (diff-hl-flydiff-mode)
 
