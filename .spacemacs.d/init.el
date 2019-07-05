@@ -390,6 +390,11 @@ It should only modify the values of Spacemacs settings."
    ;; (default nil) (Emacs 24.4+ only)
    dotspacemacs-maximized-at-startup t
 
+   ;; If non-nil the frame is undecorated when Emacs starts up. Combine this
+   ;; variable with `dotspacemacs-maximized-at-startup' in OSX to obtain
+   ;; borderless fullscreen. (default nil)
+   dotspacemacs-undecorated-at-startup nil
+
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -552,16 +557,33 @@ before packages are loaded."
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Workarounds and bug fixes - temporary hopefully
   ;;
-  ;; disable undo-tree as it seems to be loosing history
-  (global-undo-tree-mode -1)
+  ;; Undo history size limit, triggering garbage collection
+  ;; Updating all defaults by a power of 10 (adding another zero at the end)
+  ;; default in spacemacs is 80000
+  (setq undo-limit 400000)
   ;;
+  ;; default in spacemacs is 120000
+  (setq undo-strong-limit 6000000)
+  ;;
+  ;; default in spacemacs is 12000000
+  (setq undo-strong-limit 60000000)
+  ;;
+  ;;
+  ;; disable undo-tree as it seems to be loosing history
+  ;; (global-undo-tree-mode -1)
+  ;;
+  ;; TODO: try explicitly saving history
+  ;; (setq undo-tree-auto-save-history t)
+  ;;
+  ;; TODO: try setting undo-tree tmp files location
+  ;; (setq undo-tree-history-directory-alist '(("." . "~/var/emacs/undo")))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Shell configuration
   ;;
   ;; Use zsh for default multi-term shell
-  (setq multi-term-program "/usr/bin/zsh")
+  ;; (setq multi-term-program "/usr/bin/zsh")
   ;;
   ;; End of Shell configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -569,10 +591,11 @@ before packages are loaded."
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Spell checking
+  ;; merged into Spacemacs `develop'
   ;;
   ;; Add keybinding to correct current word under the cursor
   ;; to the existing spelling menu, `S'
-  (spacemacs/set-leader-keys "Ss" 'flyspell-correct-at-point)
+  ;; (spacemacs/set-leader-keys "Ss" 'flyspell-correct-at-point)
   ;;
   ;; Or in the user-binding menu
   ;; (spacemacs/set-leader-keys "os" 'flyspell-correct-at-point)
@@ -580,7 +603,6 @@ before packages are loaded."
   ;; Documentation:
   ;; http://develop.spacemacs.org/doc/DOCUMENTATION.html#binding-keys
   ;;
-  ;; TODO: create a pull request for the relevant Spacemacs layer
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -591,9 +613,9 @@ before packages are loaded."
   (diff-hl-flydiff-mode)
   ;;
   ;; Load in magithub features after magit package has loaded
-  (use-package magithub
-    :after magit
-    :config (magithub-feature-autoinject t))
+  ;; (use-package magithub
+  ;;   :after magit
+  ;;   :config (magithub-feature-autoinject t))
   ;;
   ;; Use Spacemacs as the $EDITOR (or $GIT_EDITOR) for git commits messages
   ;; when using git commit on the command line
@@ -605,14 +627,6 @@ before packages are loaded."
   (setq magit-repository-directories
         '(("~/.emacs.d"  . 0)
           ("~/projects/" . 2)))
-  ;;
-  ;;
-  ;; Magithub has been replaced as of March 2019
-  ;; load in magithub features after magit package has loaded
-  ;; ? is this still required ?
-  ;; (use-package magithub
-  ;;   :after magit
-  ;;   :config (magithub-feature-autoinject t))
   ;;
   ;; end of version control configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -672,10 +686,10 @@ before packages are loaded."
   (add-hook 'markdown-mode-hook 'turn-on-orgtbl)
   ;;
   ;; Turn on visual-line-mode for Org-mode only
-  (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
+  ;; (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
   ;;
   ;; use org-re-reveal instead of org-reveal (which hasnt been updated in ages and breaks org-mode 9.2)
-  (use-package org-re-reveal :after org)
+  ;; (use-package org-re-reveal :after org)
   ;;
   ;; End of Org-mode Configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -706,10 +720,6 @@ before packages are loaded."
   ;; https://emacsredux.com/blog/2016/02/07/auto-indent-your-code-with-aggressive-indent-mode/
   (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
   ;;
-  ;; Add with-let to align binding forms, so it works the same as let
-  ;; Not needed, already part of clojure-align-binding-forms
-  ;; (add-to-list 'clojure-align-binding-forms "with-let")
-  ;;
 
   ;; Linting with clj-kondo
   ;; https://github.com/borkdude/clj-kondo/blob/master/doc/editor-integration.md#spacemacs
@@ -734,6 +744,10 @@ before packages are loaded."
   ;;                       (clj-kondo-edn . edn-joker)))
   ;;     (flycheck-add-next-checker (car checkers) (cons 'error (cdr checkers)))))
 
+
+
+  ;; Merged into develop
+  ;; (spacemacs/set-leader-keys-for-major-mode 'clojure "ei" 'cider-interrupt)
 
   ;; Experiment: Turn on all font locking options for Clojure
   ;; (setq cider-font-lock-dynamically t)
