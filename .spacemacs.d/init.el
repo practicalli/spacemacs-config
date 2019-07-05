@@ -62,7 +62,7 @@ This function should only modify configuration layer settings."
 
      ;; Add the Joker linter for real-time linting in Clojure
      ;; Requires local install of Joker tool
-     clojure-lint
+     ;; clojure-lint
 
      ;; Show commands as you type in a separate buffer
      command-log
