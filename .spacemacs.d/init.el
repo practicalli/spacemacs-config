@@ -106,10 +106,14 @@ This function should only modify configuration layer settings."
              ranger-cleanup-eagerly t
              ranger-cleanup-on-disable t
              ranger-ignored-extensions '("mkv" "flv" "iso" "mp4"))
+
+     ;; Emacs will run eshell, if you want to run zsh or something else, then add
+     ;; shell-default-shell 'multi-term
      (shell :variables
-            shell-default-shell 'multi-term
+            shell-default-shell 'eshell
             shell-default-height 30
             shell-default-position 'bottom)     ;; SPC ' opens eshell in popup at bottome of Spacemacs
+
 
      spell-checking
 
