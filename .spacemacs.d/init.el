@@ -130,9 +130,8 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(org-re-reveal
-                                      kaolin-themes
-                                      ubuntu-theme)
+   dotspacemacs-additional-packages '(ubuntu-theme
+                                      flycheck-clj-kondo)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -700,7 +699,31 @@ before packages are loaded."
   ;; Not needed, already part of clojure-align-binding-forms
   ;; (add-to-list 'clojure-align-binding-forms "with-let")
   ;;
+
+  ;; Linting with clj-kondo
+  ;; https://github.com/borkdude/clj-kondo/blob/master/doc/editor-integration.md#spacemacs
   ;;
+  ;; Using clj-kondo by itself
+  (use-package clojure-mode
+    :ensure t
+    :config
+    (require 'flycheck-clj-kondo))
+
+  ;; Using clj-kondo with joker
+  ;; (use-package clojure-mode
+  ;;   :ensure t
+  ;;   :config
+  ;;   (require 'flycheck-joker)
+  ;;   (require 'flycheck-clj-kondo)
+  ;;   (dolist (checker '(clj-kondo-clj clj-kondo-cljs clj-kondo-cljc clj-kondo-edn))
+  ;;     (setq flycheck-checkers (cons checker (delq checker flycheck-checkers))))
+  ;;   (dolist (checkers '((clj-kondo-clj . clojure-joker)
+  ;;                       (clj-kondo-cljs . clojurescript-joker)
+  ;;                       (clj-kondo-cljc . clojure-joker)
+  ;;                       (clj-kondo-edn . edn-joker)))
+  ;;     (flycheck-add-next-checker (car checkers) (cons 'error (cdr checkers)))))
+
+
   ;; Experiment: Turn on all font locking options for Clojure
   ;; (setq cider-font-lock-dynamically t)
   ;;
