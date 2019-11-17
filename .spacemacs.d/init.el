@@ -697,8 +697,25 @@ before packages are loaded."
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Clojure configurations
   ;;
+  ;;
+  ;; CIDER 0.23 Lima release options
+  ;; Configure the position of evaluation result
+  ;; By default the result displays at the end of the current line
+  ;; Set cider-result-overlay-position to `at-point' to display results right after the expression evaluated
+  ;;
+  (setq cider-result-overlay-position 'at-point)
+  ;;
+  ;;
+  ;; disable the new enhanced ClojureScript code completion
+  ;; Use the ClojureScript completion from earlier versions of CIDER if enhanced cljs completion is causing issues
+  ;;
+  ;; (setq cider-enhanced-cljs-completion-p nil)
+  ;;
+  ;; End of CIDER 0.23 Lima release options
+  ;;
+  ;;
   ;; In clojure-mode, treat hyphenated words as a single word.
-  (add-hook 'clojure-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
+  ;; (add-hook 'clojure-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
   ;;
   ;; enable safe structural editing in evil (clojure layer - evil-cleverparens)
   (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-clojure-mode)
@@ -719,15 +736,19 @@ before packages are loaded."
   ;; https://emacsredux.com/blog/2016/02/07/auto-indent-your-code-with-aggressive-indent-mode/
   (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
   ;;
-
+  ;; Enabling CamelCase support for editing commands
+  ;; https://cider.readthedocs.io/en/latest/additional_packages/#subword-mode
+  ;; (add-hook 'cider-repl-mode-hook #'subword-mode)
+  ;;
+  ;;
   ;; Linting with clj-kondo
   ;; https://github.com/borkdude/clj-kondo/blob/master/doc/editor-integration.md#spacemacs
   ;;
   ;; Using clj-kondo by itself
-  (use-package clojure-mode
-    :ensure t
-    :config
-    (require 'flycheck-clj-kondo))
+  ;; (use-package clojure-mode
+  ;;   :ensure t
+  ;;   :config
+  ;;   (require 'flycheck-clj-kondo))
 
   ;; Using clj-kondo with joker
   ;; (use-package clojure-mode
@@ -830,6 +851,22 @@ before packages are loaded."
   ;; (add-hook 'clojure-mode-hook
   ;;           '(setq cider-eval-toplevel-inside-comment-form t))
   ;;
+  ;;
+  ;; Toggle view of a clojure `(comment ,,,) block'
+  ;;
+  (defun clojure-hack/toggle-comment-block (arg)
+    "Close all top level (comment) forms. With universal arg, open all."
+    (interactive "P")
+    (save-excursion
+      (goto-char (point-min))
+      (while (search-forward-regexp "^(comment\\>" nil 'noerror)
+        (call-interactively
+         (if arg 'evil-open-fold
+           'evil-close-fold)))))
+
+  (evil-define-key 'normal clojure-mode-map
+    "zC" 'clojure-hack/toggle-comment-block
+    "zO" (lambda () (interactive) (clojure-hack/toggle-comment-block 'open)))
   ;;
   ;;
   ;; Experiment: Start Clojure REPL with a specific profile
