@@ -82,10 +82,9 @@ This function should only modify configuration layer settings."
      ;; Highlight working copy changes
      (git :variables
           git-magit-status-fullscreen t
-          git-enable-github-support t
-          git-gutter-use-fringe t)
+          git-enable-github-support t)
 
-     ;; use magithub to talk to your github account and Github Gists
+     ;; mangage GitHub repositories and Gists
      github
      helm
      ;; (helm :variables
