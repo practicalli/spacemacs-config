@@ -26,7 +26,6 @@ This function should only modify configuration layer settings."
    ;; a layer lazily. (default t)
    dotspacemacs-ask-for-lazy-installation t
 
-   ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
@@ -165,10 +164,10 @@ It should only modify the values of Spacemacs settings."
    ;; (default nil)
    dotspacemacs-enable-emacs-pdumper nil
 
-   ;; File path pointing to emacs 27.1 executable compiled with support
-   ;; for the portable dumper (this is currently the branch pdumper).
-   ;; (default "emacs-27.0.50")
-   dotspacemacs-emacs-pdumper-executable-file "emacs-27.0.50"
+   ;; Name of executable file pointing to emacs 27+. This executable must be
+   ;; in your PATH.
+   ;; (default "emacs")
+   dotspacemacs-emacs-pdumper-executable-file "emacs"
 
    ;; Name of the Spacemacs dump file. This is the file will be created by the
    ;; portable dumper in the cache directory under dumps sub-directory.
@@ -202,8 +201,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-use-spacelpa nil
 
    ;; If non-nil then verify the signature for downloaded Spacelpa archives.
-   ;; (default nil)
-   dotspacemacs-verify-spacelpa-archives nil
+   ;; (default t)
+   dotspacemacs-verify-spacelpa-archives t
 
    ;; If non-nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. Note that checking for
@@ -223,9 +222,6 @@ It should only modify the values of Spacemacs settings."
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
    dotspacemacs-editing-style 'vim
-
-   ;; If non-nil output loading progress in `*Messages*' buffer. (default nil)
-   dotspacemacs-verbose-loading nil
 
    ;; Specify the startup banner. Default value is `official', it displays
    ;; the official spacemacs logo. An integer value is the index of text
@@ -283,8 +279,7 @@ It should only modify the values of Spacemacs settings."
    ;; (default t)
    dotspacemacs-colorize-cursor-according-to-state t
 
-   ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
-   ;; quickly tweak the mode-line size to make separators look not too crappy.
+   ;; Default font, or prioritized list of fonts.
    dotspacemacs-default-font '("Ubuntu Mono"
                                :size 24
                                :weight normal
@@ -454,7 +449,7 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-smartparens-strict-mode t
 
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
-   ;; over any automatically added closing parenthesis, bracket, quote, etc…
+   ;; over any automatically added closing parenthesis, bracket, quote, etc...
    ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
    dotspacemacs-smart-closing-parenthesis t
 
@@ -920,6 +915,95 @@ before packages are loaded."
   ;; End of Web-mode configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Eshell visual enhancements
+  ;;
+  ;; Add git status visual labels
+
+  (require 'dash)
+  (require 's)
+
+  (defmacro with-face (STR &rest PROPS)
+    "Return STR propertized with PROPS."
+    `(propertize ,STR 'face (list ,@PROPS)))
+
+  (defmacro esh-section (NAME ICON FORM &rest PROPS)
+    "Build eshell section NAME with ICON prepended to evaled FORM with PROPS."
+    `(setq ,NAME
+           (lambda () (when ,FORM
+                        (-> ,ICON
+                            (concat esh-section-delim ,FORM)
+                            (with-face ,@PROPS))))))
+
+  (defun esh-acc (acc x)
+    "Accumulator for evaluating and concatenating esh-sections."
+    (--if-let (funcall x)
+        (if (s-blank? acc)
+            it
+          (concat acc esh-sep it))
+      acc))
+
+  (defun esh-prompt-func ()
+    "Build `eshell-prompt-function'"
+    (concat esh-header
+            (-reduce-from 'esh-acc "" eshell-funcs)
+            "\n"
+            eshell-prompt-string))
+
+  (esh-section esh-dir
+               "\xf07c"  ;  (faicon folder)
+               (abbreviate-file-name (eshell/pwd))
+               '(:foreground "gold" :bold ultra-bold :underline t))
+
+  (esh-section esh-git
+               "\xe907"  ;  (git icon)
+               (magit-get-current-branch)
+               '(:foreground "pink"))
+
+  ;; (esh-section esh-python
+  ;;              "\xe928"  ;  (python icon)
+  ;;              pyvenv-virtual-env-name)
+
+  (esh-section esh-clock
+               "\xf017"  ;  (clock icon)
+               (format-time-string "%H:%M" (current-time))
+               '(:foreground "forest green"))
+
+  ;; Below I implement a "prompt number" section
+  (setq esh-prompt-num 0)
+  (add-hook 'eshell-exit-hook (lambda () (setq esh-prompt-num 0)))
+  (advice-add 'eshell-send-input :before
+              (lambda (&rest args) (setq esh-prompt-num (incf esh-prompt-num))))
+
+  (esh-section esh-num
+               "\xf0c9"  ;  (list icon)
+               (number-to-string esh-prompt-num)
+               '(:foreground "brown"))
+
+  ;; Separator between esh-sections
+  (setq esh-sep "  ")  ; or " | "
+
+  ;; Separator between an esh-section icon and form
+  (setq esh-section-delim " ")
+
+  ;; Eshell prompt header
+  (setq esh-header "\n ")  ; or "\n┌─"
+
+  ;; Eshell prompt regexp and string. Unless you are varying the prompt by eg.
+  ;; your login, these can be the same.
+  (setq eshell-prompt-regexp " ")   ; or "└─> "
+  (setq eshell-prompt-string " ")   ; or "└─> "
+
+  ;; Choose which eshell-funcs to enable
+  ;; (setq eshell-funcs (list esh-dir esh-git esh-python esh-clock esh-num))
+  (setq eshell-funcs (list esh-dir esh-git esh-clock esh-num))
+
+  ;; Enable the new eshell prompt
+  (setq eshell-prompt-function 'esh-prompt-func)
+
+  ;; End of Eshell
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
