@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+#name : image-linked
+#key : image-linked
+#contributor : jr0cket
+# --
+[![$1](/images/$2)](/images/$3)
+$0

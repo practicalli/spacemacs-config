@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+#name : gitbook-collapse
+#key : gitbook-collapse
+#contributor : jr0cket
+# --
+<!--sec data-title="Reveal answer..." data-id="answer00$1" data-collapse=true ces-->
+<!--endsec-->
