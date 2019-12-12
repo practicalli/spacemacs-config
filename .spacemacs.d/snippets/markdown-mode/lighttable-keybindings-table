@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+#name : lighttable-keybindings-table
+#key : lighttable-keybindings-table
+#contributor : jr0cket
+# --
+| Action                                                        | PC Keypress                                           | Mac Keypress                                         |
+|---------------------------------------------------------------|-------------------------------------------------------|------------------------------------------------------|
+| Evaluate all the code in a file                               | <kbd>Ctrl</kbd> - <kbd>Shift</kbd> - <kbd>Enter</kbd> | <kbd>Cmd</kbd> - <kbd>Shift</kbd> - <kbd>Enter</kbd> |
+| Evaluate an expression (put cursor after closing parentheses) | <kbd>Ctrl</kbd> - <kbd>Enter</kbd>                    | <kbd>Cmd</kbd> - <kbd>Enter</kbd>                    |
