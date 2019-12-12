@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : hiccup-div-class
+#key : hiccup-div-class
+#contributor : jr0cket
+# --
+[:div {:class "$1"}$0]

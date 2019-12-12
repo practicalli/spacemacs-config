@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : div-with-class
+#key : div-with-class
+#contributor : jr0cket
+# --
+[:div {:class "$1"}]

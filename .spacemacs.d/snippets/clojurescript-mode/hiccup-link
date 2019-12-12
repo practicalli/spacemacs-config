@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+#name : hiccup-link
+#key : hiccup-link
+#contributor : jr0cket
+# --
+[:a {:href   "$1"
+     :target "$2_blank"}
+     "$3"]
