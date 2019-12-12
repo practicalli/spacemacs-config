@@ -2,7 +2,8 @@
 #name : spacemacs-keybindings
 #key : spacemacs-keybindings
 #contributor : jr0cket
+#comments: org-table tabs through sections so no need for placeholders
 # --
-| Spacemacs | Major mode | Emacs | Evil |
-|-----------|------------|-------|------|
-| $1        | $2         | $3    | $4   |
+| Spacemacs | Evil normal | Command | Description |
+|-----------+-------------+---------+-------------|
+| $0        |             |         |             |
