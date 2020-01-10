@@ -38,6 +38,9 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     ;;
+     ;; Layers added in alphabetic order
+
 
      ;; Enable asciidoc layer for editing asciidoc content
      ;; Useful for docs.cider.mx editing
@@ -64,7 +67,7 @@ This function should only modify configuration layer settings."
      ;; Requires local install of Joker tool
      ;; clojure-lint
 
-     ;; Show commands as you type in a separate buffer
+     ;; SPC a L displays key and command history in a separate buffer
      command-log
 
      ;; Nyan cat tells you where you are in your file
@@ -81,21 +84,42 @@ This function should only modify configuration layer settings."
      (git :variables
           git-magit-status-fullscreen t)
 
-     ;; mangage GitHub repositories and Gists
+     ;; SPC g h to use GitHub repositories
+     ;; SPC g g to use GitHub Gists
      github
+
      helm
      ;; (helm :variables
      ;;       helm-enable-auto-resize t
      ;;       helm-position 'top  ; top, bottom, left, right
      ;;       helm-use-frame-when-more-than-two-windows nil)
+
      html
      javascript
      markdown
+
+     ;; Editing multiple lines of text concurrently
+     ;; `g r' menu in Emacs normal state
      multiple-cursors
-     treemacs
+
+     ;; spacemacs-layouts layer added to set variables
+     ;; Restrict `SPC TAB' to current layout
+     (spacemacs-layouts :variables
+                        spacemacs-layouts-restrict-spc-tab t)
+
+     ;; Visual file manager - `SPC p t'
+     ;; treemacs-no-png-images t
+     (treemacs :variables
+               treemacs-indentation 1
+               treemacs-use-filewatch-mode t
+               treemacs-use-follow-mode t)
+
+     ;; dotspacemacs/user-config has customisations
      (org :variables
           org-enable-github-support t
           org-enable-reveal-js-support nil)
+
+     ;; Text-based file manager with preview
      (ranger :variables
              ranger-show-preview t
              ranger-show-hidden t
@@ -103,25 +127,39 @@ This function should only modify configuration layer settings."
              ranger-cleanup-on-disable t
              ranger-ignored-extensions '("mkv" "flv" "iso" "mp4"))
 
-     ;; Emacs will run eshell, if you want to run zsh or something else, then add
+     ;; SPC ' runs eshell in a popup buffer
+     ;; To run your terminal shell, add
      ;; shell-default-shell 'multi-term
      (shell :variables
             shell-default-shell 'eshell
             shell-default-height 30
-            shell-default-position 'bottom)     ;; SPC ' opens eshell in popup at bottome of Spacemacs
+            shell-default-position 'bottom)
 
+     ;; Spacemacs-layouts is loaded by default
+     ;; Added only to set variables on the layer
+     ;; SPC TAB restricted to current layout buffers
+     (spacemacs-layouts :variables
+                         spacemacs-layouts-restrict-spc-tab t)
 
+     ;; Spell as you type with Flyspell package,
+     ;; requires external command - ispell, hunspell, aspell
+     ;; SPC S menu, SPC S s to check current word
      spell-checking
 
      ;; Use original flycheck fringe bitmaps
      (syntax-checking :variables
                       syntax-checking-use-original-bitmaps t)
 
+     ;; Highlight changes in buffers
+     ;; SPC g . transient state for navigating changes
      (version-control :variables
                       version-control-diff-tool 'diff-hl
                       version-control-global-margin t)
-     yaml
-     )
+
+     ;; lsp
+
+     ) ;; End of dotspacemacs-configuration-layers
+
 
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
