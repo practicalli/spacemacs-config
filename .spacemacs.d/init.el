@@ -583,10 +583,12 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Safe structural editing
+  ;; for all major modes
   ;;
+  (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hooks)
   ;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Version Control configuration - Git, etc
@@ -701,7 +703,7 @@ before packages are loaded."
   ;; (add-hook 'clojure-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
   ;;
   ;; enable safe structural editing in evil (clojure layer - evil-cleverparens)
-  (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-clojure-mode)
+  ;; (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-clojure-mode)
   ;;
   ;; Pretty print in Clojure to use the Fast Idiomatic Pretty-Printer. This is approximately 5-10x faster than clojure.core/pprint
   (setq cider-pprint-fn 'fipp)
