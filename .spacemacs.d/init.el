@@ -582,55 +582,8 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
-
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Workarounds and bug fixes - temporary hopefully
   ;;
-  ;; Undo history size limit, triggering garbage collection
-  ;; Updating all defaults by a power of 10 (adding another zero at the end)
-  ;; default in spacemacs is 80000
-  (setq undo-limit 400000)
-  ;;
-  ;; default in spacemacs is 120000
-  (setq undo-strong-limit 6000000)
-  ;;
-  ;; default in spacemacs is 12000000
-  (setq undo-strong-limit 60000000)
-  ;;
-  ;;
-  ;; disable undo-tree as it seems to be loosing history
-  ;; (global-undo-tree-mode -1)
-  ;;
-  ;; TODO: try explicitly saving history
-  ;; (setq undo-tree-auto-save-history t)
-  ;;
-  ;; TODO: try setting undo-tree tmp files location
-  ;; (setq undo-tree-history-directory-alist '(("." . "~/var/emacs/undo")))
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Shell configuration
-  ;;
-  ;; Use zsh for default multi-term shell
-  ;; (setq multi-term-program "/usr/bin/zsh")
-  ;;
-  ;; End of Shell configuration
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Spell checking
-  ;; merged into Spacemacs `develop'
-  ;;
-  ;; Add keybinding to correct current word under the cursor
-  ;; to the existing spelling menu, `S'
-  ;; (spacemacs/set-leader-keys "Ss" 'flyspell-correct-at-point)
-  ;;
-  ;; Or in the user-binding menu
-  ;; (spacemacs/set-leader-keys "os" 'flyspell-correct-at-point)
-  ;;
-  ;; Documentation:
-  ;; http://develop.spacemacs.org/doc/DOCUMENTATION.html#binding-keys
   ;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -770,61 +723,6 @@ before packages are loaded."
   ;; https://cider.readthedocs.io/en/latest/additional_packages/#subword-mode
   ;; (add-hook 'cider-repl-mode-hook #'subword-mode)
   ;;
-  ;;
-  ;; Linting with clj-kondo
-  ;; https://github.com/borkdude/clj-kondo/blob/master/doc/editor-integration.md#spacemacs
-  ;;
-  ;; Using clj-kondo by itself
-  ;; (use-package clojure-mode
-  ;;   :ensure t
-  ;;   :config
-  ;;   (require 'flycheck-clj-kondo))
-
-  ;; Using clj-kondo with joker
-  ;; (use-package clojure-mode
-  ;;   :ensure t
-  ;;   :config
-  ;;   (require 'flycheck-joker)
-  ;;   (require 'flycheck-clj-kondo)
-  ;;   (dolist (checker '(clj-kondo-clj clj-kondo-cljs clj-kondo-cljc clj-kondo-edn))
-  ;;     (setq flycheck-checkers (cons checker (delq checker flycheck-checkers))))
-  ;;   (dolist (checkers '((clj-kondo-clj . clojure-joker)
-  ;;                       (clj-kondo-cljs . clojurescript-joker)
-  ;;                       (clj-kondo-cljc . clojure-joker)
-  ;;                       (clj-kondo-edn . edn-joker)))
-  ;;     (flycheck-add-next-checker (car checkers) (cons 'error (cdr checkers)))))
-
-
-
-  ;; Merged into develop
-  ;; (spacemacs/set-leader-keys-for-major-mode 'clojure "ei" 'cider-interrupt)
-
-  ;; Experiment: Turn on all font locking options for Clojure
-  ;; (setq cider-font-lock-dynamically t)
-  ;;
-  ;; configure clojurescript-jack-in to use the helper functions provided by lein-figwheel template
-  ;; https://github.com/bhauman/lein-figwheel
-  ;; fig-start will start figwheel and compile the clojurescript application
-  ;; cljs-repl will connect emacs buffer to clojurescript repl created by figwheel
-  ;;
-  ;;
-  ;; TODO: review this binding - CIDER takes care of this now
-  ;; without this configuration, emacs command clojurescript-jack-in defaults to jvm rhino repl
-  ;; if using a different clojurescript template you may require different function calls in the do expression
-  ;; alternatively: set via m-x customize-variable cider-cljs-lein-repl
-  ;; TODO: Is cider-cljs-lein-repl still required to be set?
-  ;; Or is this just specific to those projects that have a user/fig-start and user/cljs-repl functions
-  ;; (setq cider-cljs-lein-repl
-  ;;      "(do
-  ;;         (user/fig-start)
-  ;;         (user/cljs-repl))")
-  ;;
-  ;; if you are not using figwheel template to configure funcitons in dev/core.clj
-  ;; then use the full function calls
-  ;; (setq cider-cljs-lein-repl
-  ;;       "(do (require 'figwheel-sidecar.repl-api)
-  ;;          (figwheel-sidecar.repl-api/start-figwheel!)
-  ;;          (figwheel-sidecar.repl-api/cljs-repl))")
   ;;
   ;; TODO: review this binding - gives poor user experience
   ;; Multi-line editing in the REPL buffer
@@ -1046,6 +944,109 @@ before packages are loaded."
   ;; Configuration no longer used
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Workarounds and bug fixes - temporary hopefully
+  ;;
+  ;; Undo history size limit, triggering garbage collection
+  ;; Updating all defaults by a power of 10 (adding another zero at the end)
+  ;; default in spacemacs is 80000
+  ;; (setq undo-limit 400000)
+  ;;
+  ;; default in spacemacs is 120000
+  ;; (setq undo-strong-limit 6000000)
+  ;;
+  ;; default in spacemacs is 12000000
+  ;; (setq undo-strong-limit 60000000)
+  ;;
+  ;;
+  ;; disable undo-tree as it seems to be loosing history
+  ;; (global-undo-tree-mode -1)
+  ;;
+  ;; TODO: try explicitly saving history
+  ;; (setq undo-tree-auto-save-history t)
+  ;;
+  ;; TODO: try setting undo-tree tmp files location
+  ;; (setq undo-tree-history-directory-alist '(("." . "~/var/emacs/undo")))
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Spell checking
+  ;; merged into Spacemacs `develop'
+  ;;
+  ;; Add keybinding to correct current word under the cursor
+  ;; to the existing spelling menu, `S'
+  ;; (spacemacs/set-leader-keys "Ss" 'flyspell-correct-at-point)
+  ;;
+  ;; Or in the user-binding menu
+  ;; (spacemacs/set-leader-keys "os" 'flyspell-correct-at-point)
+  ;;
+  ;; Documentation:
+  ;; http://develop.spacemacs.org/doc/DOCUMENTATION.html#binding-keys
+  ;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Replaced configuration - Clojure
+  ;;
+  ;; Linting with clj-kondo
+  ;; https://github.com/borkdude/clj-kondo/blob/master/doc/editor-integration.md#spacemacs
+  ;;
+  ;; Using clj-kondo by itself
+  ;; (use-package clojure-mode
+  ;;   :ensure t
+  ;;   :config
+  ;;   (require 'flycheck-clj-kondo))
+
+  ;; Using clj-kondo with joker
+  ;; (use-package clojure-mode
+  ;;   :ensure t
+  ;;   :config
+  ;;   (require 'flycheck-joker)
+  ;;   (require 'flycheck-clj-kondo)
+  ;;   (dolist (checker '(clj-kondo-clj clj-kondo-cljs clj-kondo-cljc clj-kondo-edn))
+  ;;     (setq flycheck-checkers (cons checker (delq checker flycheck-checkers))))
+  ;;   (dolist (checkers '((clj-kondo-clj . clojure-joker)
+  ;;                       (clj-kondo-cljs . clojurescript-joker)
+  ;;                       (clj-kondo-cljc . clojure-joker)
+  ;;                       (clj-kondo-edn . edn-joker)))
+  ;;     (flycheck-add-next-checker (car checkers) (cons 'error (cdr checkers)))))
+
+
+
+  ;; Merged into develop
+  ;; (spacemacs/set-leader-keys-for-major-mode 'clojure "ei" 'cider-interrupt)
+
+  ;; Experiment: Turn on all font locking options for Clojure
+  ;; (setq cider-font-lock-dynamically t)
+  ;;
+  ;; configure clojurescript-jack-in to use the helper functions provided by lein-figwheel template
+  ;; https://github.com/bhauman/lein-figwheel
+  ;; fig-start will start figwheel and compile the clojurescript application
+  ;; cljs-repl will connect emacs buffer to clojurescript repl created by figwheel
+  ;;
+  ;;
+  ;; TODO: review this binding - CIDER takes care of this now
+  ;; without this configuration, emacs command clojurescript-jack-in defaults to jvm rhino repl
+  ;; if using a different clojurescript template you may require different function calls in the do expression
+  ;; alternatively: set via m-x customize-variable cider-cljs-lein-repl
+  ;; TODO: Is cider-cljs-lein-repl still required to be set?
+  ;; Or is this just specific to those projects that have a user/fig-start and user/cljs-repl functions
+  ;; (setq cider-cljs-lein-repl
+  ;;      "(do
+  ;;         (user/fig-start)
+  ;;         (user/cljs-repl))")
+  ;;
+  ;; if you are not using figwheel template to configure funcitons in dev/core.clj
+  ;; then use the full function calls
+  ;; (setq cider-cljs-lein-repl
+  ;;       "(do (require 'figwheel-sidecar.repl-api)
+  ;;          (figwheel-sidecar.repl-api/start-figwheel!)
+  ;;          (figwheel-sidecar.repl-api/cljs-repl))")
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; unwanted features / bug workarounds
