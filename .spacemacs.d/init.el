@@ -835,6 +835,18 @@ before packages are loaded."
   ;; end of clojure configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Set Hightlight keywords
+
+  (setq hl-todo-keyword-faces
+        '(("TODO" . "SlateGray")
+          ("DOING" . "DarkOrchid")
+          ("BLOCKED" . "Firebrick")
+          ("REVIEW" . "Teal")
+          ("DONE" . "ForestGreen")
+          ("ARCHIVED" .  "SlateBlue")))
+  ;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Web-mode configuration
