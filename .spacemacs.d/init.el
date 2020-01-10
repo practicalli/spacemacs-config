@@ -77,12 +77,9 @@ This function should only modify configuration layer settings."
      ;; Include emojis into everything
      emoji
 
-     ;; Open Magit git client full screen (quit restores previous layout)
-     ;; Add github support (using magithub)
-     ;; Highlight working copy changes
+     ;; SPC g s opens Magit git client full screen (quit restores previous layout)
      (git :variables
-          git-magit-status-fullscreen t
-          git-enable-github-support t)
+          git-magit-status-fullscreen t)
 
      ;; mangage GitHub repositories and Gists
      github
