@@ -1,0 +1,12 @@
+# key: cryogen-post-ubuntu
+# name: cryogen-post-ubuntu
+# --
+{:title "$1"
+:layout :post
+:date "2020-0$2"
+:topic "ubuntu"
+:tags  ["ubuntu" "$3"]}
+
+$0
+
+<!-- more -->

@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: cryogen-post-clojure
+# key: cryogen-post-clojure
+# --
+{:title "$1"
+:layout :post
+:date "2020-0$2"
+:topic "clojure"
+:tags  ["clojure" "$3"]}
+
+$0
+
+<!-- more -->
