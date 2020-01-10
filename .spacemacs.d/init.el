@@ -769,7 +769,8 @@ before packages are loaded."
         (if (string= cmtstr line-start)
             (delete-char cmtstr-len)
           (insert cmtstr))
-        (goto-char point-pos1))))
+        (goto-char point-pos1)
+        (evil-normal-state))))
   ;;
   ;; Assign keybinding to the toggle-reader-comment-sexp function
   (define-key global-map (kbd "C-#") 'clojure-toggle-reader-comment-sexp)
