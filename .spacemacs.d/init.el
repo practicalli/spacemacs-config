@@ -687,23 +687,9 @@ before packages are loaded."
   ;; Configure the position of evaluation result
   ;; By default the result displays at the end of the current line
   ;; Set cider-result-overlay-position to `at-point' to display results right after the expression evaluated
-  ;;
+  ;; Useful for evaluating nexsted expressions with `, e e'
   (setq cider-result-overlay-position 'at-point)
   ;;
-  ;;
-  ;; disable the new enhanced ClojureScript code completion
-  ;; Use the ClojureScript completion from earlier versions of CIDER if enhanced cljs completion is causing issues
-  ;;
-  ;; (setq cider-enhanced-cljs-completion-p nil)
-  ;;
-  ;; End of CIDER 0.23 Lima release options
-  ;;
-  ;;
-  ;; In clojure-mode, treat hyphenated words as a single word.
-  ;; (add-hook 'clojure-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
-  ;;
-  ;; enable safe structural editing in evil (clojure layer - evil-cleverparens)
-  ;; (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-clojure-mode)
   ;;
   ;; Pretty print in Clojure to use the Fast Idiomatic Pretty-Printer. This is approximately 5-10x faster than clojure.core/pprint
   (setq cider-pprint-fn 'fipp)
@@ -720,10 +706,6 @@ before packages are loaded."
   ;; Auto-indent code automatically
   ;; https://emacsredux.com/blog/2016/02/07/auto-indent-your-code-with-aggressive-indent-mode/
   (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
-  ;;
-  ;; Enabling CamelCase support for editing commands
-  ;; https://cider.readthedocs.io/en/latest/additional_packages/#subword-mode
-  ;; (add-hook 'cider-repl-mode-hook #'subword-mode)
   ;;
   ;;
   ;; TODO: review this binding - gives poor user experience
@@ -1013,7 +995,34 @@ before packages are loaded."
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Replaced configuration - Clojure
+  ;; Redundant configurations - Clojure
+  ;;
+  ;; disable the new enhanced ClojureScript code completion
+  ;; Use the ClojureScript completion from earlier versions of CIDER if enhanced cljs completion is causing issues
+  ;;
+  ;; (setq cider-enhanced-cljs-completion-p nil)
+  ;;
+  ;; End of CIDER 0.23 Lima release options
+  ;;
+  ;;
+  ;; In clojure-mode, treat hyphenated words as a single word.
+  ;; Using `w' in Evil normal words gets stuck on names containing `->'
+  ;; (add-hook 'clojure-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
+  ;; (add-hook 'clojure-mode-hook #'(lambda ()
+  ;;                                  (dolist (c (string-to-list "-_>?:"))
+  ;;                                    (modify-syntax-entry c "w"))))
+  ;;
+  ;; Alternative approach - using subword-mode
+  ;;
+  ;; Enabling CamelCase support for editing commands
+  ;; https://cider.readthedocs.io/en/latest/additional_packages/#subword-mode
+  ;; (add-hook 'cider-repl-mode-hook #'subword-mode)
+  ;;
+  ;;
+  ;; enable safe structural editing in evil (clojure layer - evil-cleverparens)
+  ;; (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-clojure-mode)
+  ;;
+  ;;
   ;;
   ;; Linting with clj-kondo
   ;; https://github.com/borkdude/clj-kondo/blob/master/doc/editor-integration.md#spacemacs
