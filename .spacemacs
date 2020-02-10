@@ -1,1 +1,0 @@
-.spacemacs.d/init.el
