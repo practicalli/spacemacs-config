@@ -4,16 +4,23 @@ This GitHub repository contains the current configuration to support the [Practi
 
 [![Practicalli Spacemacs book cover](https://practicalli.github.io/images/practicalli-spacemacs-book-cover.png)](https://practicalli.github.io/spacemacs)
 
-It is not meant to be used for your own configuration, rather an example of some of the configuration options you could add to your own `~/.spacemacs` file.
+
+## Using this configuration directly
+
+Visit GitHub and fork the practicalli/spacemacs.d repository.  A fork is recommended so you can add your own customisations and save them to your own repository.
+
+In a terminal window, use git clone to copy your fork to your computer.
+
+```git clone git@github.com:practicalli/spacemacs.d.git ~/.spacemacs.d```
+
+If you are happy to use my Spacemacs configuration as it is, then remove your `~/.spacemacs` file and start Emacs.
 
 
-## Using this configuration
+## Use this configuration and an example
 
 Clone this repository and review the configurations I have chosen, not everything may be to your preferred way of working.
 
-The recommended approach is to use a diff tool, such as `ediff` in Emacs, to compare my configuration with your own existing configuration.
-
-I don't recommend you blindly copy it into your user directory.
+The recommended approach is to use a diff tool, such as `ediff` in Emacs, `SPC D f` in Spacemacs, to compare my configuration with your own existing configuration.
 
 
 ## The main configuration file
