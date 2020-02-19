@@ -320,6 +320,8 @@ It should only modify the values of Spacemacs settings."
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
    dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
+   ;; dotspacemacs-mode-line-theme '(doom)
+   ;; dotspacemacs-mode-line-theme '(all-the-icons :separator arrow :separator-scale 1.5)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -578,6 +580,17 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
+
+  ;; (setq doom-modeline-height 0.50)
+
+  ;; Configuration when using spaceline
+  ;; Not required when using doom theme as it can be customized directly.
+
+  ;; (setq dotspacemacs-mode-line-unicode-symbols nil)
+
+  ;; '(mode-line ((t (:background "#e7e5eb" :foreground "#655370" :box (:line-width 1 :color "#b3b9be") :height 0.76))))
+  ;; '(mode-line-inactive ((t (:background "#fbf8ef" :foreground "#655370" :box (:line-width 1 :color "#b3b9be") :height 0.76))))
+
   ;; custom theme modification
   ;; - overriding default height of modeline
   (setq-default
@@ -604,6 +617,134 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+
+  ;; spacemacs spaceline segment customisations
+  ;; changing the appearance of the mode line
+  ;; (spaceline-toggle-buffer-size-off)
+  ;; (spaceline-toggle-buffer-encoding-abbrev-off)
+  ;; (spaceline-toggle-hud-off)
+  ;; (spaceline-toggle-line-column-off)
+  ;; ;; (spaceline-toggle-minor-modes-off)
+  ;; (spaceline-toggle-point-position-off)
+
+  ;; (spaceline-toggle-org-pomodoro-on)
+
+  ;; Spaceline customisations - all-the-icons theme
+  ;; run `SPC SPC all-the-icons-install-fonts' before using this theme
+  ;; Features can be toggled with the list functions
+  ;; spaceline-toggle-all-the-icons-*
+  ;; (spaceline-toggle-all-the-icons-buffer-path-off)
+  ;; (spaceline-toggle-all-the-icons-buffer-size-off)
+  ;; (spaceline-toggle-all-the-icons-position-off)
+  ;; (spaceline-toggle-all-the-icons-window-number-on)
+  ;; ;; (spaceline-toggle-all-the-icons-multiple-cursors-on) ;; ??
+  ;; (spaceline-toggle-all-the-icons-eyebrowse-workspace-on) ;; workspaces not layout names
+
+
+
+  ;; Define a custom doom-modeline
+
+  ;; (doom-modeline-def-modeline 'my-simple-line
+  ;;   '(bar matches buffer-info remote-host buffer-position parrot selection-info)
+  ;;   '(misc-info minor-modes input-method buffer-encoding major-mode process vcs checker ))
+
+
+  ;; (doom-modeline-def-modeline 'practicalli
+  ;;   '(persp-name buffer-info remote-host)
+  ;;   '(vcs github checker misc-info process matches))
+
+  ;; bar  - adds a bar at the start of the modeline (no specific function)
+  ;; battery - shows battery level
+  ;; buffer-default-directory - shows directory icon and full path
+  ;; buffer-encoding - ?
+  ;; buffer-info - shows major mode icon, path/filename (colour change when edited)
+  ;; buffer-info-simple
+  ;; buffer-position
+  ;; buffer-size
+  ;; checker
+  ;; debug
+  ;; git-timemachine
+  ;; github
+  ;; gnus
+  ;; grip
+  ;; helm-buffer-id
+  ;; helm-follow
+  ;; helm-help
+  ;; helm-number
+  ;; helm-prefix-argument
+  ;; indent-info
+  ;; info-nodes
+  ;; input-method
+  ;; irc
+  ;; irc-buffers
+  ;; lsp
+  ;; major-mode
+  ;; matches
+  ;; media-info
+  ;; minor-modes
+  ;; misc-info
+  ;; modals  - shows evil state (not changing colour with doom theme)
+  ;; mu4e
+  ;; package
+  ;; parrot
+  ;; pdf-pages
+  ;; persp-name
+  ;; process
+  ;; remote-host
+  ;; selection-info
+  ;; vcs
+  ;; window-number
+  ;; word-count
+  ;; workspace-name
+
+
+  ;; Set it to default using the doom-modeline-mode-hook:
+
+  ;; (defun setup-custom-doom-modeline ()
+  ;;   (doom-modeline-set-modeline 'practicalli 'default))
+
+  ;; (add-hook 'doom-modeline-mode-hook 'setup-custom-doom-modeline)
+
+
+  ;; Spacemacs Spaceline customisations for the Doom theme
+  ;; (setq doom-modeline-height 14)
+  ;; ;; (setq doom-modeline-bar-width 1)
+  ;; (setq doom-modeline-buffer-file-name-style 'relative-to-project)
+  ;; ;; (setq doom-modeline-minor-modes nil)         ; displays as text, not icons
+  ;; (setq doom-modeline-buffer-encoding nil)
+  ;; ;; (setq doom-modeline-display-default-persp-name t)
+  ;; (setq doom-modeline-github nil)
+  ;; (setq doom-modeline-github-interval (* 30 60)) ; default
+  ;; ;; (setq doom-modeline-modal-icon t)
+
+  ;; hacking doom-modeline
+  ;; (setq doom-modeline-persp-name)
+  ;; (set-face-attribute 'mode-line nil :family "Noto Sans" :height 100)
+  ;; (set-face-attribute 'mode-line-inactive nil :family "Noto Sans" :height 100)
+
+  ;; Customise colours for modals
+  ;; https://github.com/seagle0128/doom-modeline/issues/207
+  ;; https://github.com/seagle0128/doom-modeline/issues/8
+
+  ;; (require 'doom-modeline)
+  ;; (setq doom-modeline-evil-emacs-state
+  ;;       (propertize "[Emacs]" 'face '((:background "orange" :foreground "black"))))
+
+  ;; (setq doom-modeline-evil-insert-state
+  ;;       (propertize "[Normal]" 'face '((:background "green" :foreground "black"))))
+  ;; doom-modeline-evil-motion-state
+  ;;
+  ;; (setq doom-modeline-evil-normal-state
+  ;;       (propertize "[Emacs]" 'face '((:background "orange" :foreground "black"))))
+
+  ;; doom-modeline-evil-operator-state
+  ;; doom-modeline-evil-visual-state
+  ;; doom-modeline-evil-replace-state
+
+
+
+
+
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Safe structural editing
