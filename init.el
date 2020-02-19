@@ -122,7 +122,10 @@ This function should only modify configuration layer settings."
      ;; dotspacemacs/user-config has customisations
      (org :variables
           org-enable-github-support t
-          org-enable-reveal-js-support nil)
+          org-enable-bootstrap-support t
+          org-enable-reveal-js-support t
+          org-want-todo-bindings t)
+
 
      ;; Text-based file manager with preview
      (ranger :variables
