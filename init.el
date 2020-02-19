@@ -71,8 +71,9 @@ This function should only modify configuration layer settings."
      command-log
 
      ;; Nyan cat tells you where you are in your file
-     (colors :variables
-             colors-enable-nyan-cat-progress-bar t)
+     ;; :variables
+     ;; colors-enable-nyan-cat-progress-bar (display-graphic-p)
+     colors
 
      ;; For Spacemacs configuration files and packages
      emacs-lisp
