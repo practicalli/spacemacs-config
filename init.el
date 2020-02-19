@@ -108,6 +108,10 @@ This function should only modify configuration layer settings."
      (spacemacs-layouts :variables
                         spacemacs-layouts-restrict-spc-tab t)
 
+     ;; Customise the Spacemacs themes
+     ;; https://develop.spacemacs.org/layers/+themes/theming/README.html
+     theming
+
      ;; Visual file manager - `SPC p t'
      ;; treemacs-no-png-images t
      (treemacs :variables
@@ -570,7 +574,19 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  )
+
+  ;; custom theme modification
+  ;; - overriding default height of modeline
+  (setq-default
+    theming-modifications
+      '((spacemacs-light
+          (mode-line :height 0.92)
+          (mode-line-inactive :height 0.92))
+        (doom-solarized-light
+         (mode-line :height 0.92)
+         (mode-line-inactive :height 0.92))))
+
+  )  ;; End of dotspacemacs/user-int
 
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
