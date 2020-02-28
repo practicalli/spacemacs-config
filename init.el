@@ -904,22 +904,53 @@ before packages are loaded."
             "\n"
             eshell-prompt-string))
 
+
+  ;; Looking for unicode icons on Emacs
+  ;; `list-character-sets' and select unicode-bmp
+  ;; scroll through bitmaps list to find the one you want
+  ;; some bitmaps seem to change
+
+  ;; "\x26A5 "  (female-male symbol)
+  ;; "\xf394"   (non-binary)
+  ;; "\xf105"     (docker - changes)
+  ;; "\xf105"   (leiningen - changes)
+  ;; "\xe919"   (clojure logo - ??)
+  ;; "\xf104"   (clojurescript logo - changes)
+  ;; "\xf09b"   (github octocat)
+  ;; "\xf397"  (git branch)
+  ;; "\xf126"    (was git fork, changes..)
+  ;; "\xf1d3"  ;  (git icon - changes)
+  ;; "\xf5b0"   (git merge)
+  ;; "\xf07b" 
+  ;; "\xf114"   (closed folder - changes)
+  ;; "\xf115"   (open folder - changes)
+  ;; "\xf074" 
+  ;; "\xe97c" 
+  ;; "\xe943"  
+  ;; "\xe566"  
+  ;; "\xe422"  
+  ;; "\xe907"  ; 
+  ;; "\xe91b"  ;  
+  ;; "\xf126"    (was git fork, changes..)
+  ;; "\xf1d3"  ;  (git icon - changes)
+
+
   (esh-section esh-dir
                "\xf07c"  ;  (faicon folder)
                (abbreviate-file-name (eshell/pwd))
-               '(:foreground "gold" :bold ultra-bold :underline t))
+               '(:foreground "olive" :bold bold :underline t))
 
   (esh-section esh-git
-               "\xe907"  ;  (git icon)
+               "\xf397"  ;  (git branch icon)
                (magit-get-current-branch)
-               '(:foreground "pink"))
+               '(:foreground "maroon"))
 
   ;; (esh-section esh-python
   ;;              "\xe928"  ;  (python icon)
   ;;              pyvenv-virtual-env-name)
 
   (esh-section esh-clock
-               "\xf017"  ;  (clock icon)
+               ""  ;  (clock icon)
                (format-time-string "%H:%M" (current-time))
                '(:foreground "forest green"))
 
@@ -929,28 +960,32 @@ before packages are loaded."
   (advice-add 'eshell-send-input :before
               (lambda (&rest args) (setq esh-prompt-num (incf esh-prompt-num))))
 
+
+  ;; "\xf0c9"  ;  (list icon)
   (esh-section esh-num
-               "\xf0c9"  ;  (list icon)
+               "\x2130"  ;  ℰ (eshell icon)
                (number-to-string esh-prompt-num)
                '(:foreground "brown"))
 
   ;; Separator between esh-sections
-  (setq esh-sep "  ")  ; or " | "
+  (setq esh-sep " ")  ; or " | "
 
   ;; Separator between an esh-section icon and form
-  (setq esh-section-delim " ")
+  (setq esh-section-delim "")
 
   ;; Eshell prompt header
   (setq esh-header "\n ")  ; or "\n┌─"
 
   ;; Eshell prompt regexp and string. Unless you are varying the prompt by eg.
   ;; your login, these can be the same.
-  (setq eshell-prompt-regexp " ")   ; or "└─> "
-  (setq eshell-prompt-string " ")   ; or "└─> "
+  (setq eshell-prompt-regexp " \x2130 ")   ; or "└─> "
+  (setq eshell-prompt-string " \x2130 ")   ; or "└─> "
+
 
   ;; Choose which eshell-funcs to enable
   ;; (setq eshell-funcs (list esh-dir esh-git esh-python esh-clock esh-num))
-  (setq eshell-funcs (list esh-dir esh-git esh-clock esh-num))
+  ;; (setq eshell-funcs (list esh-dir esh-git esh-clock esh-num))
+  (setq eshell-funcs (list esh-dir esh-git))
 
   ;; Enable the new eshell prompt
   (setq eshell-prompt-function 'esh-prompt-func)
