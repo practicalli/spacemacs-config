@@ -81,9 +81,11 @@ This function should only modify configuration layer settings."
      ;; Include emojis into everything
      emoji
 
-     ;; SPC g s opens Magit git client full screen (quit restores previous layout)
+     ;; SPC g s opens Magit git client full screen (q restores previous layout)
+     ;; refine hunk 'all highlights characters changed on each line
      (git :variables
-          git-magit-status-fullscreen t)
+          git-magit-status-fullscreen t
+          magit-diff-refine-hunk 'all)
 
      ;; SPC g h to use GitHub repositories
      ;; SPC g g to use GitHub Gists
