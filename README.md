@@ -16,7 +16,7 @@ In a terminal window, use git clone to copy your fork to your computer.
 If you are happy to use my Spacemacs configuration as it is, then remove your `~/.spacemacs` file and start Emacs.
 
 
-## Use this configuration and an example
+## Use this configuration as an example
 
 Clone this repository and review the configurations I have chosen, not everything may be to your preferred way of working.
 
