@@ -63,10 +63,6 @@ This function should only modify configuration layer settings."
      ;; To add the sayid debugger, include the following as a variable above
      ;; clojure-enable-sayid t
 
-     ;; Add the Joker linter for real-time linting in Clojure
-     ;; Requires local install of Joker tool
-     ;; clojure-lint
-
      ;; SPC a L displays key and command history in a separate buffer
      command-log
 
