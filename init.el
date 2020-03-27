@@ -611,8 +611,9 @@ before packages are loaded."
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Safe structural editing
   ;; for all major modes
-  ;;
   (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hooks)
+  ;; for clojure layer only (comment out line above)
+  ;; (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-clojure-mode)
   ;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -1080,9 +1081,7 @@ before packages are loaded."
   ;; (add-hook 'cider-repl-mode-hook #'subword-mode)
   ;;
   ;;
-  ;; enable safe structural editing in evil (clojure layer - evil-cleverparens)
-  ;; (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-clojure-mode)
-  ;;
+ ;;
   ;;
   ;;
   ;; Linting with clj-kondo
