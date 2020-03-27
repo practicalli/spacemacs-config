@@ -603,6 +603,11 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
+  ;; Which-key now using a different sorting order for keybindings
+  ;; which-key-sort-order 'which-key-prefix-then-key-order
+  ;; https://github.com/syl20bnr/spacemacs/commit/ab3511cfb55aadaa7a13be03356917cca3071c02
+  ;; (setq which-key-sort-order 'which-key-key-order-alpha)
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Safe structural editing
   ;; for all major modes
