@@ -735,6 +735,13 @@ before packages are loaded."
   (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
   ;;
   ;;
+  ;; Local Clojure and Java sources
+  ;; Extract the clojure-x.x.x-sources.jar and Java src.zip files
+  ;; Extracted files enable use of search tools (ripgrep, ag).
+  ;; https://docs.cider.mx/cider/config/basic_config.html#_use_a_local_copy_of_the_java_source_code
+  ;; (setq cider-jdk-src-paths '("~/projects/java/clojure-1.10.1-sources"
+  ;;                             "~/projects/java/openjdk-11/src"))
+  ;;
   ;; TODO: review this binding - gives poor user experience
   ;; Multi-line editing in the REPL buffer
   ;; `RTN` creates a new line, `C-RTN` evaluates the code
