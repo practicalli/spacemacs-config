@@ -110,8 +110,10 @@ This function should only modify configuration layer settings."
 
      ;; spacemacs-layouts layer added to set variables
      ;; Restrict `SPC TAB' to current layout
+     ;; Kill buffers when deleting layer - SPC l d
      (spacemacs-layouts :variables
-                        spacemacs-layouts-restrict-spc-tab t)
+                        spacemacs-layouts-restrict-spc-tab t
+                        persp-autokill-buffer-on-remove t)
 
      ;; Customise the Spacemacs themes
      ;; https://develop.spacemacs.org/layers/+themes/theming/README.html
