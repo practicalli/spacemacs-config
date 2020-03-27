@@ -87,6 +87,13 @@ This function should only modify configuration layer settings."
      ;; SPC g g to use GitHub Gists
      github
 
+     ;; GNU Global is a source code tagging system
+     ;; It queries symbol locations in source code, such as definitions or references
+     ;; `sudo apt install ctags` for Clojure support
+     ;; https://develop.spacemacs.org/layers/+tags/gtags/README.html
+     ;; (gtags :variables
+     ;;        gtags-enable-by-default t)
+
      helm
      ;; (helm :variables
      ;;       helm-enable-auto-resize t
