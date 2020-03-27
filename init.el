@@ -108,7 +108,7 @@ This function should only modify configuration layer settings."
 
      ;; Customise the Spacemacs themes
      ;; https://develop.spacemacs.org/layers/+themes/theming/README.html
-     theming
+     ;; theming
 
      ;; Visual file manager - `SPC p t'
      ;; treemacs-no-png-images t
