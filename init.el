@@ -615,10 +615,25 @@ before packages are loaded."
   ;; https://github.com/syl20bnr/spacemacs/commit/ab3511cfb55aadaa7a13be03356917cca3071c02
   ;; (setq which-key-sort-order 'which-key-key-order-alpha)
 
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; native line numbers taking up lots of space?
+  (setq-default display-line-numbers-width nil)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Over-ride SPC / search command
   (evil-leader/set-key "/" 'helm-swoop)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Magit - forge configuration
+  ;;
+  ;; Set the files that are searched for writing tokens
+  ;; by default ~/.authinfo will be used
+  ;; and write a token in unencrypted format
+  (setq auth-sources '("~/.authinfo.gpg"))
+  ;;
+  ;; End of Magit - forge configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
