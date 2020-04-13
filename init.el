@@ -72,6 +72,11 @@ This function should only modify configuration layer settings."
      ;; colors-enable-nyan-cat-progress-bar (display-graphic-p)
      colors
 
+     ;; Tools to work with comma separate values
+     ;; Used for data science files
+     ;; https://develop.spacemacs.org/layers/+lang/csv/README.html
+     csv
+
      ;; For Spacemacs configuration files and packages
      emacs-lisp
 
