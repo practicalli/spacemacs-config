@@ -103,6 +103,10 @@ This function should only modify configuration layer settings."
 
      html
      javascript
+
+     ;; Clojure specific configuration in dotspacemacs/user-config
+     ;; lsp
+
      markdown
 
      ;; Editing multiple lines of text concurrently
@@ -778,6 +782,23 @@ before packages are loaded."
   ;; https://docs.cider.mx/cider/config/basic_config.html#_use_a_local_copy_of_the_java_source_code
   ;; (setq cider-jdk-src-paths '("~/projects/java/clojure-1.10.1-sources"
   ;;                             "~/projects/java/openjdk-11/src"))
+  ;;
+  ;;
+  ;; LSP server for Clojure with clj-kondo
+  ;; An alternative approach to the Clojure layer variable clojure-enable-linters 'clj-kondo
+  ;; for those environments where the clj-kondo binary does not run (eg. graal).
+  ;; Uses a custom script to run the clj-kondo-lsp-server.jar which should be added
+  ;; to the operating system path and include:
+  ;; java -jar ~/path/to/clj-kondo-lsp-server-standalone.jar
+  ;; (use-package lsp-mode
+  ;;   :ensure t
+  ;;   :hook ((clojure-mode . lsp))
+  ;;   :commands lsp
+  ;;   :custom ((lsp-clojure-server-command '("clojure-lsp-server-clj-kondo")))
+  ;;   :config (dolist  (m '(clojure-mode clojurescript-mode))
+  ;;             (add-to-list 'lsp-language-id-configuration `(,m . "clojure"))))
+  ;;
+  ;;
   ;;
   ;; TODO: review this binding - gives poor user experience
   ;; Multi-line editing in the REPL buffer
