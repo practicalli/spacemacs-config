@@ -109,33 +109,20 @@ This function should only modify configuration layer settings."
      ;; `g r' menu in Emacs normal state
      multiple-cursors
 
-     ;; spacemacs-layouts layer added to set variables
-     ;; Restrict `SPC TAB' to current layout
-     ;; Kill buffers when deleting layer - SPC l d
-     (spacemacs-layouts :variables
-                        spacemacs-layouts-restrict-spc-tab t
-                        persp-autokill-buffer-on-remove t)
-
      ;; Customise the Spacemacs themes
      ;; https://develop.spacemacs.org/layers/+themes/theming/README.html
+     ;; See example code in dotspacemacs/user-init
      ;; theming
 
-     ;; Visual file manager - `SPC p t'
-     ;; treemacs-no-png-images t
-     (treemacs :variables
-               treemacs-indentation 1
-               treemacs-use-filewatch-mode t
-               treemacs-use-follow-mode t)
-
-     ;; dotspacemacs/user-config has customisations
+     ;; Spacemacs Org mode
      (org :variables
           org-enable-github-support t
           org-enable-bootstrap-support t
           org-enable-reveal-js-support t
           org-want-todo-bindings t)
 
-
      ;; Text-based file manager with preview
+     ;; SPC a r
      (ranger :variables
              ranger-show-preview t
              ranger-show-hidden t
@@ -151,11 +138,12 @@ This function should only modify configuration layer settings."
             shell-default-height 30
             shell-default-position 'bottom)
 
-     ;; Spacemacs-layouts is loaded by default
-     ;; Added only to set variables on the layer
+     ;; spacemacs-layouts layer added to set variables
      ;; SPC TAB restricted to current layout buffers
+     ;; Kill buffers when killing layer - SPC l x
      (spacemacs-layouts :variables
-                         spacemacs-layouts-restrict-spc-tab t)
+                        spacemacs-layouts-restrict-spc-tab t
+                        persp-autokill-buffer-on-remove 'kill-weak)
 
      ;; Spell as you type with Flyspell package,
      ;; requires external command - ispell, hunspell, aspell
@@ -166,13 +154,19 @@ This function should only modify configuration layer settings."
      (syntax-checking :variables
                       syntax-checking-use-original-bitmaps t)
 
+     ;; Visual file manager - `SPC p t'
+     ;; treemacs-no-png-images t removes file and directory icons
+     (treemacs :variables
+               treemacs-indentation 1
+               treemacs-use-filewatch-mode t
+               treemacs-use-follow-mode t)
+
      ;; Highlight changes in buffers
      ;; SPC g . transient state for navigating changes
      (version-control :variables
                       version-control-diff-tool 'diff-hl
                       version-control-global-margin t)
 
-     ;; lsp
 
      ) ;; End of dotspacemacs-configuration-layers
 
@@ -719,7 +713,7 @@ before packages are loaded."
    'org-mode-hook
    (lambda ()
      "Beautify Org Checkbox Symbol"
-     (push '("[ ]" .  "☐") prettify-symbols-alist)
+     (push '("[ ]" . "☐") prettify-symbols-alist)
      (push '("[X]" . "☑" ) prettify-symbols-alist)
      (push '("[-]" . "❍" ) prettify-symbols-alist)
      (prettify-symbols-mode)))
