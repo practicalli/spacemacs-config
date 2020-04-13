@@ -93,6 +93,11 @@ This function should only modify configuration layer settings."
      ;; SPC g g to use GitHub Gists
      github
 
+     ;; graphviz - open-source graph declaration system
+     ;; Used to generated graphs of Clojure project dependencies
+     ;; https://develop.spacemacs.org/layers/+lang/graphviz/README.html
+     graphviz
+
      ;; GNU Global is a source code tagging system
      ;; It queries symbol locations in source code, such as definitions or references
      ;; `sudo apt install ctags` for Clojure support
