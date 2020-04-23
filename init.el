@@ -636,9 +636,12 @@ before packages are loaded."
 
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Set new location for file bookmarks, SPC f b
-  ;; Default: ~/.emacs.d/.cache/bookmarks
-  (setq bookmark-default-file "~/.spacemacs.d/bookmarks")
+  ;; User key bindings
+  ;;
+  ;; org-journal user keybinding
+  ;; - create a new journal entry
+  (spacemacs/set-leader-keys "oj" 'org-journal-new-entry)
+  ;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
