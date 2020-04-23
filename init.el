@@ -634,26 +634,49 @@ before packages are loaded."
   ;; https://github.com/syl20bnr/spacemacs/commit/ab3511cfb55aadaa7a13be03356917cca3071c02
   ;; (setq which-key-sort-order 'which-key-key-order-alpha)
 
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Set new location for file bookmarks, SPC f b
   ;; Default: ~/.emacs.d/.cache/bookmarks
   (setq bookmark-default-file "~/.spacemacs.d/bookmarks")
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Over-ride Spacemacs defaults
+  ;;
+  ;; Make helm-follow-mode sticky
+  ;; scrolling through a helm list, helm-follow will preview the item.
+  ;; When C-c C-f is used with a command, helm remembers
+  (setq helm-follow-mode-persistent t)
+  ;;
+  ;;
+  ;; Set new location for file bookmarks, SPC f b
+  ;; Default: ~/.emacs.d/.cache/bookmarks
+  (setq bookmark-default-file "~/.spacemacs.d/bookmarks")
+  ;;
+  ;;
   ;; Set new location for recent save files
   ;; Default: ~/.emacs.d/.cache/recentf
   (setq bookmark-default-file "~/.spacemacs.d/recentf")
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;
+  ;;
   ;; native line numbers taking up lots of space?
   (setq-default display-line-numbers-width nil)
+  ;;
+  ;;
+  ;; Over-ride / search command
+  ;; No longer working ?
+  (evil-leader/set-key "/" 'helm-swoop)
+  ;;
+  ;;
+  ;; Open ranger with the minus keybinding - not working
+  ;; Currently opens with deer
+  ;; (setq ranger-enter-with-minus t)
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Over-ride SPC / search command
-  (evil-leader/set-key "/" 'helm-swoop)
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
