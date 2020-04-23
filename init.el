@@ -133,7 +133,15 @@ This function should only modify configuration layer settings."
           org-enable-github-support t
           org-enable-bootstrap-support t
           org-enable-reveal-js-support t
-          org-want-todo-bindings t)
+          org-want-todo-bindings t
+          org-enable-org-journal-support t
+          org-journal-dir "~/projects/journal/"
+          org-journal-file-format "%Y-%m-%d"
+          org-journal-date-prefix "#+TITLE: "
+          org-journal-date-format "%A, %B %d %Y"
+          org-journal-time-prefix "* "
+          org-journal-time-format "")
+
 
      ;; Text-based file manager with preview
      ;; SPC a r
