@@ -140,7 +140,8 @@ This function should only modify configuration layer settings."
           org-journal-date-prefix "#+TITLE: "
           org-journal-date-format "%A, %B %d %Y"
           org-journal-time-prefix "* "
-          org-journal-time-format "")
+          org-journal-time-format ""
+          org-journal-carryover-items "TODO=\"TODO\"|TODO=\"DOING\"|TODO=\"BLOCKED\"|TODO=\"REVIEW\"")
 
 
      ;; Text-based file manager with preview
