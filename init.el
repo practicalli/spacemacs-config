@@ -836,6 +836,29 @@ before packages are loaded."
   ;;                             "~/projects/java/openjdk-11/src"))
   ;;
   ;;
+  ;; anakondo - static analysis using clj-kondo
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; https://github.com/didibus/anakondo
+  ;; Provides auto-completion without the need for a REPL
+  ;; Add anakondo to `dotspacemacs-additional-packages` list
+  ;;
+  ;; `SPC SPC anakondo-minor-mode' to run manually for the current project.
+  ;;
+  ;; Commented until static analysis is an optional or background process
+  ;; https://github.com/didibus/anakondo/issues/1
+  ;;
+  ;; Lazy load of anakondo until Clojure buffer is used
+  ;; (autoload 'anakondo-minor-mode "anakondo")
+  ;;
+  ;; Enable anakondo-minor-mode in all Clojure buffers
+  ;; (add-hook 'clojure-mode-hook #'anakondo-minor-mode)
+  ;; Enable anakondo-minor-mode in all ClojureScript buffers
+  ;; (add-hook 'clojurescript-mode-hook #'anakondo-minor-mode)
+  ;; Enable anakondo-minor-mode in all cljc buffers
+  ;; (add-hook 'clojurec-mode-hook #'anakondo-minor-mode)
+  ;;
+  ;;
+  ;;
   ;; LSP server for Clojure with clj-kondo
   ;; An alternative approach to the Clojure layer variable clojure-enable-linters 'clj-kondo
   ;; for those environments where the clj-kondo binary does not run (eg. graal).
