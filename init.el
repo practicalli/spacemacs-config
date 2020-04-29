@@ -628,11 +628,6 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
-  ;; Which-key now using a different sorting order for keybindings
-  ;; which-key-sort-order 'which-key-prefix-then-key-order
-  ;; https://github.com/syl20bnr/spacemacs/commit/ab3511cfb55aadaa7a13be03356917cca3071c02
-  ;; (setq which-key-sort-order 'which-key-key-order-alpha)
-
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; User key bindings
@@ -1147,6 +1142,14 @@ before packages are loaded."
   ;; TODO: try setting undo-tree tmp files location
   ;; (setq undo-tree-history-directory-alist '(("." . "~/var/emacs/undo")))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Which-key now using a different sorting order for keybindings
+  ;; which-key-sort-order 'which-key-prefix-then-key-order
+  ;; https://github.com/syl20bnr/spacemacs/commit/ab3511cfb55aadaa7a13be03356917cca3071c02
+  ;; (setq which-key-sort-order 'which-key-key-order-alpha)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Spell checking
