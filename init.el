@@ -747,21 +747,35 @@ before packages are loaded."
   ;; Setting colours (faces) using the `org-todo-keyword-faces' defcustom function
   ;; https://github.com/tkf/org-mode/blob/master/lisp/org-faces.el#L376
   ;; Using `with-eval-after-load' as a hook to call this setting when org-mode is run
+  ;;
   (with-eval-after-load 'org
     (setq org-todo-keyword-faces
-         '(("todo" . "SlateGray")
-           ("doing" . "DarkOrchid")
-           ("blocked" . "Firebrick")
-           ("review" . "Teal")
-           ("done" . "ForestGreen")
-           ("archived" .  "SlateBlue"))))
+          '(("TODO" . "SlateGray")
+            ("DOING" . "DarkOrchid")
+            ("BLOCKED" . "Firebrick")
+            ("REVIEW" . "Teal")
+            ("DONE" . "ForestGreen")
+            ("ARCHIVED" .  "SlateBlue"))))
+  ;;
+  ;;
+  ;; Set TODO keyword faces if over-ridden by theme.
+  (defun practicalli/set-todo-keyword-faces ()
+    (interactive)
+    (setq hl-todo-keyword-faces
+          '(("TODO" . "SlateGray")
+            ("DOING" . "DarkOrchid")
+            ("BLOCKED" . "Firebrick")
+            ("REVIEW" . "Teal")
+            ("DONE" . "ForestGreen")
+            ("ARCHIVED" .  "SlateBlue"))))
+  ;;
   ;;
   ;; Progress Logging
   ;; When a TODO item enters DONE, add a CLOSED: property with current date-time stamp
   (with-eval-after-load 'org
     (setq org-log-done 'time))
   ;;
-
+  ;;
   ;; customize org-mode's checkboxes with unicode symbols
   (add-hook
    'org-mode-hook
@@ -771,7 +785,7 @@ before packages are loaded."
      (push '("[X]" . "☑" ) prettify-symbols-alist)
      (push '("[-]" . "❍" ) prettify-symbols-alist)
      (prettify-symbols-mode)))
-
+  ;;
   ;; Markdown mode hook for orgtbl-mode minor mode
   (add-hook 'markdown-mode-hook 'turn-on-orgtbl)
   ;;
@@ -948,15 +962,6 @@ before packages are loaded."
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Set Hightlight keywords
-
-  (setq hl-todo-keyword-faces
-        '(("TODO" . "SlateGray")
-          ("DOING" . "DarkOrchid")
-          ("BLOCKED" . "Firebrick")
-          ("REVIEW" . "Teal")
-          ("DONE" . "ForestGreen")
-          ("ARCHIVED" .  "SlateBlue")))
   ;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
