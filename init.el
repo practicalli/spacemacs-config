@@ -860,6 +860,7 @@ before packages are loaded."
   ;;
   ;;
   ;; LSP server for Clojure with clj-kondo
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; An alternative approach to the Clojure layer variable clojure-enable-linters 'clj-kondo
   ;; for those environments where the clj-kondo binary does not run (eg. graal).
   ;; Uses a custom script to run the clj-kondo-lsp-server.jar which should be added
@@ -872,7 +873,6 @@ before packages are loaded."
   ;;   :custom ((lsp-clojure-server-command '("clojure-lsp-server-clj-kondo")))
   ;;   :config (dolist  (m '(clojure-mode clojurescript-mode))
   ;;             (add-to-list 'lsp-language-id-configuration `(,m . "clojure"))))
-  ;;
   ;;
   ;;
   ;; TODO: review this binding - gives poor user experience
