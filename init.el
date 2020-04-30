@@ -663,9 +663,12 @@ before packages are loaded."
   (setq-default display-line-numbers-width nil)
   ;;
   ;;
-  ;; Over-ride / search command
-  ;; No longer working ?
-  (evil-leader/set-key "/" 'helm-swoop)
+
+  ;; replace SPC /  with SPC s p
+  (evil-leader/set-key "/" 'spacemacs/helm-project-smart-do-search)
+
+  ;; replace / search with helm-swoop in Evil normal state
+  (evil-global-set-key 'normal "/" 'helm-swoop)
   ;;
   ;;
   ;; Open ranger with the minus keybinding - not working
