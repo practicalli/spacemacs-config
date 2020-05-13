@@ -112,7 +112,8 @@ This function should only modify configuration layer settings."
      ;;       helm-use-frame-when-more-than-two-windows nil)
 
      html
-     javascript
+     ;; javascript
+     json
 
      ;; Clojure specific configuration in dotspacemacs/user-config
      ;; lsp
