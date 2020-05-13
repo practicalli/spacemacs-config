@@ -663,10 +663,6 @@ before packages are loaded."
   (setq-default display-line-numbers-width nil)
   ;;
   ;;
-
-  ;; replace SPC /  with SPC s p
-  (evil-leader/set-key "/" 'spacemacs/helm-project-smart-do-search)
-
   ;; replace / search with helm-swoop in Evil normal state
   (evil-global-set-key 'normal "/" 'helm-swoop)
   ;;
