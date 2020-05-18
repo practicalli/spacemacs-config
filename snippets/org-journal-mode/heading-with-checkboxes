@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+#name : heading-with-checkboxes
+#key : heading-with-checkboxes
+#contributor : practicalli
+# --
+
+** TODO $1 [/]
+   - [ ] $0
