@@ -936,12 +936,14 @@ before packages are loaded."
       (let* ((point-pos2 (point))
              (cmtstr "#_")
              (cmtstr-len (length cmtstr))
-             (line-start (buffer-substring-no-properties point-pos2 (+ point-pos2 cmtstr-len))))
+             (line-start (buffer-substring-no-properties point-pos2 (+ point-pos2 cmtstr-len)))
+             (point-movement (if (string= cmtstr line-start) -2 2))
+             (ending-point-pos (+ point-pos1 point-movement 1)))
         (if (string= cmtstr line-start)
             (delete-char cmtstr-len)
           (insert cmtstr))
-        (goto-char point-pos1)
-        (evil-normal-state))))
+        (goto-char ending-point-pos)))
+    (evil-normal-state))
   ;;
   ;; Assign keybinding to the toggle-reader-comment-sexp function
   (define-key global-map (kbd "C-#") 'clojure-toggle-reader-comment-sexp)
