@@ -706,6 +706,8 @@ before packages are loaded."
   ;; and write a token in unencrypted format
   (setq auth-sources '("~/.authinfo.gpg"))
   ;;
+  ;; Configure number of topics show, open and closed
+  (setq  forge-topic-list-limit '(100 . 0))
   ;; End of Magit - forge configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
