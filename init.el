@@ -707,7 +707,11 @@ before packages are loaded."
   (setq auth-sources '("~/.authinfo.gpg"))
   ;;
   ;; Configure number of topics show, open and closed
-  (setq  forge-topic-list-limit '(100 . 0))
+  ;; use negative number to toggle the view of closed topics
+  ;; using `SPC SPC forge-toggle-closed-visibility'
+  (setq  forge-topic-list-limit '(100 . -10))
+  ;; set closed to 0 to never show closed issues
+  ;; (setq  forge-topic-list-limit '(100 . 0))
   ;; End of Magit - forge configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
