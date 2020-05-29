@@ -712,6 +712,19 @@ before packages are loaded."
   (setq  forge-topic-list-limit '(100 . -10))
   ;; set closed to 0 to never show closed issues
   ;; (setq  forge-topic-list-limit '(100 . 0))
+  ;;
+  ;; GitHub user and organization accounts owned
+  ;; used by @ c f  to create a fork
+  (setq forge-owned-accounts
+        '(("practicalli" "jr0cket"
+           "ClojureBridgeLondon" "ldnclj"
+           "clojure-hacks"
+           "reclojure")))
+  ;; To blacklist specific accounts,
+  ;; over-riding forge-owned-accounts
+  ;; (setq forge-owned-blacklist
+  ;;       '(("bad-hacks" "really-bad-hacks")))
+  ;;
   ;; End of Magit - forge configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
