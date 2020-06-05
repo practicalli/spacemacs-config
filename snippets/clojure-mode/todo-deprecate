@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : todo-deprecate
+#key : todo-deprecate
+#contributor : practicalli
+# --
+;; TODO: deprecate content
