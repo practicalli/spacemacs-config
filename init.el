@@ -59,7 +59,9 @@ This function should only modify configuration layer settings."
      ;; Enable clj-refactor tools
      (clojure :variables
               clojure-toplevel-inside-comment-form t
-              clojure-enable-linters 'clj-kondo)
+              cider-overlays-use-font-lock t
+              clojure-enable-linters 'clj-kondo
+              cider-test-show-report-on-success t)
 
      ;; To add the sayid debugger, include the following as a variable above
      ;; clojure-enable-sayid t
