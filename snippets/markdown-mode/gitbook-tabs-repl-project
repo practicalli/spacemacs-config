@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+#name : gitbook-tabs-repl-project
+#key : gitbook-tabs-repl-project
+#contributor : practicalli
+# --
+{% tabs repl="In the REPL", project="In a Clojure Project" %}
+
+{% content "repl" %}
+$0
+
+{% content "project" %}
+
+
+{% endtabs %}
