@@ -4,9 +4,6 @@
 #contributor : practicalli
 # --
 > #### Hint::Use practicalli/clojure-deps-edn to add common tools
-> Create a fork of the [practicalli/clojure-deps-edn](https://github.com/practicalli/clojure-deps-edn) on GitHub
->
-> Clone that fork to `~/.clojure/` and instantly have access to dozens of tools for Clojure software development
->
-> All tools are provided via libraries and are only installed if used.
+> fork and clone the [practicalli/clojure-deps-edn](https://github.com/practicalli/clojure-deps-edn) GitHub repository to `~/.clojure/`  and instantly have access to dozens of tools for Clojure software development
+
 $0
