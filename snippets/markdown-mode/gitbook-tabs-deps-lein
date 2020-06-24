@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+#name : gitbook-tabs-deps-lein
+#key : gitbook-tabs-deps-lein
+#contributor : practicalli
+# --
+
+{% tabs deps="deps.edn projects", lein="Leiningnen projects" %}
+
+{% content "deps" %}
+$0
+
+{% content "lein" %}
+
+
+{% endtabs %}
