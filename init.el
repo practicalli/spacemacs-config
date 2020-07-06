@@ -56,15 +56,12 @@ This function should only modify configuration layer settings."
      ;; To have auto-completion on as soon as you start typing
      ;; (auto-completion :variables auto-completion-idle-delay nil)
 
-     ;; Enable clj-refactor tools
+     ;; https://develop.spacemacs.org/layers/+lang/clojure/README.html
      (clojure :variables
               clojure-toplevel-inside-comment-form t
               cider-overlays-use-font-lock t
               clojure-enable-linters 'clj-kondo
-              cider-test-show-report-on-success t)
-
-     ;; To add the sayid debugger, include the following as a variable above
-     ;; clojure-enable-sayid t
+              cider-preferred-build-tool 'clojure-cli)
 
      ;; SPC a L displays key and command history in a separate buffer
      command-log
@@ -107,11 +104,11 @@ This function should only modify configuration layer settings."
      ;; (gtags :variables
      ;;        gtags-enable-by-default t)
 
-     helm
-     ;; (helm :variables
-     ;;       helm-enable-auto-resize t
-     ;;       helm-position 'top  ; top, bottom, left, right
-     ;;       helm-use-frame-when-more-than-two-windows nil)
+     ;; helm-follow-mode sticky - remembers use of C-c C-f
+     ;; - follow mode previews when scrolling through a helm list
+     ;; (setq helm-follow-mode-persistent t)
+     (helm :variables
+           helm-follow-mode-persistent t)
 
      html
      ;; javascript
@@ -128,8 +125,8 @@ This function should only modify configuration layer settings."
 
      ;; Customise the Spacemacs themes
      ;; https://develop.spacemacs.org/layers/+themes/theming/README.html
-     ;; See example code in dotspacemacs/user-init
-     ;; theming
+     ;; Code in dotspacemacs/user-init to reduce size of modeline
+     theming
 
      ;; Spacemacs Org mode
      (org :variables
@@ -713,11 +710,6 @@ before packages are loaded."
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Over-ride Spacemacs defaults
   ;;
-  ;; Make helm-follow-mode sticky
-  ;; scrolling through a helm list, helm-follow will preview the item.
-  ;; When C-c C-f is used with a command, helm remembers
-  (setq helm-follow-mode-persistent t)
-  ;;
   ;;
   ;; Set new location for file bookmarks, SPC f b
   ;; Default: ~/.emacs.d/.cache/bookmarks
@@ -742,9 +734,6 @@ before packages are loaded."
   ;; (setq ranger-enter-with-minus t)
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Magit - forge configuration
@@ -973,10 +962,6 @@ before packages are loaded."
   ;;              (define-key cider-repl-mode-map (kbd "RET") #'cider-repl-newline-and-indent)
   ;;              (define-key cider-repl-mode-map (kbd "C-<return>") #'cider-repl-return)))
   ;;
-  ;; TODO: Spacemacs pull request with these keybindings, updating REPL intro text with details
-  ;; You can remove this message with the <M-x cider-repl-clear-help-banner> command.
-  ;; You can disable it from appearing on start by setting
-  ;; ‘cider-repl-display-help-banner’ to nil.
   ;;
   ;; TODO: review this binding
   ;; repl history keybindings - not used - use s-<up> and s-<down> which are the defaults
@@ -1034,7 +1019,7 @@ before packages are loaded."
         (call-interactively
          (if arg 'evil-open-fold
            'evil-close-fold)))))
-
+  ;;
   (evil-define-key 'normal clojure-mode-map
     "zC" 'clojure-hack/toggle-comment-block
     "zO" (lambda () (interactive) (clojure-hack/toggle-comment-block 'open)))
@@ -1061,7 +1046,6 @@ before packages are loaded."
   ;;     (cider-jack-in)))
   ;;
   ;;
-  ;;
   ;; Hook for command-log-mode
   ;; shows keybindings & commands in separate buffer
   ;; Load command-log-mode when opening a clojure file
@@ -1075,9 +1059,6 @@ before packages are loaded."
   ;; end of clojure configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;;
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Web-mode configuration
@@ -1099,14 +1080,14 @@ before packages are loaded."
   ;; Eshell visual enhancements
   ;;
   ;; Add git status visual labels
-
+  ;;
   (require 'dash)
   (require 's)
-
+  ;;
   (defmacro with-face (STR &rest PROPS)
     "Return STR propertized with PROPS."
     `(propertize ,STR 'face (list ,@PROPS)))
-
+  ;;
   (defmacro esh-section (NAME ICON FORM &rest PROPS)
     "Build eshell section NAME with ICON prepended to evaled FORM with PROPS."
     `(setq ,NAME
@@ -1114,7 +1095,7 @@ before packages are loaded."
                         (-> ,ICON
                             (concat esh-section-delim ,FORM)
                             (with-face ,@PROPS))))))
-
+  ;;
   (defun esh-acc (acc x)
     "Accumulator for evaluating and concatenating esh-sections."
     (--if-let (funcall x)
@@ -1122,20 +1103,20 @@ before packages are loaded."
             it
           (concat acc esh-sep it))
       acc))
-
+  ;;
   (defun esh-prompt-func ()
     "Build `eshell-prompt-function'"
     (concat esh-header
             (-reduce-from 'esh-acc "" eshell-funcs)
             "\n"
             eshell-prompt-string))
-
-
+  ;;
+  ;;
   ;; Looking for unicode icons on Emacs
   ;; `list-character-sets' and select unicode-bmp
   ;; scroll through bitmaps list to find the one you want
   ;; some bitmaps seem to change
-
+  ;;
   ;; "\x26A5 "  (female-male symbol)
   ;; "\xf394"   (non-binary)
   ;; "\xf105"     (docker - changes)
@@ -1159,55 +1140,54 @@ before packages are loaded."
   ;; "\xe91b"  ;  
   ;; "\xf126"    (was git fork, changes..)
   ;; "\xf1d3"  ;  (git icon - changes)
-
-
+  ;;
+  ;;
   (esh-section esh-dir
                "\xf07c"  ;  (faicon folder)
                (abbreviate-file-name (eshell/pwd))
                '(:foreground "olive" :bold bold :underline t))
-
+  ;;
   (esh-section esh-git
                "\xf397"  ;  (git branch icon)
                (magit-get-current-branch)
                '(:foreground "maroon"))
-
+  ;;
   ;; (esh-section esh-python
   ;;              "\xe928"  ;  (python icon)
   ;;              pyvenv-virtual-env-name)
-
+  ;;
   (esh-section esh-clock
                ""  ;  (clock icon)
                (format-time-string "%H:%M" (current-time))
                '(:foreground "forest green"))
-
+  ;;
   ;; Below I implement a "prompt number" section
   (setq esh-prompt-num 0)
   (add-hook 'eshell-exit-hook (lambda () (setq esh-prompt-num 0)))
   (advice-add 'eshell-send-input :before
               (lambda (&rest args) (setq esh-prompt-num (incf esh-prompt-num))))
-
-
+  ;;
+  ;;
   ;; "\xf0c9"  ;  (list icon)
   (esh-section esh-num
                "\x2130"  ;  ℰ (eshell icon)
                (number-to-string esh-prompt-num)
                '(:foreground "brown"))
-
+  ;;
   ;; Separator between esh-sections
   (setq esh-sep " ")  ; or " | "
-
+  ;;
   ;; Separator between an esh-section icon and form
   (setq esh-section-delim "")
-
+  ;;
   ;; Eshell prompt header
   (setq esh-header "\n ")  ; or "\n┌─"
-
+  ;;
   ;; Eshell prompt regexp and string. Unless you are varying the prompt by eg.
   ;; your login, these can be the same.
   (setq eshell-prompt-regexp " \x2130 ")   ; or "└─> "
   (setq eshell-prompt-string " \x2130 ")   ; or "└─> "
-
-
+  ;;
   ;; Choose which eshell-funcs to enable
   ;; (setq eshell-funcs (list esh-dir esh-git esh-python esh-clock esh-num))
   ;; (setq eshell-funcs (list esh-dir esh-git esh-clock esh-num))
@@ -1231,11 +1211,77 @@ before packages are loaded."
 
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; MacOSX
+  ;; Disable touchpad zoom gestures
+  ;;
+  ;; (define-key global-map (kbd "<magnify-up>") nil)
+  ;; (define-key global-map (kbd "<magnify-down>") nil)
+  ;;
+  ;; (defun practicalli-nothing ()
+  ;;   (interactive)
+  ;;   (message "Buttons are not toys") )
+  ;;
+  ;; (define-key global-map (kbd "<magnify-up>") 'practicalli-nothing)
+  ;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+  ;; Hacking spacebind
+  ;; TODO: How to over-ride name of spacebind defined key?
+  ;; The following does not work
+  ;; (spacemacs/set-leader-keys "b C-d" 'spacemacs/kill-matching-buffers-rudely "Hackme")
+  ;; (spacemacs/set-leader-keys "b C-d" 'spacemacs/kill-matching-buffers-rudely "Hackme")
+
+  ;; (spacemacs|spacebind
+  ;;  "Encrypt / decrypt files with Easy PG"
+  ;;  :global
+  ;;  (("b" "Buffers"
+  ;;    ("C-d" spacemacs/kill-matching-buffers-rudely "Rudely"))))
+
+;; (spacemacs|spacebind
+;;  "Compare buffers, files and directories."
+;;  :global
+;;  (("TAB" spacemacs/alternate-buffer "Last buffer")
+;;   ("b" "Buffers"
+;;    ("C-e" spacemacs/kill-matching-buffers-rudely "Kill rudely..."))))
+
+
+  ;; (spacemacs|spacebind
+  ;;  "Encrypt / decrypt files with Easy PG"
+  ;;  :global
+  ;;  (("a" "applications"
+  ;;    ("g"  "easy pg"
+  ;;     ("d" epa-decrypt-file "Decrypt file to...")
+  ;;     ("D" epa-delete-keys  "Delete keys...")
+  ;;     ("e" epa-encrypt-file "Encrypt file...")
+  ;;     ("i" epa-insert-keys  "Insert keys...")
+  ;;     ("k" epa-list-keys "List keys...")
+  ;;     ("K" epa-list-secret-keys "List secret keys...")
+  ;;     ("x" epa-export-keys "Export keys...")
+  ;;     ("s"  "sign"
+  ;;      ("f" epa-sign-file "Sign file...")
+  ;;      ("m" epa-sign-mail "Sign mail...")
+  ;;      ("r" epa-sign-region "Sign region..."))
+  ;;     ("v"  "verify"
+  ;;      ("f" epa-verify-file "Verify file...")
+  ;;      ("r" epa-verify-region "Verify region...")
+  ;;      ("c" epa-verify-cleartext-in-region "Verify cleartext region..."))))))
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;
+  ;; (add-hook 'persp-mode-hook
+  ;;           (lambda ()
+  ;;             (persp-load-state-from-file (expand-file-name "~/.emacs.d/.cache/layouts/persp-my-layout"))))
+  ;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Configuration no longer used
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Workarounds and bug fixes - temporary hopefully
@@ -1337,6 +1383,13 @@ before packages are loaded."
   ;;                       (clj-kondo-edn . edn-joker)))
   ;;     (flycheck-add-next-checker (car checkers) (cons 'error (cdr checkers)))))
 
+
+  ;; TODO: Spacemacs pull request with these keybindings, updating REPL intro text with details
+  ;; You can remove this message with the <M-x cider-repl-clear-help-banner> command.
+  ;; You can disable it from appearing on start by setting
+  ;; ‘cider-repl-display-help-banner’ to nil.
+  ;; Cannot set the banner to another text, its hard coded in CIDER code.
+  ;; (setq cider-repl-display-help-banner "Evaluate in the source code buffer for fun and profit!")
 
 
   ;; Merged into develop
