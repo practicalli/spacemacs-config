@@ -740,6 +740,11 @@ before packages are loaded."
   (evil-global-set-key 'normal "/" 'helm-swoop)
   ;;
   ;;
+  ;; Do not highlight trailing whitespace
+  ;; - whitespace deleted on save using: dotspacemacs-whitespace-cleanup 'all
+  (setq spacemacs-show-trailing-whitespace nil)
+  ;;
+  ;;
   ;; Open ranger with the minus keybinding - not working
   ;; Currently opens with deer
   ;; (setq ranger-enter-with-minus t)
