@@ -190,6 +190,7 @@ This function should only modify configuration layer settings."
                       version-control-diff-tool 'diff-hl
                       version-control-global-margin t)
 
+     yaml
 
      ) ;; End of dotspacemacs-configuration-layers
 
