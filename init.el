@@ -712,6 +712,9 @@ before packages are loaded."
   ;; - create a new journal entry
   (spacemacs/set-leader-keys "oj" 'org-journal-new-entry)
   ;;
+  ;; Toggle workspaces forward/backwards
+  (spacemacs/set-leader-keys "ow" 'eyebrowse-next-window-config)
+  (spacemacs/set-leader-keys "oW" 'eyebrowse-last-window-config)
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
