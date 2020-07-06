@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+#name : kaocha-script
+#key : kaocha-script
+#contributor : practicalli
+# --
+#!/usr/bin/env bash
+
+## Script to run the kaocha test runner
+clojure -A:test-runner-kaocha "$@"
