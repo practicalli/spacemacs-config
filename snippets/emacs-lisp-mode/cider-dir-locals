@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+#name : cider-dir-locals
+#key : cider-dir-locals
+#contributor : practicalli
+# --
+((clojure-mode . ((cider-clojure-cli-global-options . "-A:$1")
+                  (cider-preferred-build-tool . "clojure-cli"))))
