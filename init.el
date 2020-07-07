@@ -123,6 +123,19 @@ This function should only modify configuration layer settings."
      ;; `g r' menu in Emacs normal state
      multiple-cursors
 
+     ;; Configuration: https://github.com/seagle0128/doom-modeline#customize
+     (spacemacs-modeline :variables
+                         doom-modeline-height 12
+                         doom-modeline-bar-width 1
+                         doom-modeline-buffer-file-name-style 'relative-to-project
+                         doom-modeline-display-default-persp-name t
+                         doom-modeline-buffer-encoding nil
+                         doom-modeline-github t
+                         doom-modeline-gnus nil
+                         doom-modeline-irc nil
+                         doom-modeline-env-version t
+                         doom-modeline-modal-icon nil)
+
      ;; Customise the Spacemacs themes
      ;; https://develop.spacemacs.org/layers/+themes/theming/README.html
      ;; Code in dotspacemacs/user-init to reduce size of modeline
@@ -663,47 +676,6 @@ before packages are loaded."
   ;; Doom theme settings
   (setq doom-gruvbox-light-variant "hard")
 
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Spaceline Doom theme settings
-  ;; https://seagle0128.github.io/doom-modeline/
-  ;;
-  ;; Set height of the modeline - will resize to height of text
-  (setq doom-modeline-height 12)
-
-  ;; The left hand bar in the modeline
-  ;; setting to zero shows a large box outline
-  (setq doom-modeline-bar-width 1)
-
-  ;; Determine style of current filename / path displayed
-  ;; default: auto
-  (setq doom-modeline-buffer-file-name-style 'relative-to-project)
-
-  ;; default perspective name displayed in the mode-line.
-  (setq doom-modeline-display-default-persp-name t)
-
-  ;; Do not show buffer encoding
-  (setq doom-modeline-buffer-encoding nil)
-
-  ;; display GitHub notifications (requires `ghub' package)
-  (setq doom-modeline-github t)
-  ;; The interval of checking GitHub.
-  ;; (setq doom-modeline-github-interval (* 30 60))
-
-  ;; GNUs notifications - default t
-  (setq doom-modeline-gnus nil)
-
-  ;; IRC notifications - default t
-  (setq doom-modeline-irc nil)
-
-  ;; Environment versions - default t
-  (setq doom-modeline-env-version t)
-
-  ;; Use ascii rather than icon for modal state (more specific)
-  ;; Icon not changing for doom-solarized-light theme
-  ;; - icon changes color for doom-gruvbox-light theme
-  (setq doom-modeline-modal-icon nil)
-  ;; End of Spaceline Doom theme settings
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; User key bindings
