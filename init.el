@@ -355,9 +355,13 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
 
+<<<<<<< HEAD
    dotspacemacs-themes '(
                          spacemacs-dark
                          doom-solarized-dark
+=======
+   dotspacemacs-themes '(spacemacs-dark
+>>>>>>> dfe82227e1d5ed72de943cfa9ea1c4092a614371
                          doom-gruvbox-light
                          doom-solarized-light
                          doom-sourcerer
@@ -747,12 +751,16 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-themes '(
                          spacemacs-dark
                          doom-solarized-dark
+<<<<<<< HEAD
                          doom-gruvbox-light
                          doom-solarized-light
                          doom-sourcerer
                          kaolin-valley-dark
                          spacemacs-light
                          )
+=======
+                         spacemacs-light)
+>>>>>>> dfe82227e1d5ed72de943cfa9ea1c4092a614371
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
@@ -769,7 +777,11 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font or prioritized list of fonts.
    dotspacemacs-default-font '("Ubuntu Mono"
+<<<<<<< HEAD
                                :size 16.0
+=======
+                               :size 14.0
+>>>>>>> dfe82227e1d5ed72de943cfa9ea1c4092a614371
                                :weight normal
                                :width normal)
 
