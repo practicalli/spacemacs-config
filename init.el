@@ -380,7 +380,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font or prioritized list of fonts.
    dotspacemacs-default-font '("Ubuntu Mono"
-                               :size 20.0
+                               :size 18.0
                                :weight normal
                                :width normal)
 
@@ -769,7 +769,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font or prioritized list of fonts.
    dotspacemacs-default-font '("Ubuntu Mono"
-                               :size 20.0
+                               :size 16.0
                                :weight normal
                                :width normal)
 
