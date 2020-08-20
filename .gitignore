@@ -1,4 +1,4 @@
 # Git Ignore patterns for Spacemacs configuration
 
 # Environment variables are automatically generated
-spacemacs.env
+.spacemacs.env
