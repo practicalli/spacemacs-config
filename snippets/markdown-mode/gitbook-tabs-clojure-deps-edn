@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+#name : gitbook-tabs-clojure-deps-edn
+#key : gitbook-tabs-clojure-deps-edn
+#contributor : practicalli
+# --
+{% tabs practicalli="practicalli/clojure-deps-edn", manual="Manually add Alias" %}
+
+{% content "practicalli" %}
+
+{% content "manual" %}
+
+{% endtabs %}
+
+> Note: to have more than one set of tabs in a page, simply create unique id's for the tabs, e.g. practicalli2
