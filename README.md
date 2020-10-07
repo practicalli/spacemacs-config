@@ -1,6 +1,8 @@
 # Practicalli Spacemacs configuration
 This GitHub repository contains the current configuration to support the [Practicalli Spacemacs book](https://practicalli.github.io/spacemacs).  It contains the layers recommended for use for enhanced Clojure development experience as well as numerous tweaks for general [Spacemacs](https://github.com/syl20bnr/spacemacs/) usage.  The configuration also contains a number of snippets (code and configuration templates) for specific languages.
 
+# Recommended: Emacs 27 and [Fira Code fonts](https://github.com/tonsky/FiraCode)
+
 [![Spacemacs Practicalli - Interactive Clojure development with Emacs and CIDER](https://github.com/practicalli/spacemacs-content/blob/master/images/practicalli-spacemacs-book-banner.png)](https://practicalli.github.io/spacemacs)
 
 ## Recommended Command Line tools
@@ -16,6 +18,7 @@ In a terminal window, use git clone to copy your fork to your computer.
 
 If you are happy to use my Spacemacs configuration as it is, then remove your `~/.spacemacs` file and start Emacs.
 
+> Configuration is optomized for languages that are read left to right.  Change the configuration to use `(setq-default bidi-paragraph-direction 'right-to-left)` if you use right to left read languages.  Comment out this configuration if you use both.
 
 ## Use this configuration as an example
 Clone this repository and review the configurations I have chosen, not everything may be to your preferred way of working.
