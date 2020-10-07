@@ -132,10 +132,6 @@ This function should only modify configuration layer settings."
                          doom-modeline-minor-modes nil
                          doom-modeline-modal-icon nil)
 
-     ;; Customise the Spacemacs themes
-     ;; https://develop.spacemacs.org/layers/+themes/theming/README.html
-     ;; Code in dotspacemacs/user-init to reduce size of modeline
-     theming
      ;; buffer-position word-count parrot selection-info
 
      ;; Spacemacs Org mode
@@ -193,6 +189,11 @@ This function should only modify configuration layer settings."
                treemacs-indentation 1
                treemacs-use-filewatch-mode t
                treemacs-use-follow-mode t)
+
+     ;; Customise the Spacemacs themes
+     ;; https://develop.spacemacs.org/layers/+themes/theming/README.html
+     ;; Code in dotspacemacs/user-init to reduce size of modeline
+     ;; theming
 
      ;; Highlight changes in buffers
      ;; SPC g . transient state for navigating changes
