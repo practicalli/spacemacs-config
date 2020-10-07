@@ -195,6 +195,13 @@ This function should only modify configuration layer settings."
      ;; Code in dotspacemacs/user-init to reduce size of modeline
      ;; theming
 
+     ;; Support font ligatures (fancy symbols) in all modes
+     ;; 'prog-mode for only programming languages
+     ;; including text-mode may cause issues with org-mode and magit
+     (unicode-fonts :variables
+                    unicode-fonts-enable-ligatures t
+                    unicode-fonts-ligature-modes '(prog-mode))
+
      ;; Highlight changes in buffers
      ;; SPC g . transient state for navigating changes
      (version-control :variables
