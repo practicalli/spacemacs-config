@@ -126,20 +126,17 @@ This function should only modify configuration layer settings."
      ;; Configuration: https://github.com/seagle0128/doom-modeline#customize
      (spacemacs-modeline :variables
                          doom-modeline-height 12
-                         doom-modeline-bar-width 1
+                         doom-modeline-major-mode-color-icon t
                          doom-modeline-buffer-file-name-style 'relative-to-project
                          doom-modeline-display-default-persp-name t
-                         doom-modeline-buffer-encoding nil
-                         doom-modeline-github t
-                         doom-modeline-gnus nil
-                         doom-modeline-irc nil
-                         doom-modeline-env-version t
+                         doom-modeline-minor-modes nil
                          doom-modeline-modal-icon nil)
 
      ;; Customise the Spacemacs themes
      ;; https://develop.spacemacs.org/layers/+themes/theming/README.html
      ;; Code in dotspacemacs/user-init to reduce size of modeline
      theming
+     ;; buffer-position word-count parrot selection-info
 
      ;; Spacemacs Org mode
      (org :variables
@@ -680,8 +677,21 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
 
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Doom theme settings
   (setq doom-gruvbox-light-variant "hard")
+  ;;
+  (defun practicalli/setup-custom-doom-modeline ()
+    (doom-modeline-set-modeline 'practicalli-modeline 'default))
+  ;;
+  (with-eval-after-load 'doom-modeline
+    (doom-modeline-def-modeline 'practicalli-modeline
+      '(workspace-name window-number modals persp-name buffer-info remote-host vcs)
+      '(repl debug lsp process matches checker buffer-position word-count parrot selection-info misc-info))
+    (practicalli/setup-custom-doom-modeline))
+  ;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
