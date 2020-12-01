@@ -63,13 +63,13 @@ This function should only modify configuration layer settings."
               clojure-enable-linters 'clj-kondo
               cider-preferred-build-tool 'clojure-cli)
 
-     ;; SPC a L displays key and command history in a separate buffer
-     command-log
-
      ;; Nyan cat tells you where you are in your file
      ;; :variables
      ;; colors-enable-nyan-cat-progress-bar (display-graphic-p)
      colors
+     
+     ;; SPC a L displays key and command history in a separate buffer
+     command-log
 
      ;; Tools to work with comma separate values
      ;; Used for data science files
@@ -123,15 +123,6 @@ This function should only modify configuration layer settings."
      ;; `g r' menu in Emacs normal state
      multiple-cursors
 
-     ;; Configuration: https://github.com/seagle0128/doom-modeline#customize
-     (spacemacs-modeline :variables
-                         doom-modeline-height 12
-                         doom-modeline-major-mode-color-icon t
-                         doom-modeline-buffer-file-name-style 'relative-to-project
-                         doom-modeline-display-default-persp-name t
-                         doom-modeline-minor-modes nil
-                         doom-modeline-modal-icon nil)
-
      ;; buffer-position word-count parrot selection-info
 
      ;; Spacemacs Org mode
@@ -174,6 +165,15 @@ This function should only modify configuration layer settings."
                         spacemacs-layouts-restrict-spc-tab t
                         persp-autokill-buffer-on-remove 'kill-weak)
 
+     ;; Configuration: https://github.com/seagle0128/doom-modeline#customize
+     (spacemacs-modeline :variables
+                         doom-modeline-height 12
+                         doom-modeline-major-mode-color-icon t
+                         doom-modeline-buffer-file-name-style 'relative-to-project
+                         doom-modeline-display-default-persp-name t
+                         doom-modeline-minor-modes nil
+                         doom-modeline-modal-icon nil)
+     
      ;; Spell as you type with Flyspell package,
      ;; requires external command - ispell, hunspell, aspell
      ;; SPC S menu, SPC S s to check current word
