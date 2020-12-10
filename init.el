@@ -46,22 +46,24 @@ This function should only modify configuration layer settings."
      ;; Useful for docs.cider.mx editing
      asciidoc
 
+
      ;; Add tool tips to show doc string of functions
-     ;; Show snippets in the autocompletion popup
+     ;; Show snippets in the auto-completion popup
      ;; Show suggestions by most commonly used
      (auto-completion :variables
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-sort-by-usage t)
+
      ;; To have auto-completion on as soon as you start typing
      ;; (auto-completion :variables auto-completion-idle-delay nil)
 
      ;; https://develop.spacemacs.org/layers/+lang/clojure/README.html
      (clojure :variables
+              clojure-enable-linters 'clj-kondo
               clojure-toplevel-inside-comment-form t
               cider-overlays-use-font-lock t
-              clojure-enable-linters 'clj-kondo
-              cider-preferred-build-tool 'clojure-cli)
+              cider-repl-buffer-size-limit 100)
 
      ;; SPC a L displays key and command history in a separate buffer
      command-log
@@ -125,7 +127,7 @@ This function should only modify configuration layer settings."
 
      ;; Configuration: https://github.com/seagle0128/doom-modeline#customize
      (spacemacs-modeline :variables
-                         doom-modeline-height 12
+                         doom-modeline-height 14
                          doom-modeline-major-mode-color-icon t
                          doom-modeline-buffer-file-name-style 'relative-to-project
                          doom-modeline-display-default-persp-name t
@@ -133,6 +135,7 @@ This function should only modify configuration layer settings."
                          doom-modeline-modal-icon nil)
 
      ;; buffer-position word-count parrot selection-info
+
 
      ;; Spacemacs Org mode
      (org :variables
