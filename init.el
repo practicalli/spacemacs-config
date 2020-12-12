@@ -654,6 +654,10 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
+  ;; use gnu ls
+  (when (equal system-type 'darwin)
+    (setq insert-directory-program "/opt/homebrew/opt/coreutils/libexec/gnubin/ls"))
+
   ;; custom theme modification
   ;; - overriding default height of modeline
   (setq-default
