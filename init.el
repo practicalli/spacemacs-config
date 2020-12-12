@@ -61,7 +61,8 @@ This function should only modify configuration layer settings."
               clojure-toplevel-inside-comment-form t
               cider-overlays-use-font-lock t
               clojure-enable-linters 'clj-kondo
-              cider-preferred-build-tool 'clojure-cli)
+              cider-preferred-build-tool 'clojure-cli
+              clojure-enable-clj-refactor t)
 
      ;; SPC a L displays key and command history in a separate buffer
      command-log
@@ -688,6 +689,8 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+
+  (setq cljr-ignore-analyzer-errors t)
 
   (setq epa-pinentry-mode 'loopback)
 
