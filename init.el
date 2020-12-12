@@ -796,10 +796,7 @@ before packages are loaded."
   ;; GitHub user and organization accounts owned
   ;; used by @ c f  to create a fork
   (setq forge-owned-accounts
-        '(("practicalli" "jr0cket"
-           "ClojureBridgeLondon" "ldnclj"
-           "clojure-hacks"
-           "reclojure")))
+        '(("armincerf" "juxt")))
   ;; To blacklist specific accounts,
   ;; over-riding forge-owned-accounts
   ;; (setq forge-owned-blacklist
@@ -836,8 +833,8 @@ before packages are loaded."
   ;; with a number to define how many sub-directories to search
   ;; `SPC g L' - list all Git repositories in the defined paths,
   (setq magit-repository-directories
-        '(("~/.spacemacs.d"  . 0)
-          ("/Volumes/1TB/ghq" . 3)))
+        '(("/Volumes/1TB/ghq" . 3)
+          ("~/.spacemacs.d"  . 0)))
   ;;
   ;; end of version control configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
