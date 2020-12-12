@@ -833,8 +833,8 @@ before packages are loaded."
   ;; with a number to define how many sub-directories to search
   ;; `SPC g L' - list all Git repositories in the defined paths,
   (setq magit-repository-directories
-        '(("~/.emacs.d"  . 0)
-          ("~/projects/" . 2)))
+        '(("~/.spacemacs.d"  . 0)
+          ("/Volumes/1TB/ghq" . 3)))
   ;;
   ;; end of version control configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
