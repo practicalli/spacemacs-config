@@ -930,7 +930,7 @@ before packages are loaded."
   ;;
   ;; Indentation of function forms
   ;; https://github.com/clojure-emacs/clojure-mode#indentation-of-function-forms
-  (setq clojure-indent-style 'align-arguments)
+  (setq clojure-indent-style 'always-align)
   ;;
   ;; Auto-indent code automatically
   ;; https://emacsredux.com/blog/2016/02/07/auto-indent-your-code-with-aggressive-indent-mode/
