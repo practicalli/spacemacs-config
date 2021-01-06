@@ -1558,7 +1558,7 @@ before packages are loaded."
   ;; (define-key global-map (kbd "c--") 'text-scale-decrease)
   ;;
   ;; smartparens keybindings - use lisp-state, spc k menu instead
-  ;; (define-key global-map (kbd "c-)") 'sp-forward-slurp-sexp)
+  (define-key global-map (kbd "C-s") 'sp-forward-slurp-sexp)
   ;; (define-key global-map (kbd "c-(") 'sp-backward-slurp-sexp)
   ;; (define-key global-map (kbd "m-)") 'sp-forward-barf-sexp)
   ;; (define-key global-map (kbd "m-(") 'sp-backward-barf-sexp)
