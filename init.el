@@ -1415,33 +1415,6 @@ before packages are loaded."
   ;; https://cider.readthedocs.io/en/latest/additional_packages/#subword-mode
   ;; (add-hook 'cider-repl-mode-hook #'subword-mode)
   ;;
-  ;;
- ;;
-  ;;
-  ;;
-  ;; Linting with clj-kondo
-  ;; https://github.com/borkdude/clj-kondo/blob/master/doc/editor-integration.md#spacemacs
-  ;;
-  ;; Using clj-kondo by itself
-  ;; (use-package clojure-mode
-  ;;   :ensure t
-  ;;   :config
-  ;;   (require 'flycheck-clj-kondo))
-
-  ;; Using clj-kondo with joker
-  ;; (use-package clojure-mode
-  ;;   :ensure t
-  ;;   :config
-  ;;   (require 'flycheck-joker)
-  ;;   (require 'flycheck-clj-kondo)
-  ;;   (dolist (checker '(clj-kondo-clj clj-kondo-cljs clj-kondo-cljc clj-kondo-edn))
-  ;;     (setq flycheck-checkers (cons checker (delq checker flycheck-checkers))))
-  ;;   (dolist (checkers '((clj-kondo-clj . clojure-joker)
-  ;;                       (clj-kondo-cljs . clojurescript-joker)
-  ;;                       (clj-kondo-cljc . clojure-joker)
-  ;;                       (clj-kondo-edn . edn-joker)))
-  ;;     (flycheck-add-next-checker (car checkers) (cons 'error (cdr checkers)))))
-
 
   ;; TODO: Spacemacs pull request with these keybindings, updating REPL intro text with details
   ;; You can remove this message with the <M-x cider-repl-clear-help-banner> command.
