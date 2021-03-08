@@ -222,7 +222,6 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '()
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -707,6 +706,26 @@ before packages are loaded."
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Keycast - show Emacs commands in mode line
+  (use-package keycast
+                :commands keycast-mode
+                :config
+                (define-minor-mode keycast-mode
+                  "Show current command and its key binding in the mode line."
+                  :global t
+                  (if keycast-mode
+                      (progn
+                        (add-hook 'pre-command-hook 'keycast-mode-line-update t)
+                        (add-to-list 'mode-line-misc-info '("" mode-line-keycast "    "))
+                        )
+                    (remove-hook 'pre-command-hook 'keycast-mode-line-update)
+                    (setq global-mode-string (remove '("" mode-line-keycast " ") mode-line-misc-info))))
+                )
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Emacs text rendering optimizations
   ;; https://200ok.ch/posts/2020-09-29_comprehensive_guide_on_handling_long_lines_in_emacs.html
@@ -756,6 +775,10 @@ before packages are loaded."
   (spacemacs/set-leader-keys "ow" 'eyebrowse-next-window-config)
   (spacemacs/set-leader-keys "oW" 'eyebrowse-last-window-config)
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+  ;;
+  ;; Keycast mode - show key bindings and commands in mode line
+  (spacemacs/set-leader-keys "ok" 'keycast-mode)
 
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
