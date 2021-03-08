@@ -772,8 +772,7 @@ before packages are loaded."
   ;;
   ;; Set new location for recent save files
   ;; Default: ~/.emacs.d/.cache/recentf
-  (setq bookmark-default-file "~/.spacemacs.d/recentf")
-  ;;
+  (setq recentf-save-file  "~/.spacemacs.d/recentf")
   ;;
   ;; native line numbers taking up lots of space?
   (setq-default display-line-numbers-width nil)
