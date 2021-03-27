@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+#name : header-comment-namespace
+#key : header-comment-namespace
+#contributor : practicalli
+# --
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; $0
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

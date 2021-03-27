@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+#name : gitbook-tabs-deps-lein-boot
+#key : gitbook-tabs-deps-lein-boot
+#contributor : practicalli
+# --
+{% tabs deps="Clojure CLI tools", lein="Leiningen", boot="Boot" %}
+
+{% content "deps" %}
+
+{% content "lein" %}
+
+{% content "boot" %}
+
+{% endtabs %}
+
+> Note: to have more than one set of tabs in a page, simply create unique id's for the tabs, e.g. practicalli2
