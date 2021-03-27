@@ -1,0 +1,148 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Practicalli Clojure Clojure LSP configuration
+;;
+;; https://clojure-lsp.github.io/clojure-lsp/settings/
+;; https://raw.githubusercontent.com/ericdallo/dotfiles/master/.lsp/config.edn
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+{;; Ad ns namespace definition when creating a new file
+
+ ;; :auto-add-ns-to-new-files? true
+
+ ;; TODO: what the hell is this?
+ ;;jar: make urls compatible with Java's JarURLConnection
+ ;; :dependency-scheme "jar"
+
+ ;; Format documentation - what formatting rules??
+ ;; :document-formatting? true
+
+ ;;TODO: what the hell is this?
+ ;; :document-range-formatting? true
+
+ ;; Ignore directories specified on the classpath,
+ ;; only use :source-paths value
+ ;; :ignore-classpath-directories false
+
+ ;; TODO: Test this to see what its actually doing
+ ;; clean-ns
+ ;; true: keep first require/import on first line
+ ;; false: insert new line before require/import
+ ;; :keep-require-at-start? false
+
+ ;; project directories containing source code
+ ;; :source-paths ["src" "test"]
+
+ ;; Show arity on same line as function
+ ;; :show-docs-arity-on-same-line? true
+
+ ;; LSP semantic tokens server - additional syntax highlighting
+ ;; :semantic-tokens? true
+
+ ;;  use ^:private metadata for private scope rather than defn-
+ ;; :use-metadata-for-privacy? true
+
+ #_#_:linters   {:unused-namespace-declarations #{"postman"}}
+ #_#_:clj-kondo {:skip-comments true
+                 :linters       {:refer-all         {:exclude [clojure.test midje.sweet]}
+                                 :unresolved-symbol {:level   :error
+                                                     :exclude [fact
+                                                               facts
+                                                               =>
+                                                               (midje.sweet/fact)
+                                                               (midje.sweet/facts)
+                                                               (midje.parsing.arrow-symbols/=>)]}}
+                 #_#_:lint-as   {bonafont.logic.flow-edge/def                clojure.core/def
+                                 bonafont.logic.flow-edge/defedge            clojure.core/def
+                                 bonafont.logic.flow-config/defflow          clojure.core/def
+                                 bonafont.logic.flow-config/def              clojure.core/def
+                                 bonafont.flows.debit-request.edges/def-edge clojure.core/def
+                                 common-test.postman.helpers.core/defstep    clojure.core/defn
+                                 common-graphql.lacinia.sweet/defresolver    clojure.core/def
+                                 common-graphql.lacinia.sweet/defmutation    clojure.core/def
+                                 common-graphql.lacinia.sweet/definterface   clojure.core/def
+                                 common-graphql.lacinia.sweet/defobject      clojure.core/def
+                                 common-graphql.lacinia.sweet/defscalar      clojure.core/def
+                                 common-graphql.lacinia.sweet/defunion       clojure.core/def
+                                 common-graphql.lacinia.sweet/definput       clojure.core/def
+                                 common-graphql.lacinia.sweet/defenum        clojure.core/def
+                                 integration.aux.init/defflow                clojure.core/def
+                                 postman.aux.helpers/defaction               clojure.core/defn
+                                 state-flow.cljtest/defflow                  clojure.core/def
+                                 rewrite-clj.zip/edit->                      clojure.core/->
+                                 rewrite-clj.zip.subedit/edit->              clojure.core/->
+                                 rewrite-clj.zip.subedit/subedit->           clojure.core/->}}
+
+
+ ;; TODO: is it possible to disable all rules in one config?
+ ;; then I can use agressive indent from clojure mode
+ ;; Formatting rules for cljfmt
+ ;; https://github.com/weavejester/cljfmt
+
+
+ ;; cljfmt conflicts with clojure-mode aggressive-indent-mode
+ ;; TODO: see if cljfmt will auto-align arguments
+ ;; in the same way the aggressive-indent does in clojure-mode
+
+ ;; Trying Emacs configuration to disable fomating when typing
+
+
+ :cljfmt {:indentation?                          false
+          :remove-trailing-whitespace?           false
+          :remove-surrounding-whitespace?        false
+          :remove-consecutive-blank-lines?       false
+          :remove-multiple-non-indenting-spaces? false
+          :split-keypairs-over-multiple-lines?   false}
+
+ ;; TODO: review the indents formatting rules
+ #_#_:cljfmt {:indents
+              {against-background      [[:inner 0]]
+               as-admin                [[:block 1]]
+               as-customer             [[:block 1]]
+               as-customer-with-lift   [[:block 1]]
+               as-delegate             [[:block 2]]
+               as-delegate-with-lift   [[:block 2]]
+               as-of                   [[:block 1]]
+               assoc                   [[:block 1]]
+               assoc-if                [[:block 1]]
+               assoc-in-if             [[:block 1]]
+               assoc-some              [[:block 1]]
+               assoc-in-some           [[:block 1]]
+               constraint-fn           [[:block 2]]
+               consume!                [[:block 0]]
+               data-fn                 [[:block 1]]
+               defhandler              [[:block 2]]
+               defint                  [[:block 0]]
+               defuf                   [[:block 1]]
+               embeds                  [[:block 0]]
+               expand-routes           [[:inner 1]]
+               fact                    [[:block 1]]
+               facts                   [[:block 1]]
+               flow                    [[:block 1]]
+               flow-with-defaults      [[:block 1]]
+               flow-as-of              [[:block 1]]
+               flow-without-validation [[:block 1]]
+               for-all                 [[:block 1]]
+               future-fact             [[:block 1]]
+               future-facts            [[:block 1]]
+               idempotent-start        [[:block 1]]
+               idempotent-stop         [[:block 1]]
+               ignore-conflict         [[:inner 0]]
+               let-entities            [[:block 2]]
+               let-flow                [[:block 1]]
+               log-messages            [[:block 0]]
+               logged-call             [[:block 1]]
+               non-test-action         [[:inner 0]]
+               profile                 [[:block 2]]
+               profiled                [[:block 1]]
+               provided                [[:inner 0]]
+               quick-check             [[:block 1]]
+               rethrow                 [[:block 1]]
+               run-recipe              [[:inner 0]]
+               some-with-open          [[:block 1]]
+               system-map              [[:block 0]]
+               tabular                 [[:inner 0]]
+               try-type                [[:block 0]]
+               with-cid                [[:block 1]]
+               with-fn-validation      [[:block 0]]
+               with-responses          [[:block 0]]
+               with-scopes             [[:block 1]]}}}
