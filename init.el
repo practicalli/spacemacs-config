@@ -999,26 +999,9 @@ before packages are loaded."
   ;; Clojure configurations
   ;;
   ;;
-  ;; CIDER 0.23 Lima release options
-  ;; Configure the position of evaluation result
-  ;; By default the result displays at the end of the current line
-  ;; Set cider-result-overlay-position to `at-point' to display results right after the expression evaluated
-  ;; Useful for evaluating nexsted expressions with `, e e'
-  (setq cider-result-overlay-position 'at-point)
-  ;;
-  ;;
-  ;; Pretty print in Clojure to use the Fast Idiomatic Pretty-Printer. This is approximately 5-10x faster than clojure.core/pprint
-  (setq cider-pprint-fn 'fipp)
-  ;;
-  ;;
-  ;; Indentation of function forms
-  ;; https://github.com/clojure-emacs/clojure-mode#indentation-of-function-forms
-  (setq clojure-indent-style 'align-arguments)
-  ;;
-  ;; Vertically align s-expressions
-  ;; https://github.com/clojure-emacs/clojure-mode#vertical-alignment
-  (setq clojure-align-forms-automatically t)
-  ;;
+  ;; Do not indent single ; comment characters
+  (add-hook 'clojure-mode-hook (lambda () (setq-local comment-column 0)))
+
   ;; Auto-indent code automatically
   ;; https://emacsredux.com/blog/2016/02/07/auto-indent-your-code-with-aggressive-indent-mode/
   (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
