@@ -215,7 +215,7 @@ This function should only modify configuration layer settings."
      ;; Customise the Spacemacs themes
      ;; https://develop.spacemacs.org/layers/+themes/theming/README.html
      ;; Code in dotspacemacs/user-init to reduce size of modeline
-     ;; theming
+     theming
 
      ;; Support font ligatures (fancy symbols) in all modes
      ;; 'prog-mode for only programming languages
@@ -715,8 +715,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
          (mode-line :height 0.92)
          (mode-line-inactive :height 0.92))
         (doom-gruvbox-light
-         (mode-line :height 0.80)
-         (mode-line-inactive :height 0.92))))
+         (lsp-face-highlight-read :background nil :weight bold))))
+
 
   )  ;; End of dotspacemacs/user-int
 
@@ -794,10 +794,19 @@ before packages are loaded."
   ;;
   (with-eval-after-load 'doom-modeline
     (doom-modeline-def-modeline 'practicalli-modeline
-      '(workspace-name window-number modals persp-name buffer-info remote-host vcs)
-      '(repl debug lsp process matches checker buffer-position word-count parrot selection-info misc-info))
+      '(workspace-name window-number modals persp-name buffer-info matches remote-host vcs)
+      '(misc-info repl lsp))
     (practicalli/setup-custom-doom-modeline))
-  ;;
+
+  ;; checker = flycheck results (not working)
+  ;; buffer-position
+  ;; word-count - number of words in current buffer
+  ;; parrot
+  ;; selection-info
+  ;; repl - shows status of Cloure repl (not working)
+  ;; process ??
+  ;; debug
+  ;; misc-info  - used for keycast
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
