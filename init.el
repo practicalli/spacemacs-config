@@ -1003,13 +1003,16 @@ before packages are loaded."
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Clojure configurations
   ;;
-  ;;
   ;; Do not indent single ; comment characters
   (add-hook 'clojure-mode-hook (lambda () (setq-local comment-column 0)))
 
   ;; Auto-indent code automatically
   ;; https://emacsredux.com/blog/2016/02/07/auto-indent-your-code-with-aggressive-indent-mode/
   (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
+
+  ;; Lookup functions in Clojure - The Essentail Reference book
+  ;; https://github.com/p3r7/clojure-essential-ref
+  (spacemacs/set-leader-keys "oh" 'clojure-essential-ref)
   ;;
   ;;
   ;; toggle reader macro sexp comment
