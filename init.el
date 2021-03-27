@@ -41,11 +41,8 @@ This function should only modify configuration layer settings."
      ;;
      ;; Layers added in alphabetic order
 
-
-     ;; Enable asciidoc layer for editing asciidoc content
-     ;; Useful for docs.cider.mx editing
+     ;; Enable asciidoc layer for editing asciidoc content e.g. docs.cider.mx editing
      asciidoc
-
 
      ;; Add tool tips to show doc string of functions
      ;; Show snippets in the auto-completion popup
@@ -73,9 +70,7 @@ This function should only modify configuration layer settings."
      ;; SPC a L displays key and command history in a separate buffer
      command-log
 
-
-     ;; Tools to work with comma separate values
-     ;; Used for data science files
+     ;; Tools to work with comma separate values e.g. data science data
      ;; https://develop.spacemacs.org/layers/+lang/csv/README.html
      csv
 
@@ -142,8 +137,7 @@ This function should only modify configuration layer settings."
           org-journal-carryover-items "TODO=\"TODO\"|TODO=\"DOING\"|TODO=\"BLOCKED\"|TODO=\"REVIEW\"")
 
 
-     ;; Text-based file manager with preview
-     ;; SPC a r
+     ;; Text-based file manager with preview - SPC a t r r
      (ranger :variables
              ranger-show-preview t
              ranger-show-hidden t
@@ -151,9 +145,7 @@ This function should only modify configuration layer settings."
              ranger-cleanup-on-disable t
              ranger-ignored-extensions '("mkv" "flv" "iso" "mp4"))
 
-     ;; SPC ' runs eshell in a popup buffer
-     ;; To run your terminal shell, add
-     ;; shell-default-shell 'multi-term
+     ;; SPC ' runs shell in a popup buffer
      (shell :variables
             shell-default-shell 'eshell
             shell-default-height 30
@@ -683,7 +675,8 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
   ;; custom theme modification
-  ;; - overriding default height of modeline
+  ;; spacemacs - overriding default height of modeline
+  ;; doom-gruvbox - subtle lsp symbol highlight
   (setq-default
     theming-modifications
       '((spacemacs-light
