@@ -81,10 +81,10 @@ This function should only modify configuration layer settings."
      emoji
 
      ;; SPC g s opens Magit git client full screen (q restores previous layout)
-     ;; refine hunk 'all highlights characters changed on each line
+     ;; show word-granularity differences in current diff hunk
      (git :variables
           git-magit-status-fullscreen t
-          magit-diff-refine-hunk 'all)
+          magit-diff-refine-hunk t)
 
      ;; SPC g h to use GitHub repositories
      ;; SPC g g to use GitHub Gists
