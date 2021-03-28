@@ -715,8 +715,9 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
          (mode-line :height 0.92)
          (mode-line-inactive :height 0.92))
         (doom-gruvbox-light
-         (lsp-face-highlight-read :background nil :weight bold))))
-
+         (lsp-face-highlight-read :background nil :weight bold)
+         (command-log-command :foreground "firebrick")
+         (command-log-key :foreground "dark magenta"))))
 
   )  ;; End of dotspacemacs/user-int
 
