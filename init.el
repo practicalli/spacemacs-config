@@ -123,7 +123,7 @@ This function should only modify configuration layer settings."
           lsp-enable-symbol-highlighting t
 
           ;; Show lint error indicator in the mode-bar (tested on doom-modeline)
-          lsp-modeline--enable-diagnostics t
+          lsp-modeline-diagnostics-enable t
 
           ;; popup documentation boxes
           ;; lsp-ui-doc-enable nil          ;; disable all doc popups
