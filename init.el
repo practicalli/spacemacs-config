@@ -90,7 +90,8 @@ This function should only modify configuration layer settings."
      ;; show word-granularity differences in current diff hunk
      (git :variables
           git-magit-status-fullscreen t
-          magit-diff-refine-hunk t)
+          magit-diff-refine-hunk t
+          git-enable-magit-todos-plugin t)
 
      ;; SPC g h to use GitHub repositories
      ;; SPC g g to use GitHub Gists
