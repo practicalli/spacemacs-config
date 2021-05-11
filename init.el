@@ -115,16 +115,18 @@ This function should only modify configuration layer settings."
      ;; https://practicalli.github.io/spacemacs/install-spacemacs/clojure-lsp/lsp-variables-reference.html
      (lsp :variables
           ;; Formatting and indentation - use Cider instead
-          lsp-enable-on-type-formatting nil
+          lsp-enable-on-type-formatting t
           ;; Set to nil to use CIDER features instead of LSP UI
-          lsp-enable-indentation nil
+          lsp-enable-indentation t
+          lsp-enable-snippet t  ;; to test again
 
           ;; symbol highlighting - `lsp-toggle-symbol-highlight` toggles highlighting
           ;; subtle highlighting for doom-gruvbox-light theme defined in dotspacemacs/user-config
           lsp-enable-symbol-highlighting t
 
-          ;; Show lint error indicator in the mode-bar (tested on doom-modeline)
+          ;; Show lint error indicator in the mode line
           lsp-modeline-diagnostics-enable t
+          ;; lsp-modeline-diagnostics-scope :workspace
 
           ;; popup documentation boxes
           ;; lsp-ui-doc-enable nil          ;; disable all doc popups
@@ -134,6 +136,10 @@ This function should only modify configuration layer settings."
 
           ;; code actions and diagnostics text as right-hand side of buffer
           lsp-ui-sideline-enable nil
+          lsp-ui-sideline-show-code-actions nil
+          ;; lsp-ui-sideline-delay 500
+
+          ;; lsp-ui-sideline-show-diagnostics nil
 
           ;; reference count for functions (assume their maybe other lenses in future)
           lsp-lens-enable t
@@ -142,7 +148,8 @@ This function should only modify configuration layer settings."
           treemacs-space-between-root-nodes nil
 
           ;; Optimization for large files
-          lsp-file-watch-threshold 10000)
+          lsp-file-watch-threshold 10000
+          lsp-log-io nil)
 
      (markdown :variables
                markdown-live-preview-engine 'vmd)
@@ -737,6 +744,13 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
 
+
+  ;; LSP  hacking
+  (setq lsp-ui-sideline-enable nil)
+  ;; (setq lsp-ui-sideline-show-code-actions nil)
+
+  (setq lsp-modeline-diagnostics-scope :workspace)
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Keeping Helm history clean
   (setq history-delete-duplicates t)
@@ -1010,7 +1024,7 @@ before packages are loaded."
 
   ;; Auto-indent code automatically
   ;; https://emacsredux.com/blog/2016/02/07/auto-indent-your-code-with-aggressive-indent-mode/
-  (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
+  ;; (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
 
   ;; Lookup functions in Clojure - The Essentail Reference book
   ;; https://github.com/p3r7/clojure-essential-ref
