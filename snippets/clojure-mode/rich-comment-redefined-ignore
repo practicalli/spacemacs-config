@@ -9,4 +9,4 @@
 
   $0
 
-  ) ;; End of rich comment block
+  #_()) ;; End of rich comment block
