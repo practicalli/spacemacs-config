@@ -34,7 +34,10 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layers
    '(sql
      rust
-     typescript
+     (typescript :variables
+                 typescript-fmt-tool 'prettier
+                 typescript-fmt-on-save t
+                 typescript-linter 'eslint)
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -54,6 +57,9 @@ This function should only modify configuration layer settings."
      (auto-completion :variables
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-snippets-in-popup t
+                      auto-completion-idle-delay 0.0
+                      auto-completion-complete-with-key-sequence "fd"
+                      auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-sort-by-usage t)
      ;; To have auto-completion on as soon as you start typing
      ;; (auto-completion :variables auto-completion-idle-delay nil)
@@ -62,7 +68,7 @@ This function should only modify configuration layer settings."
      (clojure :variables
               clojure-toplevel-inside-comment-form t
               cider-overlays-use-font-lock t
-              clojure-enable-linters 'clj-kondo
+              cider-repl-buffer-size-limit 1000
               cider-preferred-build-tool 'clojure-cli
               clojure-enable-clj-refactor t)
 
@@ -114,13 +120,23 @@ This function should only modify configuration layer settings."
            helm-follow-mode-persistent t)
 
      html
-     ;; javascript
+     javascript
      json
-
-     ;; Clojure specific configuration in dotspacemacs/user-config
-     ;; lsp
-
      markdown
+
+     (lsp :variables
+          lsp-enable-on-type-formatting nil
+          lsp-enable-indentation nil
+          lsp-enable-symbol-highlighting t
+          lsp-modeline--enable-diagnostics t
+          lsp-diagnostics-provider :none
+          lsp-ui-mode nil
+          lsp-ui-doc-show-with-cursor nil   ;; disable doc popup for cursor
+          lsp-ui-doc-delay 5
+          lsp-ui-sideline-enable nil
+          lsp-lens-enable t
+          treemacs-space-between-root-nodes nil
+          lsp-file-watch-threshold 10000)
 
      ;; Editing multiple lines of text concurrently
      ;; `g r' menu in Emacs normal state
@@ -747,6 +763,9 @@ before packages are loaded."
   ;; Toggle workspaces forward/backwards
   (spacemacs/set-leader-keys "ow" 'eyebrowse-next-window-config)
   (spacemacs/set-leader-keys "oW" 'eyebrowse-last-window-config)
+
+  (spacemacs/set-leader-keys "oo" 'lsp-find-definition)
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -832,13 +851,12 @@ before packages are loaded."
   ;;
   ;; Use Spacemacs as the $EDITOR (or $GIT_EDITOR) for git commits messages
   ;; when using git commit on the command line
-  (global-git-commit-mode t)
   ;;
   ;; Set locations of all your Git repositories
   ;; with a number to define how many sub-directories to search
   ;; `SPC g L' - list all Git repositories in the defined paths,
   (setq magit-repository-directories
-        '(("/Volumes/1TB/ghq" . 3)
+        '(("~/1TB/ghq" . 3)
           ("~/.spacemacs.d"  . 0)))
   ;;
   ;; end of version control configuration
@@ -1625,7 +1643,27 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
-   '(sqlup-mode sql-indent yaml-mode xterm-color ws-butler winum which-key web-mode volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree toc-org tagedit spaceline powerline smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs ranger rainbow-mode rainbow-identifiers rainbow-delimiters pug-mode popwin persp-mode pcre2el paradox ox-twbs ox-reveal ox-gfm orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree multi-term move-text mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup magit-gh-pulls macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile helm-mode-manager helm-make helm-gitignore request helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haml-mode graphviz-dot-mode google-translate golden-ratio gnuplot gitignore-mode github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh marshal logito pcache ht gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip flycheck flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit git-commit with-editor transient evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg eshell-z eshell-prompt-extras esh-help emoji-cheat-sheet-plus emmet-mode elisp-slime-nav dumb-jump s diminish diff-hl define-word csv-mode company-web web-completion-data company-statistics company-quickhelp pos-tip company-emoji company command-log-mode column-enforce-mode color-identifiers-mode dash clojure-snippets clj-refactor hydra inflections multiple-cursors paredit lv clean-aindent-mode cider-eval-sexp-fu eval-sexp-fu cider sesman seq spinner queue pkg-info parseedn clojure-mode parseclj a epl bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-dictionary auto-compile packed aggressive-indent adoc-mode markup-faces adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup doom-gruvbox-light-theme)))
+   '(lsp-ui lsp-treemacs cfrs posframe lsp-origami origami helm-lsp lsp-mode yaml-mode xterm-color ws-butler winum which-key web-mode volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree toc-org tagedit spaceline powerline smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs ranger rainbow-mode rainbow-identifiers rainbow-delimiters pug-mode popwin persp-mode pcre2el paradox ox-twbs ox-reveal ox-gfm orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree multi-term move-text mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup magit-gh-pulls macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile helm-mode-manager helm-make helm-gitignore request helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haml-mode graphviz-dot-mode google-translate golden-ratio gnuplot gitignore-mode github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh marshal logito pcache ht gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip flycheck flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit git-commit with-editor transient evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg eshell-z eshell-prompt-extras esh-help emoji-cheat-sheet-plus emmet-mode elisp-slime-nav dumb-jump s diminish diff-hl define-word csv-mode company-web web-completion-data company-statistics company-quickhelp pos-tip company-emoji company command-log-mode column-enforce-mode color-identifiers-mode dash clojure-snippets clj-refactor hydra inflections multiple-cursors paredit lv clean-aindent-mode cider-eval-sexp-fu eval-sexp-fu cider sesman seq spinner queue pkg-info parseedn clojure-mode parseclj a epl bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-dictionary auto-compile packed aggressive-indent adoc-mode markup-faces adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup doom-gruvbox-light-theme))
+ '(safe-local-variable-values
+   '((auto-fill-mode t)
+     (cider-cljs-repl-types
+      (edge "(do (require 'dev-extras) ((resolve 'dev-extras/cljs-repl)))"))
+     (cljr-libspec-whitelist "^rlws.iot-cloud.spec" "^integrant.repl$" "^day8.re-frame.http-fx$" "^tick.locale.*$" "^rlws.iot-cloud.frontend.*$" "^spell-spec.expound$" "^duct.core.resource*" "^goog.string.format")
+     (clojure-mode
+      (clojure-docstring-fill-column . 80))
+     (cider-ns-refresh-after-fn . "dev-extras/resume")
+     (cider-ns-refresh-before-fn . "dev-extras/suspend")
+     (cljr-auto-clean-ns . t)
+     (cljr-favor-prefix-notation)
+     (cljr-libspec-whitelist "^thanks.spec" "^integrant.repl$" "^day8.re-frame.http-fx$" "^tick.locale.*$" "^thanks.frontend.*$" "^spell-spec.expound$" "^duct.core.resource*" "^goog.string.format")
+     (cider-repl-init-code "(do (dev) (go))")
+     (cider-ns-refresh-after-fn . "dev/resume")
+     (cider-ns-refresh-before-fn . "dev/suspend")
+     (typescript-backend . tide)
+     (typescript-backend . lsp)
+     (javascript-backend . tide)
+     (javascript-backend . tern)
+     (javascript-backend . lsp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
