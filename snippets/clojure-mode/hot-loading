@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+#name : hot-loading
+#key : hot-loading
+#contributor : practicalli
+# --
+;; Rich comment block with redefined vars ignored
+#_{:clj-kondo/ignore [:redefined-var]}
+(comment
+  ;; Add-lib library for hot-loading
+  (require '[clojure.tools.deps.alpha.repl :refer [add-libs]])
+
+  ) ;; End of rich comment block

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+#name : gitbook-cli-alias-m-replaced-a
+#key : gitbook-cli-alias-m-replaced-a
+#contributor : practicalli
+# --
+> #### Hint::Use -M flag instead of -A
+> The `-M` flag has replaced the `-A` flag for including aliases when running Clojure main, which is the approach that the cider jack-in command uses.
