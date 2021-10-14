@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : changelog-jira-link
+#key : changelog-jira-link
+#contributor : practicalli
+# --
+- [LD-$1 - $2](https://statsbomb.atlassian.net/browse/LD-$3) $0
