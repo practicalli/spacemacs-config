@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+#name : gitbook-tab-cli-lein
+#key : gitbook-tab-cli-lein
+#contributor : John Stevenson
+# --
+{% tabs cli="Cloure CLI", lein="Leiningnen" %}
+
+{% content "cli" %}
+$0
+
+{% content "lein" %}
+
+
+{% endtabs %}
