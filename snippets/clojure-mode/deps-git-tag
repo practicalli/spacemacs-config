@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name : deps.edn Git tag
+# key : deps-git-tag
+# contributor : practicalli
+# --
+${1:domain/library-name}
+ {:git/tag "${1:git-tag-value}"
+  :git/sha "${2:git-sha-value}"}$0
