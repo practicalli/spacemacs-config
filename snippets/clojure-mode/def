@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name : def with doc-string
+# key : def
+# contributor : practicalli
+# --
+(def ${1:name}
+"${2:doc-string}"
+${3:value})
+$0
