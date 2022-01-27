@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: deftest clojure.test function
+# key: deftest
+# contributor: practicalli
+# --
+(deftest ${1:name}-test
+  (testing "${2:Context of the test assertions}"$>
+    (is (= ${3:assertion-values}))$4))$>
+$0
