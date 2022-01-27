@@ -1,0 +1,32 @@
+# -*- mode: snippet -*-
+# name : deps-project
+# key : deps-project
+# contributor : practicalli
+# --
+{:paths
+ ["src" "resources"]
+
+ :deps
+ {org.clojure/clojure {:mvn/version "1.10.3"}}
+
+ :aliases
+ {:project/run
+  {:main-opts ["-m" "${1:project.main-namespace}"]}
+
+  :project/greet
+  {:ns-default practicalli.testing-watcher
+   :exec-fn greet
+    :exec-args {:name "Clojure"}}
+
+  :test/run
+  {:extra-paths ["test"]
+   :extra-deps {lambdaisland/kaocha {:mvn/version "1.60.977"}}
+   :exec-fn kaocha.runner/exec-fn}
+
+  :uberjar
+  {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.1.278"}}
+   :exec-fn hf.depstar/uberjar
+   :exec-args {:aot true
+   :jar "testing-watcher.jar"
+   :main-class "$1"
+   :sync-pom true}}}}
