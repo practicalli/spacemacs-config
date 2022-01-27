@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name : deps.edn Git sha
+# key : deps-git-sha
+# contributor : practicalli
+# --
+${1:domain/library-name}
+  {:git/url "https://github.com/${1:}"
+   :sha     "${1:git-sha-value}"}$0
