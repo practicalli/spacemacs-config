@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name : deps.edn local project dependency
+# key : deps-local
+# contributor : practicalli
+# --
+${1:domain/library-name} {:local/root "${2:/path/to/project/root}"}$0
