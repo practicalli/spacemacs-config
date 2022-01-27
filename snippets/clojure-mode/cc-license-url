@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-#name : cc-license-url
-#key : cc-license-url
-#contributor : jr0cket
+# name : cc-license-url
+# key : cc-license-url
+# contributor : practicalli
 # --
-"https://creativecommons.org"
+"https://creativecommons.org/"

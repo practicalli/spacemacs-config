@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-#name : cc-license-name
-#key : cc-license-name
-#contributor : jr0cket
+# name : cc-license-name
+# key : cc-license-name
+# contributor : practicalli
 # --
 "Creative Commons Attribution Share-Alike 4.0 International"
