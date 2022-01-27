@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name : Clojure CLI maven dependency
+# key : deps-maven
+# contributor : practicalli
+# --
+${1:domain/library-name} {:mvn/version "${2:1.0.0}"}
