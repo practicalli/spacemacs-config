@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 #name : routing
-#key : routing
+#key : compojure-routing
 #contributor : practicalli
 # --
 (defroutes app
