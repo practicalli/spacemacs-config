@@ -1,15 +1,15 @@
 # -*- mode: snippet -*-
 #name : 4clojure-body
 #key : 4clojure-body
-#contributor : jr0cket
+#contributor : practicalli
 # --
 ;; Deconstruct the problem
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; REPL experiments
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
 ;; Answers summary
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
