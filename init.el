@@ -64,7 +64,7 @@ This function should only modify configuration layer settings."
               ;; clojure-enable-linters 'clj-kondo    ;; clj-kondo included in lsp
               clojure-enable-kaocha-runner t          ;; enable Kaocha test runner
               cider-repl-display-help-banner nil      ;; disable help banner
-              cider-pprint-fn 'fipp                   ;; fast pretty printing
+              cider-print-fn 'puget                   ;; pretty printing with sorted keys / set values
               clojure-indent-style 'align-arguments
               clojure-align-forms-automatically t
               clojure-toplevel-inside-comment-form t  ;; evaluate expressions in comment as top level
