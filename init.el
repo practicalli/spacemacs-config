@@ -97,10 +97,6 @@ This function should only modify configuration layer settings."
           magit-diff-refine-hunk t
           git-enable-magit-todos-plugin t)
 
-     ;; SPC g h to use GitHub repositories
-     ;; SPC g g to use GitHub Gists
-     github
-
      ;; graphviz - open-source graph declaration system
      ;; Used to generated graphs of Clojure project dependencies
      ;; https://develop.spacemacs.org/layers/+lang/graphviz/README.html
