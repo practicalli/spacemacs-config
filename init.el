@@ -915,7 +915,7 @@ before packages are loaded."
   ;; GitHub user and organization accounts owned
   ;; used by @ c f  to create a fork
   (setq forge-owned-accounts
-        '(("practicalli" "jr0cket"
+        '(("practicalli" "practicalli-john"
            "ClojureBridgeLondon" "ldnclj"
            "clojure-hacks"
            "reclojure")))
