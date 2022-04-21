@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+#name : dir-local-clojure-aliases
+#key : dir-local-clojure-aliases
+#contributor : John Stevenson
+# --
+((clojure-mode . ((cider-preferred-build-tool . clojure-cli)
+                  (cider-clojure-cli-aliases . ":${1:alias-name}"))))
+$0
