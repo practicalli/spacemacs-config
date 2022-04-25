@@ -8,6 +8,9 @@ This GitHub repository contains the current configuration to support the [Practi
 * Emacs 27.2, 28.x or 29.0.50 (emacs-snapshot)
 * [Fira Code fonts](https://github.com/tonsky/FiraCode)
 
+> Ligature support works best in Emacs 28.x or greater.  If experiencing errors in Emacs 27.x and cannot upgrade, commend the `unicode` layer configuration in `dotspacemacs-configuration-layers`
+
+
 [![Spacemacs Practicalli - Interactive Clojure development with Emacs and CIDER](https://raw.githubusercontent.com/practicalli/spacemacs/main/images/practicalli-spacemacs-book-banner.png)](https://practical.li/spacemacs)
 
 ## Recommended Command Line tools
