@@ -772,6 +772,8 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
+  ;; Write undo-tree temporary files to Emacs cache
+  (setq undo-tree-history-directory-alist (file-truename (concat user-emacs-directory ".cache/treemacs")))
 
 
   ;; LSP  hacking
