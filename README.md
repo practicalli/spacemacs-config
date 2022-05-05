@@ -8,7 +8,9 @@ This GitHub repository contains the current configuration to support the [Practi
 * Emacs 27.2, 28.x or 29.0.50 (emacs-snapshot)
 * [Fira Code fonts](https://github.com/tonsky/FiraCode)
 
-> Ligature support works best in Emacs 28.x or greater.  If experiencing errors in Emacs 27.x and cannot upgrade, commend the `unicode` layer configuration in `dotspacemacs-configuration-layers`
+> Ligature support works best in Emacs 28.x.  If experiencing errors in Emacs 27.x and cannot upgrade, commend the `unicode` layer configuration in `dotspacemacs-configuration-layers`
+>
+> Emacs 29.x works with ligatures, although each time Spacemacs starts a cache of the Unicode bindings is created, adding 20-30 seconds to startup time.  This seems to be due to an issue with pcache and Emacs 29.x
 
 
 [![Spacemacs Practicalli - Interactive Clojure development with Emacs and CIDER](https://raw.githubusercontent.com/practicalli/spacemacs/main/images/practicalli-spacemacs-book-banner.png)](https://practical.li/spacemacs)
