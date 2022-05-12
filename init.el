@@ -804,7 +804,7 @@ before packages are loaded."
   (with-eval-after-load 'doom-modeline
     (doom-modeline-def-modeline 'practicalli-modeline
       '(workspace-name window-number modals persp-name buffer-info matches remote-host vcs)
-      '(misc-info repl lsp))
+      '(misc-info repl lsp buffer-position))
     (practicalli/setup-custom-doom-modeline))
 
   ;; checker = flycheck results (not working)
