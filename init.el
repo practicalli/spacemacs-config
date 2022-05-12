@@ -334,7 +334,7 @@ It should only modify the values of Spacemacs settings."
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
    ;; dotspacemacs-startup-banner 'official
-   dotspacemacs-startup-banner (concat default-directory "banners/practicalli-logo.svg")
+   dotspacemacs-startup-banner (concat dotspacemacs-directory "banners/practicalli-logo.svg")
 
    ;; List of items to show in startup buffer or an association list of
    ;; the form `(list-type . list-size)`. If nil then it is disabled.
@@ -846,13 +846,14 @@ before packages are loaded."
   ;; Over-ride Spacemacs defaults
   ;;
   ;; Set new location for file bookmarks, SPC f b
-  ;; Default: ~/.emacs.d/.cache/bookmarks
-  (setq bookmark-default-file "~/.spacemacs.d/bookmarks")
+  ;; Default: SPACEMACSDIR.cache/bookmarks
+  ;; (setq bookmark-default-file (concat dotspacemacs-directory "bookmarks"))
   ;;
   ;; Set new location for recent save files
-  ;; Default: ~/.emacs.d/.cache/recentf
-  (setq recentf-save-file  "~/.spacemacs.d/recentf")
+  ;; Default: SPACEMACSDIR.cache/recentf
+  ;; (setq recentf-save-file (concat dotspacemacs-directory "recentf") )
   ;;
+
   ;; native line numbers taking up lots of space?
   (setq-default display-line-numbers-width nil)
   ;;
@@ -862,13 +863,20 @@ before packages are loaded."
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Magit - forge configuration
   ;;
   ;; Set the files that are searched for writing tokens
   ;; by default ~/.authinfo will be used
   ;; and write a token in unencrypted format
-  (setq auth-sources '("~/.authinfo.gpg"))
+  ;; (setq auth-sources '("~/.authinfo.gpg"))
+
+  ;; Use XDG_CONFIG_HOME location or HOME
+  (setq auth-sources (list
+                      (concat (getenv "XDG_CONFIG_HOME") "/authinfo.gpg")
+                      "~/.authinfo.gpg"))
+
   ;;
   ;; Configure number of topics show, open and closed
   ;; use negative number to toggle the view of closed topics
@@ -920,8 +928,7 @@ before packages are loaded."
   ;; with a number to define how many sub-directories to search
   ;; `SPC g L' - list all Git repositories in the defined paths,
   (setq magit-repository-directories
-        '(("~/.emacs.d"  . 0)
-          ("~/projects/" . 2)))
+        '(("~/projects/" . 2)))
   ;;
   ;; end of version control configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1349,5 +1356,6 @@ before packages are loaded."
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 
-;; NOTE: `custom-set-variables` are now written to the
-;; `~/.emacs.d/emacs-custom-settings.el' file
+;; NOTE: `custom-set-variables` are now written to a separate file in the Spacemacs configuration location:
+;; Uncomment and evaluate, `, e e', the expression below to check your location
+;; (concat dotspacemacs-directory "emacs-custom-settings.el")

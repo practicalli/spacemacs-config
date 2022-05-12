@@ -2,6 +2,8 @@
 
 This GitHub repository contains the current configuration to support the [Practicalli Spacemacs book](https://practical.li/spacemacs).  It contains the layers recommended for use for enhanced Clojure development experience as well as numerous tweaks for general [Spacemacs](https://github.com/syl20bnr/spacemacs/) usage.  The configuration also contains a number of snippets (code and configuration templates) for specific languages.
 
+[![Spacemacs Practicalli - Interactive Clojure development with Emacs and CIDER](https://raw.githubusercontent.com/practicalli/spacemacs/main/images/practicalli-spacemacs-book-banner.png)](https://practical.li/spacemacs)
+
 # Requirements
 
 * Spacemacs Develop (now the default branch)
@@ -13,7 +15,12 @@ This GitHub repository contains the current configuration to support the [Practi
 > Emacs 29.x works with ligatures, although each time Spacemacs starts a cache of the Unicode bindings is created, adding 20-30 seconds to startup time.  This seems to be due to an issue with pcache and Emacs 29.x
 
 
-[![Spacemacs Practicalli - Interactive Clojure development with Emacs and CIDER](https://raw.githubusercontent.com/practicalli/spacemacs/main/images/practicalli-spacemacs-book-banner.png)](https://practical.li/spacemacs)
+## Freedesktop.org XDG_CONFIG_HOME supported
+
+`SPACEMACSDIR` set to `$XDG_CONFIG_HOME/spacemacs` allows your Spacemacs configuration to be used from the standard Freedesktop.org configuration location, by default `$HOME/.config`.
+
+Set `SPACEMACSDIR` and `$XDG_CONFIG_HOME` via the `.profile` file for of your account on your Operating System, which supports desktop applicaiton launchers and terminal shells. Or to support only terminal shells, add those variables to the shell resource files (e.g. `.bashrc`, `.zshrc`, `.zshenv`) of your operating system.
+
 
 ## Recommended Command Line tools
 
