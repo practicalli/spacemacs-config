@@ -796,7 +796,7 @@ before packages are loaded."
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Doom theme settings
-  (setq doom-gruvbox-light-variant "hard")
+  ;; (setq doom-gruvbox-light-variant "hard")
   ;;
   (defun practicalli/setup-custom-doom-modeline ()
     (doom-modeline-set-modeline 'practicalli-modeline 'default))
