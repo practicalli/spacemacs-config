@@ -210,7 +210,8 @@ This function should only modify configuration layer settings."
                       version-control-diff-tool 'diff-hl
                       version-control-global-margin t)
 
-     yaml
+     (yaml :variables
+           yaml-enable-lsp t)
 
      ) ;; End of dotspacemacs-configuration-layers
 
