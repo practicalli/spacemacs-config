@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : mkdocs-link-button
+#key : mkdocs-link-button
+#contributor : practicalli
+# --
+{ .md-button }
