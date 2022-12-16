@@ -84,6 +84,10 @@ This function should only modify configuration layer settings."
      ;; https://develop.spacemacs.org/layers/+lang/csv/README.html
      csv
 
+     ;; Dockerfile LSP and docker container management
+     (docker :variables
+             docker-dockerfile-backend 'lsp)
+
      ;; For Spacemacs configuration files and packages
      emacs-lisp
 
