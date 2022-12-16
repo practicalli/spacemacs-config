@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : mkdocs-image-align-left
+#key : mkdocs-image-align-left
+#contributor : practicalli
+# --
+{ align=left loading=lazy }$0
