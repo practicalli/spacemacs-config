@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : mkdocs-p9i-neovim-config-redux
+#key : mkdocs-p9i-neovim-config-redux
+#contributor : practicalli
+# --
+[practicalli/neovim-config-redux configuration](https://github.com/practicalli/neovim-config-redux){target=_blank}$0
