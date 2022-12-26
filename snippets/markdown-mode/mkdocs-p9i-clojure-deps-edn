@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : mkdocs-p9i-clojure-deps-edn
+#key : mkdocs-p9i-clojure-deps-edn
+#contributor : practicalli
+# --
+[practicalli/clojure-deps-edn](https://github.com/practicalli/clojure-deps-edn){target=_blank}$0
