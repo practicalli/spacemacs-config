@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : mkdocs-link-dark
+#key : mkdocs-link-dark
+#contributor : practicalli
+# --
+![${1:title}](${2:url}#only-dark)
