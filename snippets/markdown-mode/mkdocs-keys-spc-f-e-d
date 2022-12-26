@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : mkdocs-keys-spc-f-e-d
+#key : mkdocs-keys-spc-f-e-d
+#contributor : practicalli
+# --
+++spc++ ++"f"++ ++"e"++ ++"d"++$0
