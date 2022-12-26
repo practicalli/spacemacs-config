@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : mkdocs-keys-meta-x
+#key : mkdocs-keys-meta-x
+#contributor : practicalli
+# --
+++meta+"x"++ $0
