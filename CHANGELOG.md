@@ -4,5 +4,8 @@
 ## Added
 
 ## Changed
-* use clojure-print-fn over the obsolete clojure-pprint-fn variable
-* use pugent to render pprint output (update from fipp)
+
+# 2022-12-26
+## Added
+* Spacemacs template updates
+* MkDocs snippets
