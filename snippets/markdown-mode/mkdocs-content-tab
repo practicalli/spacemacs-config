@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+#name : mkdocs-content-tab
+#key : mkdocs-content-tab
+#contributor : practicalli
+# --
+=== "${1:Tab Name}"
+    $0
