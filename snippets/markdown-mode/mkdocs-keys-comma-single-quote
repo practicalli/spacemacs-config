@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : mkdocs-keys-comma-single-quote
+#key : mkdocs-keys-comma-single-quote
+#contributor : practicalli
+# --
+++comma++ ++single-quote++$0
