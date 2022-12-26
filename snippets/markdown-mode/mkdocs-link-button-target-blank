@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : mkdocs-link-button-target-blank
+#key : mkdocs-link-button-target-blank
+#contributor : practicalli
+# --
+{target=_blank .md-button}$0
