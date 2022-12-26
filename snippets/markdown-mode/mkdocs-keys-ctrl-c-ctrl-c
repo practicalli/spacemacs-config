@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : mkdocs-keys-ctrl-c-ctrl-c
+#key : mkdocs-keys-ctrl-c-ctrl-c
+#contributor : practicalli
+# --
+++ctrl+c+ctrl+"c"++$0
