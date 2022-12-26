@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : mkdocs-evil-jkhl-key-bindings
+#key : mkdocs-evil-jkhl-key-bindings
+#contributor : practicalli
+# --
+++"j"++,++"k"++,++"h"++,++"l"++$0
