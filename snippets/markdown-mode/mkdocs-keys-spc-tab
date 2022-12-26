@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : mkdocs-keys-spc-tab
+#key : mkdocs-keys-spc-tab
+#contributor : practicalli
+# --
+++spc++ ++tab++$0
