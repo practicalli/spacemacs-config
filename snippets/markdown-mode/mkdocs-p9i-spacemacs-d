@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : mkdocs-p9i-spacemacs-d
+#key : mkdocs-p9i-spacemacs-d
+#contributor : practicalli
+# --
+[practicalli/spacemacs.d](https://github.com/practicalli/spacemacs.d){target=_blank}$0
