@@ -2,7 +2,7 @@
 
 This GitHub repository contains the current configuration to support the [Practicalli Spacemacs book](https://practical.li/spacemacs).  It contains the layers recommended for use for enhanced Clojure development experience as well as numerous tweaks for general [Spacemacs](https://github.com/syl20bnr/spacemacs/) usage.  The configuration also contains a number of snippets (code and configuration templates) for specific languages.
 
-[![Spacemacs Practicalli - Interactive Clojure development with Emacs and CIDER](https://raw.githubusercontent.com/practicalli/spacemacs/main/images/practicalli-spacemacs-book-banner.png)](https://practical.li/spacemacs)
+[![Spacemacs Practicalli - Interactive Clojure development with Emacs and CIDER](https://raw.githubusercontent.com/practicalli/graphic-design/live/book-covers/practicalli-spacemacs-book-banner.png)](https://practical.li/spacemacs)
 
 # Requirements
 
