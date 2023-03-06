@@ -51,7 +51,8 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-sort-by-usage t
-                      ;; auto-completion-idle-delay 0.0
+                      auto-completion-idle-delay 0.0
+                      auto-completion-minimum-prefix-length 1
                       ;; auto-completion-complete-with-key-sequence "fd"
                       )
 
@@ -67,7 +68,7 @@ This function should only modify configuration layer settings."
               cider-print-fn 'puget                   ;; pretty printing with sorted keys / set values
               clojure-indent-style 'align-arguments
               clojure-align-forms-automatically t
-              clojure-toplevel-inside-comment-form t  ;; evaluate expressions in comment as top level
+              ;; clojure-toplevel-inside-comment-form t  ;; seems to clash with LSP
               cider-result-overlay-position 'at-point ;; results shown right after expression
               cider-overlays-use-font-lock t
               cider-repl-buffer-size-limit 100        ;; limit lines shown in REPL buffer
