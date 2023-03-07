@@ -106,8 +106,9 @@ This function should only modify configuration layer settings."
 
      ;; helm-follow-mode sticky - remembers use of C-c C-f
      ;; - follow mode previews when scrolling through a helm list
-     (helm :variables
-           helm-follow-mode-persistent t)
+     helm
+     ;; (helm :variables
+     ;;       helm-follow-mode-persistent t)
 
      html
      javascript
