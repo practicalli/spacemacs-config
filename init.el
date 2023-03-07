@@ -723,6 +723,11 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+
+  ;; Save `dotspacemacs/emacs-custom-settings' in a separate file
+  ;; simplifying version control of the Spacemacs configuration file
+  (setq custom-file (file-truename (concat dotspacemacs-directory "emacs-custom-settings.el")))
+  (load custom-file)
 )
 
 
@@ -774,13 +779,7 @@ before packages are loaded."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
 
-
-  (setq emacs-custom-settings-file (file-truename (concat dotspacemacs-directory "emacs-custom-settings.el")))
-  (load emacs-custom-settings-file)
-)
+;; NOTE: `custom-set-variables` are now written to a separate file in the Spacemacs configuration location:
+;; Uncomment and evaluate, `, e e', the expression below to check your location
+;; (concat dotspacemacs-directory "emacs-custom-settings.el")
