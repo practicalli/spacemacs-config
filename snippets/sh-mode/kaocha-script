@@ -6,4 +6,4 @@
 #!/usr/bin/env bash
 
 ## Script to run the kaocha test runner
-clojure -A:test-runner-kaocha "$@"
+clojure -M:test/run "$@"
