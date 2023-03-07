@@ -129,8 +129,7 @@ This function should only modify configuration layer settings."
           lsp-log-io t                                    ; Log client-server json communication
           )
 
-     (markdown :variables
-               markdown-live-preview-engine 'vmd)
+     markdown
 
      ;; Editing multiple lines of text concurrently
      ;; `g r' menu in Emacs normal state
