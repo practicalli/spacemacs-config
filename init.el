@@ -104,11 +104,10 @@ This function should only modify configuration layer settings."
      ;; https://develop.spacemacs.org/layers/+lang/graphviz/README.html
      graphviz
 
-     ;; helm-follow-mode sticky - remembers use of C-c C-f
-     ;; - follow mode previews when scrolling through a helm list
+     ;; add variable `helm-follow-mode-persistent t' for helm-follow-mode sticky
+     ;; helm follow mode previews when scrolling through a helm list
+     ;; - remembers use of C-c C-f in helm pop-up
      helm
-     ;; (helm :variables
-     ;;       helm-follow-mode-persistent t)
 
      html
      javascript
