@@ -117,10 +117,16 @@ This function should only modify configuration layer settings."
      ;; Language server protocol with minimal visual impact
      ;; https://practical.li/spacemacs/install-spacemacs/clojure-lsp/
      (lsp :variables
-          lsp-ui-doc-enable nil       ;; disable all doc popups
-          lsp-ui-sideline-enable nil  ;; disable sideline bar for less distraction
-          treemacs-space-between-root-nodes nil  ;; no spacing in treemacs views
-          lsp-log-io t  ; Log client-server json communication
+          lsp-headerline-breadcrumb-enable t              ; Breadcrumb trail
+          lsp-headerline-breadcrumb-segments '(symbols)   ; namespace & symbols, no file path
+          lsp-ui-peek-enable t                            ; popups for refs, errors, symbols, etc.
+          lsp-semantic-tokens-enable t                    ; enhance syntax highlight
+          lsp-treemacs-error-list-current-project-only t  ; limit errors to current project
+          lsp-idle-delay 0.2                              ; smooth LSP features response
+          lsp-ui-doc-enable nil                           ; doc hover popups
+          lsp-ui-sideline-enable nil                      ; sidebar code actions visual indicator
+          treemacs-space-between-root-nodes nil           ; spacing in treemacs views
+          lsp-log-io t                                    ; Log client-server json communication
           )
 
      (markdown :variables
