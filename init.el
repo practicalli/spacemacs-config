@@ -55,17 +55,17 @@ This function should only modify configuration layer settings."
 
      ;; https://develop.spacemacs.org/layers/+lang/clojure/README.html
      (clojure :variables
-              ;; clojure-backend 'cider               ;; use cider and disable lsp
-              ;; clojure-enable-linters 'clj-kondo    ;; clj-kondo included in lsp
-              clojure-enable-kaocha-runner t          ;; enable Kaocha test runner
-              cider-repl-display-help-banner nil      ;; disable help banner
-              cider-print-fn 'puget                   ;; pretty printing with sorted keys / set values
+              ;; clojure-backend 'cider                 ; use cider and disable lsp
+              clojure-enable-kaocha-runner t            ; enable Kaocha test runner
+              cider-repl-display-help-banner nil        ; disable help banner
+              cider-print-fn 'puget                     ; pretty printing with sorted keys / set values
               clojure-indent-style 'align-arguments
               clojure-align-forms-automatically t
-              ;; clojure-toplevel-inside-comment-form t  ;; seems to clash with LSP
-              cider-result-overlay-position 'at-point ;; results shown right after expression
+              ;; clojure-toplevel-inside-comment-form t ; clashes with LSP
+              cider-result-overlay-position 'at-point   ; results shown right after expression
               cider-overlays-use-font-lock t
-              cider-repl-buffer-size-limit 100        ;; limit lines shown in REPL buffer
+              cider-repl-buffer-size-limit 100          ; limit lines shown in REPL buffer
+              nrepl-use-ssh-fallback-for-remote-hosts t ; connect via ssh to remote hosts
               )
 
      ;; Nyan cat indicating relative position in current buffer
