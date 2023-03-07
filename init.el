@@ -218,7 +218,7 @@ This function should only modify configuration layer settings."
      (yaml :variables
            yaml-enable-lsp t)
 
-     ) ;; End of dotspacemacs-configuration-layers
+     ) ; End of dotspacemacs-configuration-layers
 
 
    ;; List of additional packages that will be installed without being wrapped
@@ -714,7 +714,8 @@ This function defines the environment variables for your Emacs session. By
 default it calls `spacemacs/load-spacemacs-env' which loads the environment
 variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
 See the header of this file for more information."
-  (spacemacs/load-spacemacs-env))
+  (spacemacs/load-spacemacs-env)
+)
 
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
@@ -751,7 +752,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   "Library to load while dumping.
 This function is called only while dumping Spacemacs configuration. You can
 `require' or `load' the libraries of your choice that will be included in the
-dump.")
+dump."
+)
 
 
 (defun dotspacemacs/user-config ()
