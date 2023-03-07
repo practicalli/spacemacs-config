@@ -53,9 +53,6 @@ This function should only modify configuration layer settings."
                       ;; auto-completion-complete-with-key-sequence "fd"
                       )
 
-     ;; To have auto-completion on as soon as you start typing
-     ;; (auto-completion :variables auto-completion-idle-delay nil)
-
      ;; https://develop.spacemacs.org/layers/+lang/clojure/README.html
      (clojure :variables
               ;; clojure-backend 'cider               ;; use cider and disable lsp
