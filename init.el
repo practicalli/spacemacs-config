@@ -723,30 +723,8 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+)
 
-  ;; Save `dotspacemacs/emacs-custom-settings' in a separate file
-  ;; simplifying version control of the Spacemacs configuration file
-  (setq custom-file (file-truename (concat dotspacemacs-directory "emacs-custom-settings.el")))
-  (load custom-file)
-
-
-  ;; custom theme modification
-  ;; spacemacs - overriding default height of modeline
-  ;; doom-gruvbox - subtle lsp symbol highlight
-  (setq-default
-    theming-modifications
-      '((spacemacs-light
-          (mode-line :height 0.92)
-          (mode-line-inactive :height 0.92))
-        (doom-solarized-light
-         (mode-line :height 0.92)
-         (mode-line-inactive :height 0.92))
-        (doom-gruvbox-light
-         (lsp-face-highlight-read :background nil :weight bold)
-         (command-log-command :foreground "firebrick")
-         (command-log-key :foreground "dark magenta"))))
-
-  )  ;; End of dotspacemacs/user-int
 
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
