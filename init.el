@@ -202,11 +202,6 @@ This function should only modify configuration layer settings."
                treemacs-use-filewatch-mode t
                treemacs-use-follow-mode t)
 
-     ;; Customise the Spacemacs themes
-     ;; https://develop.spacemacs.org/layers/+themes/theming/README.html
-     ;; Code in dotspacemacs/user-init to reduce size of modeline
-     theming
-
      ;; Support font ligatures (fancy symbols) in all modes
      ;; 'prog-mode for only programming languages
      ;; including text-mode may cause issues with org-mode and magit
