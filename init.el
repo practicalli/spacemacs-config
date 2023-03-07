@@ -91,10 +91,13 @@ This function should only modify configuration layer settings."
 
      ;; SPC g s opens Magit git client full screen (q restores previous layout)
      ;; show word-granularity differences in current diff hunk
+     ;; delta-plugin requires git-detlta install
+     ;; https://develop.spacemacs.org/layers/+source-control/git/README.html#magit-plugins
      (git :variables
           git-magit-status-fullscreen t
           magit-diff-refine-hunk t
-          git-enable-magit-todos-plugin t)
+          git-enable-magit-todos-plugin t
+          git-enable-magit-delta-plugin t)
 
      ;; graphviz - open-source graph declaration system
      ;; Used to generated graphs of Clojure project dependencies
