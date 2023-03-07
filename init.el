@@ -175,11 +175,16 @@ This function should only modify configuration layer settings."
      ;; Configuration: https://github.com/seagle0128/doom-modeline#customize
      (spacemacs-modeline :variables
                          doom-modeline-height 12
-                         doom-modeline-major-mode-color-icon t
+                         doom-modeline-bar-width 0                  ; size of bar icon at start of modeline
+                         doom-modeline-buffer-state-icon t          ; disk icon for unsaved changes (default)
+                         doom-modeline-major-mode-color-icon t      ; color icon of major mode
                          doom-modeline-buffer-file-name-style 'relative-to-project
-                         doom-modeline-display-default-persp-name t
-                         doom-modeline-minor-modes nil
-                         doom-modeline-modal-icon nil)
+                         doom-modeline-display-default-persp-name t ; layout name
+                         doom-modeline-minor-modes nil              ; show minor modes
+                         doom-modeline-modal nil                    ; show Evil state icon/text
+                         ;; doom-modeline-modal-icon t              ; icon when t, ascii when nil
+                         doom-modeline-buffer-encoding nil          ; remove UTF-8, etc.
+                         )
 
      ;; Spell as you type with Flyspell package,
      ;; requires external command - ispell, hunspell, aspell
