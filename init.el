@@ -41,9 +41,6 @@ This function should only modify configuration layer settings."
      ;;
      ;; Layers added in alphabetic order
 
-     ;; Enable asciidoc layer for editing asciidoc content e.g. docs.cider.mx editing
-     asciidoc
-
      ;; Add tool tips to show doc string of functions
      ;; Show snippets in the auto-completion popup
      ;; Show suggestions by most commonly used
