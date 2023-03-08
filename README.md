@@ -54,6 +54,15 @@ Ask questions via the [#spacemacs channel on the Clojurians slack](https://app.s
 [Clojurians community - Getting Help](https://practical.li/blog/posts/cloure-community-getting-help/)
 
 
+## Sponsor Practicalli
+
+[![Sponsor practicalli-john](https://raw.githubusercontent.com/practicalli/graphic-design/live/buttons/practicalli-github-sponsors-button.png)](https://github.com/sponsors/practicalli-john/)
+
+The majority of my work is focused on the [Practicalli series of books and videos](https://practical.li/) and an advisory role with several communities
+
+Thank you to [Cognitect](https://www.cognitect.com/), [Nubank](https://nubank.com.br/) and a wide range of other [sponsors](https://github.com/sponsors/practicalli-john#sponsors) for your continued support
+
+
 Thank you
 
 [practical.li](https://practical.li/)
