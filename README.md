@@ -49,9 +49,9 @@ The `load-file` function includes the code from each file during startup.  Comme
 
 ## Getting help
 
-Ask questions via the [#spacemacs channel on the Clojurians slack](https://app.slack.com/client/T03RZGPFR/C099W16KZ)
+Discuss this guide [on #practicalli channel of the Clojurians Slack community](https://clojurians.slack.com/messages/practicalli)
 
-[Clojurians community - Getting Help](https://practical.li/blog/posts/cloure-community-getting-help/)
+[Clojurians community - Getting Help](https://practical.li/blog/posts/cloure-community-getting-help/) shows other ways to get help with Clojure.
 
 
 ## Sponsor Practicalli
