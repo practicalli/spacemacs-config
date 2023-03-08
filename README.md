@@ -20,7 +20,7 @@ User configuration to support the [Practicalli Spacemacs book](https://practical
 
 # Requirements
 
-[Practicalli Spacemacs - install spacemacs](https://practical.li/spacemacs/install-spacemacs/install/) details installation and pre-install requirements.
+[Practicalli Spacemacs - install spacemacs](https://practical.li/spacemacs/install-spacemacs/) details installation and pre-install requirements.
 
 
 ## Feedback & Contributing
@@ -51,7 +51,7 @@ The `load-file` function includes the code from each file during startup.  Comme
 
 Ask questions via the [#spacemacs channel on the Clojurians slack](https://app.slack.com/client/T03RZGPFR/C099W16KZ)
 
-> Join the [Clojurians Slack community](http://clojure.net/)
+[Clojurians community - Getting Help](https://practical.li/blog/posts/cloure-community-getting-help/)
 
 
 Thank you
