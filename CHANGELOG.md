@@ -2,8 +2,12 @@
 
 # Unreleased
 
-# 2023-02-08
 
+# 2023-03-13
+## Changed
+- disable lsp hover and associated markdown doc generation call - enable clojure-mode to evaluate forms in rich comment as top level form
+
+# 2023-03-08
 ## Changed
 * renamed default branch to main
 * renamed GitHub repository to practicalli/spacemacs-config

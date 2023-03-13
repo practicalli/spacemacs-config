@@ -61,7 +61,7 @@ This function should only modify configuration layer settings."
               cider-print-fn 'puget                     ; pretty printing with sorted keys / set values
               clojure-indent-style 'align-arguments
               clojure-align-forms-automatically t
-              ;; clojure-toplevel-inside-comment-form t ; clashes with LSP
+              clojure-toplevel-inside-comment-form t ; clashes with LSP
               cider-result-overlay-position 'at-point   ; results shown right after expression
               cider-overlays-use-font-lock t
               cider-repl-buffer-size-limit 100          ; limit lines shown in REPL buffer
@@ -122,6 +122,7 @@ This function should only modify configuration layer settings."
           lsp-semantic-tokens-enable t                    ; enhance syntax highlight
           lsp-treemacs-error-list-current-project-only t  ; limit errors to current project
           lsp-idle-delay 0.2                              ; smooth LSP features response
+          lsp-eldoc-enable-hover nil                      ; disable all hover actions
           lsp-ui-doc-enable nil                           ; doc hover popups
           lsp-ui-sideline-enable nil                      ; sidebar code actions visual indicator
           treemacs-space-between-root-nodes nil           ; spacing in treemacs views
