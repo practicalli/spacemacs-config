@@ -97,7 +97,10 @@ This function should only modify configuration layer settings."
           git-magit-status-fullscreen t
           magit-diff-refine-hunk t
           git-enable-magit-todos-plugin t
-          git-enable-magit-delta-plugin t)
+
+          ;; Install https://github.com/dandavison/delta for language syntax highlights in diff
+          ;; git-enable-magit-delta-plugin t
+          )
 
      ;; graphviz - open-source graph declaration system
      ;; Used to generated graphs of Clojure project dependencies
