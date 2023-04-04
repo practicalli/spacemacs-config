@@ -51,6 +51,13 @@
 
 
 ;; ---------------------------------------
+;; Clojure Essentail Ref lookup
+
+(spacemacs/set-leader-keys-for-minor-mode 'clojure-mode "hr" 'clojure-essential-ref)
+
+;; ---------------------------------------
+
+;; ---------------------------------------
 ;; Custom functions
 
 ;; toggle reader macro sexp comment
@@ -89,5 +96,6 @@
 (evil-define-key 'normal clojure-mode-map
   "zC" 'clojure-hack/toggle-comment-block
   "zO" (lambda () (interactive) (clojure-hack/toggle-comment-block 'open)))
+;; ---------------------------------------
 
 ;; ---------------------------------------
