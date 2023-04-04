@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : mkdocs-fontawesome-github
+#key : mkdocs-fontawesome-github
+#contributor : practicalli
+# --
+:fontawesome-brands-github:

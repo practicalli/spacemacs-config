@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: mkdocs-link-p9i-clojure-cli-config
+# key:
+# --
+[Practicalli Clojure CLI Config](https://practical.li/clojure/clojure-cli/practicalli-config/){target=_blank .md-button}$0

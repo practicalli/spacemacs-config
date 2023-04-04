@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+#name : doc-header
+#key : doc-header
+#contributor : practicalli
+# --
+;; ---------------------------------------------------------
+;; ${1:Heading summary title}
+;;
+;; ${2:Brief description}
+;; ---------------------------------------------------------
+
+$0

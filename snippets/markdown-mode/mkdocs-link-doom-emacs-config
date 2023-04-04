@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: mkdocs-link-doom-emacs-config
+# key: mkdocs-link-doom-emacs-config
+# contributor: practicalli
+# --
+[practicalli/doom-emacs-config](https://github.com/practicalli/doom-emacs-config){target=_blank}$0

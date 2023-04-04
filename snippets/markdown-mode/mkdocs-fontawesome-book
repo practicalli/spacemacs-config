@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : mkdocs-fontawesome-book
+#key : mkdocs-fontawesome-book
+#contributor : practicalli
+# --
+:fontawesome-solid-book-open:

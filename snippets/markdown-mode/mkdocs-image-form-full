@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: mkdocs-image-form-full
+# key: mkdocs-image-form-full
+# --
+![${1:image name}](${2:url}#only-dark){align=right$3 loading=lazy style="height:150px;width:150px"}
+$0
