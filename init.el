@@ -66,6 +66,7 @@ This function should only modify configuration layer settings."
               cider-overlays-use-font-lock t
               cider-repl-buffer-size-limit 100          ; limit lines shown in REPL buffer
               nrepl-use-ssh-fallback-for-remote-hosts t ; connect via ssh to remote hosts
+              clojure-enable-clj-refactor t
               )
 
      ;; Nyan cat indicating relative position in current buffer
@@ -367,8 +368,9 @@ It should only modify the values of Spacemacs settings."
    ;; pair of numbers, e.g. `(recents-by-project . (7 .  5))', where the first
    ;; number is the project limit and the second the limit on the recent files
    ;; within a project.
-   dotspacemacs-startup-lists '((recents . 5)
-                                (projects . 7))
+   dotspacemacs-startup-lists '((projects . 10)
+                                (todos . 3)
+                                (bookmarks . 20))
 
    ;; True if the home buffer should respond to resize events. (default t)
    dotspacemacs-startup-buffer-responsive t
@@ -407,7 +409,8 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(doom-gruvbox
+   dotspacemacs-themes '(doom-solarized-dark
+                         doom-gruvbox
                          doom-gruvbox-light
                          spacemacs-dark
                          spacemacs-light)
