@@ -234,7 +234,8 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(clojure-essential-ref)
+   dotspacemacs-additional-packages '(clojure-essential-ref
+                                      kibit-helper)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -410,6 +411,7 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(doom-solarized-dark
+                         doom-solarized-light
                          doom-gruvbox
                          doom-gruvbox-light
                          spacemacs-dark
