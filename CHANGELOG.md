@@ -2,6 +2,12 @@
 
 # Unreleased
 
+# 2023-09-08
+## Changed
+- main layers: remove syntax checking - lsp makes this redundant
+- lsp: disable peek due to visualy conflict with completion popup
+- practicalli/main lsp: improve typing responsiveness with longer idle delay
+
 # 2023-04-04
 ## Added
 - [Clojure Essentail Reference Emacs package](https://github.com/p3r7/clojure-essential-ref) to look up functions in book of same name, added key binding in Clojure mode `, h r`
