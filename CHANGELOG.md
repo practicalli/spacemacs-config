@@ -1,6 +1,14 @@
 # Changelog
 
 # Unreleased
+## Changed
+- add syntax-checker layer to support `d s` & `c s` evil commands to delete or change surrounding parens
+
+# 2023-09-08
+## Changed
+- main layers: remove syntax checking - lsp makes this redundant
+- lsp: disable peek due to visualy conflict with completion popup
+- practicalli/main lsp: improve typing responsiveness with longer idle delay
 
 # 2023-04-04
 ## Added

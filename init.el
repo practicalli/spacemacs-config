@@ -122,10 +122,10 @@ This function should only modify configuration layer settings."
      (lsp :variables
           lsp-headerline-breadcrumb-enable t              ; Breadcrumb trail
           lsp-headerline-breadcrumb-segments '(symbols)   ; namespace & symbols, no file path
-          lsp-ui-peek-enable t                            ; popups for refs, errors, symbols, etc.
+          lsp-ui-peek-enable nil                          ; popups for refs, errors, symbols, etc.
           lsp-semantic-tokens-enable t                    ; enhance syntax highlight
           lsp-treemacs-error-list-current-project-only t  ; limit errors to current project
-          lsp-idle-delay 0.2                              ; smooth LSP features response
+          lsp-idle-delay 1.5                              ; smooth LSP features response
           lsp-eldoc-enable-hover nil                      ; disable all hover actions
           lsp-ui-doc-enable nil                           ; doc hover popups
           lsp-ui-sideline-enable nil                      ; sidebar code actions visual indicator
