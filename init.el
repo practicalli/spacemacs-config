@@ -197,8 +197,8 @@ This function should only modify configuration layer settings."
      spell-checking
 
      ;; Use original flycheck fringe bitmaps
-     (syntax-checking :variables
-                      syntax-checking-use-original-bitmaps t)
+     ;; (syntax-checking :variables
+     ;;                  syntax-checking-use-original-bitmaps t)
 
      ;; Visual file manager - `SPC p t'
      ;; treemacs-no-png-images t removes file and directory icons
