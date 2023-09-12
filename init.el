@@ -233,7 +233,12 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(clojure-essential-ref)
+   dotspacemacs-additional-packages '(clojure-essential-ref
+                                      (evil-surround
+                                       :location
+                                       (recipe :fetcher github
+                                               :repo "emacs-evil/evil-surround"
+                                               :commit "f273821f575ace519066fb106ee45a5b8577475f")))
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
