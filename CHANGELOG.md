@@ -1,6 +1,8 @@
 # Changelog
 
 # Unreleased
+## Changed
+- add syntax-checker layer to support `d s` & `c s` evil commands to delete or change surrounding parens
 
 # 2023-09-08
 ## Changed
