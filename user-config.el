@@ -15,7 +15,7 @@
 (defun clean-workspace ()
   (treemacs-collapse-all-projects))
 
-(add-hook 'projectile-after-switch-project-hook 'clean-workspace)
+;; (add-hook 'projectile-after-switch-project-hook 'clean-workspace)
 
 ;; ---------------------------------------
 ;; Line numbers
