@@ -197,8 +197,8 @@ This function should only modify configuration layer settings."
      spell-checking
 
      ;; Use original flycheck fringe bitmaps
-     (syntax-checking :variables
-                      syntax-checking-use-original-bitmaps t)
+     ;; (syntax-checking :variables
+     ;;                  syntax-checking-use-original-bitmaps t)
 
      ;; Visual file manager - `SPC p t'
      ;; treemacs-no-png-images t removes file and directory icons
@@ -235,7 +235,12 @@ This function should only modify configuration layer settings."
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(clojure-essential-ref
-                                      kibit-helper)
+                                      kibit-helper
+                                      (evil-surround
+                                       :location
+                                       (recipe :fetcher github
+                                               :repo "emacs-evil/evil-surround"
+                                               :commit "f273821f575ace519066fb106ee45a5b8577475f")))
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
