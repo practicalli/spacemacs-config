@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : mkdocs-icon-globe
+#key : mkdocs-icon-globe
+#contributor : practicalli
+# --
+:fontawesome-solid-globe:
