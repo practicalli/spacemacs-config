@@ -233,7 +233,8 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(clojure-essential-ref
+   dotspacemacs-additional-packages '(catppuccin-theme
+                                      clojure-essential-ref)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -379,6 +380,8 @@ It should only modify the values of Spacemacs settings."
    ;; package can be defined with `:package', or a theme can be defined with
    ;; `:location' to download the theme package, refer the themes section in
    ;; DOCUMENTATION.org for the full theme specifications.
+   dotspacemacs-themes '(catppuccin
+                         doom-gruvbox
                          doom-gruvbox-light
                          spacemacs-dark
                          spacemacs-light)
@@ -732,6 +735,9 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+
+  ;; https://github.com/catppuccin/emacs?tab=readme-ov-file#spacemacs
+  (setq catppuccin-flavor 'mocha) ;'frappe 'latte 'macchiato or 'mocha
 
   ;; Save `dotspacemacs/emacs-custom-settings' in a separate file
   ;; simplifying version control of the Spacemacs configuration file

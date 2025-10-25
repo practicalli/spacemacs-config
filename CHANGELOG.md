@@ -6,6 +6,7 @@
 - disable helm-discbinds to prevent it blocking which-key menu
 - config: update from spacemacs template
 - package: unpin evil-surround
+- theme: catppuccin mocha theme by default
 
 # 2023-09-08
 ## Changed
